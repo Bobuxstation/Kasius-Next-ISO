@@ -1,0 +1,22 @@
+{
+  "name": "kaos12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^4.2.12",
+    "electron-builder": "^23.3.3"
+  },
+  "build" : {
+    "appId": "com.kaos.alpha",
+    "productName": "KaOS 12",
+    "target": "AppImage"
+  }
+}
