@@ -6,6 +6,7 @@ jobs:
       - image: circleci/node:13
     steps:
       - checkout
+          path: ~/repo
       - run:
           name: Install dependencies
           command: npm i
