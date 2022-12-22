@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "AppImage": "kasiusnext.AppImage",
+  "AppImage": "https://output.circle-artifacts.com/output/job/bd5110fe-26dc-4bfa-8602-b0f7293e5e2b/artifacts/0/~/repo/dist/kasiusnext.AppImage",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
