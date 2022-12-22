@@ -25,6 +25,7 @@ jobs:
           command: npm i @mainsilent/linux.js --save-dev
       - run:
           name: Get LinuxJS Requirements
+          path: ~/repo/
           command: npx reqs
       - run:
           name: Build ISO
