@@ -1,5 +1,5 @@
 {
-  "AppImage": "dist/kasiusnext.AppImage",
+  "AppImage": "/dist/kasiusnext.AppImage",
   "name": "KasiusNextISO",
   "version": "1.0.0",
   "description": "",
