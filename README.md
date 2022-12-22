@@ -1,4 +1,4 @@
-# Kasius-Next
+# Kasius-Next-ISO
 <img src="https://raw.githubusercontent.com/Bobuxstation/Kasius-Next/main/Icons/figma3d.png" style="width: 100%;"></img><br>
 
 [![CircleCI Builds - Kasius-Next-ISO](https://img.shields.io/static/v1?label=CircleCI+Builds&message=Kasius-Next-ISO&color=2ea44f&logo=CircleCI)](https://app.circleci.com/pipelines/github/Bobuxstation/Kasius-Next-ISO)
