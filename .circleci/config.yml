@@ -36,4 +36,4 @@ jobs:
           command: sudo npx linuxjs
 
       - store_artifacts:
-          path: ~/repo/dist
+          path: ~/repo/filesystem/
