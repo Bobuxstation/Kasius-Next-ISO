@@ -23,6 +23,10 @@ jobs:
           path: ~/repo/
           command: ls
       - run:
+          name: Check Dist Directory
+          path: ~/repo/dist
+          command: ls
+      - run:
           name: Get LinuxJS
           command: npm i @mainsilent/linux.js --save-dev
       - run:
