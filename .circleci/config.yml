@@ -17,15 +17,7 @@ jobs:
             sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm && sudo apt-get install squashfs-tools && sudo apt-get install genisoimage && sudo apt-get install -y make && sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs
       - run:
           name: Generate Builds
-          command: npm run dist
-      - run:
-          name: Check Directory
-          path: ~/repo/
-          command: ls
-      - run:
-          name: Check Dist Directory
-          path: ~/repo/dist
-          command: ls
+          command: npm run dist && ls
       - run:
           name: Get LinuxJS
           path: ~/repo/
