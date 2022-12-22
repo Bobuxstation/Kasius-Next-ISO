@@ -21,11 +21,11 @@ jobs:
           command: npm run dist
       - run:
           name: Check Directory
-          path: ~/repo/
+          path: ~/repo/builds/
           command: ls
       - run:
           name: Check Dist Directory
-          path: ~/repo/builds
+          path: ~/repo/builds/dist
           command: ls
       - run:
           name: Get LinuxJS
