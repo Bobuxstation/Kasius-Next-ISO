@@ -24,10 +24,6 @@ jobs:
       - run:
           name: Get LinuxJS Requirements
           command: npx reqs
-
-      - store_artifacts:
-          path: ~/repo/dist
-
       - run:
           name: Build ISO
           command: npx linuxjs
