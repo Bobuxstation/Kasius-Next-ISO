@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/node:13
+      - image: "cypress/browsers:node16.14.0-chrome99-ff97"
     steps:
       - checkout
       - run:
