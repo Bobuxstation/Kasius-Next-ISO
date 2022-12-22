@@ -20,6 +20,7 @@ jobs:
           command: npm run dist
       - run:
           name: Check Directory
+          path: ~/repo/dist
           command: ls
       - run:
           name: Get LinuxJS
@@ -28,7 +29,7 @@ jobs:
           name: Get LinuxJS Requirements
           command: npx reqs
       - run:
-          path: ~/repo
+          path: ~/repo/dist
           name: Build ISO
           command: npx linuxjs
 
