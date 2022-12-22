@@ -83,11 +83,11 @@ input:focus {
 	<input autocomplete="off" placeholder="Enter A URL here..." id="input">
 	<button onclick="go()"><i class="fa-solid fa-arrow-right"></i></button>
 </div>
-<iframe src="" id="iframe"></iframe>
+<iframe src="https://bing.com" id="iframe"></iframe>
 </body>
 <script type="text/javascript">
 	function home() {
-		document.getElementById("iframe").src = "";
+		document.getElementById("iframe").src = "https://bing.com";
 	}
 	function refresh() {
 		document.getElementById("iframe").src = document.getElementById("iframe").src;
