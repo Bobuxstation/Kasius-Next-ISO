@@ -19,6 +19,9 @@ jobs:
           name: Generate Builds
           command: npm run dist
       - run:
+          name: Check Directory
+          command: ls
+      - run:
           name: Get LinuxJS
           command: npm i @mainsilent/linux.js --save-dev
       - run:
