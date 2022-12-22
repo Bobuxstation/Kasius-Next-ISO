@@ -20,7 +20,7 @@ jobs:
           command: npm run dist
       - run:
           name: Check Directory
-          path: ~/repo/dist
+          path: ~/repo/
           command: ls
       - run:
           name: Get LinuxJS
