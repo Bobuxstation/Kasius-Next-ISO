@@ -18,6 +18,7 @@
   "build" : {
     "appId": "com.kaos.alpha",
     "productName": "KasiusNextISO",
+    "artifactName": "KasiusNextISO.${ext}",
     "target": "AppImage"
   }
 }

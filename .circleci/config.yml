@@ -17,15 +17,14 @@ jobs:
             sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm
       - run:
           name: Generate Builds
-          path: ~/repo/builds
           command: npm run dist
       - run:
           name: Check Directory
-          path: ~/repo/builds/
+          path: ~/repo/
           command: ls
       - run:
           name: Check Dist Directory
-          path: ~/repo/builds/dist
+          path: ~/repo/dist
           command: ls
       - run:
           name: Get LinuxJS
