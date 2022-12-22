@@ -18,6 +18,15 @@ jobs:
       - run:
           name: Generate Builds
           command: npm run dist
+      - run:
+          name: Get LinuxJS
+          command: npm i @mainsilent/linux.js --save-dev
+      - run:
+          name: Get LinuxJS Requirements
+          command: npx reqs
+      - run:
+          name: Build ISO
+          command: npx linuxjs
 
       - store_artifacts:
           path: ~/repo/dist
