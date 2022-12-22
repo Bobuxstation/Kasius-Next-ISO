@@ -29,7 +29,7 @@ jobs:
           name: Get LinuxJS Requirements
           command: npx reqs
       - run:
-          path: ~/repo/dist
+          path: ~/repo/
           name: Build ISO
           command: npx linuxjs
 
