@@ -12,7 +12,9 @@ function createWindow () {
       autoHideMenuBar: true,
       fullscreen: true,
       webPreferences: {
-        nodeIntegration: true
+        nodeIntegration: true,
+        webviewTag: true,
+        devTools: true
       }
     })
   

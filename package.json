@@ -15,10 +15,13 @@
     "electron": "^4.2.12",
     "electron-builder": "^20.44.4"
   },
-  "build" : {
+  "build": {
     "appId": "com.kaos.alpha",
     "productName": "KasiusNextISO",
     "artifactName": "kasiusnext.${ext}",
     "target": "AppImage"
+  },
+  "dependencies": {
+    "jquery": "^3.6.3"
   }
 }

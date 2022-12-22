@@ -146,8 +146,8 @@ nav{
     border-radius: 2px;
 }
 .sidebar2 {
-    height: 517.45px;
-    width:600px;
+    height: 520px;
+    width:605px;
     position:fixed!important;
     z-index:2;
     overflow:auto;
@@ -175,6 +175,7 @@ nav{
 }
 button {
     padding: 2px;
+    outline: none;
   }
 .notifications {
     height: fit-content;
