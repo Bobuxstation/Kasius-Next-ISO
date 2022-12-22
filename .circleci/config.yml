@@ -28,6 +28,10 @@ jobs:
           path: ~/repo/
           command: npx reqs
       - run:
+          name: Check Directory
+          path: ~/repo/
+          command: ls
+      - run:
           name: Build ISO
           path: ~/repo/
           command: npx linuxjs
