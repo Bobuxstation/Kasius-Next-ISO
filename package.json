@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "AppImage": "dist/kasiusnext.AppImage",
+  "AppImage": "kasiusnext.AppImage",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
