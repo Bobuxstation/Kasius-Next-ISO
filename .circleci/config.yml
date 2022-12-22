@@ -10,11 +10,11 @@ jobs:
           name: Install dependencies
           command: npm i
       - run:
-          name: Install dpkg and fakeroot
+          name: Install required tools
           command: |
             sudo apt-get update -y
             sudo dpkg --add-architecture i386 && sudo apt-get update -y
-            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm && sudo apt-get install squashfs-tools 
+            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm && sudo apt-get install squashfs-tools && apt-get install genisoimage
       - run:
           name: Generate Builds
           command: npm run dist
@@ -29,11 +29,11 @@ jobs:
       - run:
           name: Get LinuxJS
           path: ~/repo/
-          command: npm i @mainsilent/linux.js --save-dev && npx reqs && ls
+          command: npm i @mainsilent/linux.js --save-dev && sudo npx reqs && ls
       - run:
           name: Build ISO
           path: ~/repo/
-          command: npx linuxjs
+          command: sudo npx linuxjs
 
       - store_artifacts:
           path: ~/repo/dist
