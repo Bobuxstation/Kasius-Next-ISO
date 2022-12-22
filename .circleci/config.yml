@@ -10,12 +10,6 @@ jobs:
           name: Install dependencies
           command: npm i
       - run:
-          name: Install dpkg and fakeroot
-          command: |
-            sudo apt-get update -y
-            sudo dpkg --add-architecture i386 && sudo apt-get update -y
-            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm
-      - run:
           name: Generate Builds
           command: npm run dist
       - run:
