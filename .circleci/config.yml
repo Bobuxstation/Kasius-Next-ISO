@@ -36,4 +36,4 @@ jobs:
           command: sudo npx linuxjs
 
       - store_artifacts:
-          path: ~/repo/filesystem/
+          path: ~/repo/filesystem/KasiusNextISO.iso
