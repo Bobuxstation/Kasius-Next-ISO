@@ -6,7 +6,6 @@ jobs:
       - image: circleci/node:13
     steps:
       - checkout
-          path: ~/repo
       - run:
           name: Install dependencies
           command: npm i
@@ -26,6 +25,7 @@ jobs:
           name: Get LinuxJS Requirements
           command: npx reqs
       - run:
+          path: ~/repo
           name: Build ISO
           command: npx linuxjs
 
