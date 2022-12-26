@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: circleci/node:13
-      - image: circleci/golang:1.8
+      - image: cimg/go:1.19.4
     steps:
       - checkout
       - run:
