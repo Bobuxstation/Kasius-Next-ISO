@@ -4,6 +4,7 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: circleci/node:13
+      - image: cibuilds/github:0.10
     steps:
       - checkout
       - run:
@@ -29,3 +30,8 @@ jobs:
 
       - store_artifacts:
           path: ~/repo/filesystem/KasiusNextISO.iso
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            VERSION=$(my-binary --version)
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/repo/filesystem/KasiusNextISO.iso
