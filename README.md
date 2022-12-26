@@ -5,7 +5,7 @@
 [![Web Version - Kasius-Next](https://img.shields.io/static/v1?label=Web+Version&message=Kasius-Next&color=2ea44f&logo=html5&logoColor=ffffff)](https://bobuxstation.github.io/Kasius-Next/)
 [![Profile - Bobuxstation](https://img.shields.io/static/v1?label=Profile&message=Bobuxstation&color=blue)](https://github.com/Bobuxstation/)
 
-An epic OS simulation made in HTML, CSS and JavaScript running under a linux distro. Based on the older <a href="https://github.com/Bobuxstation/KaOS-14">Bobuxstation/KaOS-14</a> 
+An epic OS simulation made in HTML, CSS and JavaScript running under a debian based linux distro. Based on the older <a href="https://github.com/Bobuxstation/KaOS-14">Bobuxstation/KaOS-14</a> 
 OS simulator which used a similar layout.
 
 With a new and improved dark theme UI. Do daily task with the latest features from the improved apps of Kasius Next.
