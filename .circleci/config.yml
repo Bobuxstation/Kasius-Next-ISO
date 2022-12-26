@@ -4,6 +4,7 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: circleci/node:13
+      - image: circleci/golang:1.8
     steps:
       - checkout
       - run:
@@ -14,7 +15,7 @@ jobs:
           command: |
             sudo apt-get update -y
             sudo dpkg --add-architecture i386 && sudo apt-get update -y
-            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm && sudo apt-get install golang-bin && go install github.com/tcnksm/ghr@latest && sudo apt-get install squashfs-tools && sudo apt-get install genisoimage && sudo apt-get install -y make && sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs
+            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm && go install github.com/tcnksm/ghr@latest && sudo apt-get install squashfs-tools && sudo apt-get install genisoimage && sudo apt-get install -y make && sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs
       - run:
           name: Generate Builds
           command: npm run dist && ls
