@@ -7,10 +7,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install nodeJS dependencies
           command: npm i
       - run:
-          name: Install required tools
+          name: Install other dependencies
           command: |
             sudo apt-get update -y
             sudo dpkg --add-architecture i386 && sudo apt-get update -y
@@ -20,7 +20,7 @@ jobs:
             sudo apt-get install -y make
             sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs
       - run:
-          name: Generate Builds
+          name: Build AppImage for ISO
           command: npm run dist && ls
       - run:
           name: Get LinuxJS
@@ -45,7 +45,6 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp/filesystem
-      - run: ls
       - run:
           name: "Publish Release on GitHub"
           command: |
