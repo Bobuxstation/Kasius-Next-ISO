@@ -53,7 +53,7 @@ jobs:
             -u "${CIRCLE_PROJECT_USERNAME}" \
             -r "${CIRCLE_PROJECT_REPONAME}" \
             -c "${CIRCLE_SHA1}" \
-            v1.0.0 ./artifacts/
+            v1.0.0 KasiusNextISO.iso
 
 workflows:
   build_and_publish:
