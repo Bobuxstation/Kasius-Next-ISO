@@ -14,7 +14,14 @@ jobs:
           command: |
             sudo apt-get update -y
             sudo dpkg --add-architecture i386 && sudo apt-get update -y
-            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm && sudo apt-get install squashfs-tools && sudo apt-get install genisoimage && sudo apt-get install -y make && sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs && sudo snap install go --classic
+            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm
+            sudo apt-get install squashfs-tools
+            sudo apt-get install genisoimage
+            sudo apt-get install -y make
+            sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs
+            sudo apt search golang-go
+            sudo apt search gccgo-go
+            sudo apt install golang-go
       - run:
           name: Generate Builds
           command: npm run dist && ls
