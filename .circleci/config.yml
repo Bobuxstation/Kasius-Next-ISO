@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  gh: circleci/github-cli@1.0
 jobs:
   build:
     working_directory: ~/repo
@@ -35,3 +33,27 @@ jobs:
 
       - store_artifacts:
           path: ~/repo/filesystem/KasiusNextISO.iso
+  
+  publish-github-release:
+    working_directory: ~/repo
+    docker:
+      - image: cibuilds/github:0.10
+    steps:
+      - attach_workspace:
+          at: ./artifacts
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            ghr -t "${GITHUB_TOKEN}" \
+            -u "${CIRCLE_PROJECT_USERNAME}" \
+            -r "${CIRCLE_PROJECT_REPONAME}" \
+            -c "${CIRCLE_SHA1}" \
+            v1.0.0 ./artifacts/
+
+workflows:
+  build_and_publish:
+    jobs:
+      - build
+      - publish-github-release:
+          requires:
+            - build
