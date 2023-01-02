@@ -33,6 +33,7 @@ jobs:
           path: ~/repo/filesystem/KasiusNextISO.iso
   test:
     docker:
+      - image: circleci/node:13
       - image: cibuilds/github:0.10
     steps:
       - attach_workspace:
