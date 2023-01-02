@@ -33,13 +33,15 @@ jobs:
           path: ~/repo/filesystem/KasiusNextISO.iso
   test:
     docker:
-      - image: cimg/<language>:<version TAG>
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+      - image: cibuilds/github:0.10
     steps:
-      - checkout
-      - run: echo "this is the test job"
+      - attach_workspace:
+          at: ./artifacts
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            VERSION=$(my-binary --version)
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/
 
 # Orchestrate our job run sequence
 workflows:
