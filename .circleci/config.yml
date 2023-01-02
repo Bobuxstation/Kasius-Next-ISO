@@ -30,11 +30,10 @@ jobs:
       - store_artifacts:
           path: ~/repo/filesystem/KasiusNextISO.iso
   publish-github-release:
+    working_directory: ~/repo
     docker:
       - image: cibuilds/github:0.10
     steps:
-      - attach_workspace:
-          at: ./artifacts
       - run:
           name: "Publish Release on GitHub"
           command: |
@@ -42,7 +41,7 @@ jobs:
             -u "${CIRCLE_PROJECT_USERNAME}" \
             -r "${CIRCLE_PROJECT_REPONAME}" \
             -c "${CIRCLE_SHA1}" \
-            v1.0.0 ./artifacts/
+            v1.0.0 ~/repo/filesystem/KasiusNextISO.iso
 
 workflows:
   build_and_publish:
