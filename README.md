@@ -1,7 +1,7 @@
 # Kasius-Next-ISO
 <img src="https://raw.githubusercontent.com/Bobuxstation/Kasius-Next-ISO/master/Icons/kasiusnextiso.png" style="width: 100%;"></img><br>
 
-[![CircleCI Builds - Kasius-Next-ISO](https://img.shields.io/static/v1?label=CircleCI+Builds&message=Kasius-Next-ISO&color=2ea44f&logo=CircleCI)](https://app.circleci.com/pipelines/github/Bobuxstation/Kasius-Next-ISO)
+![CircleCI](https://img.shields.io/circleci/build/github/Bobuxstation/Kasius-Next-ISO)
 [![Web Version - Kasius-Next](https://img.shields.io/static/v1?label=Web+Version&message=Kasius-Next&color=2ea44f&logo=html5&logoColor=ffffff)](https://bobuxstation.github.io/Kasius-Next/)
 [![Profile - Bobuxstation](https://img.shields.io/static/v1?label=Profile&message=Bobuxstation&color=blue)](https://github.com/Bobuxstation/)
 
