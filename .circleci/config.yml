@@ -3,24 +3,22 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/golang:1.8
+      - image: circleci/node:13
     steps:
       - checkout
       - run:
-          name: Install required tools
-          command: |
-            sudo apt-get update -y --force-yes
-            sudo dpkg --add-architecture i386 && sudo apt-get update -y --force-yes
-            sudo apt-get install -y --force-yes dpkg fakeroot wine32 wine64 rpm
-            sudo apt-get install squashfs-tools
-            sudo apt-get install genisoimage
-            sudo apt-get install -y --force-yes make
-            curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - &&\
-            sudo apt-get install nodejs
-            go get github.com/tcnksm/ghr
-      - run:
           name: Install dependencies
           command: npm i
+      - run:
+          name: Install required tools
+          command: |
+            sudo apt-get update -y
+            sudo dpkg --add-architecture i386 && sudo apt-get update -y
+            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm
+            sudo apt-get install squashfs-tools
+            sudo apt-get install genisoimage
+            sudo apt-get install -y make
+            sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs
       - run:
           name: Generate Builds
           command: npm run dist && ls
@@ -32,14 +30,6 @@ jobs:
           name: Build ISO
           path: ~/repo/
           command: sudo npx linuxjs
-      - run:
-          name: "Publish Release on GitHub"
-          command: |
-            ghr -t "${GITHUB_TOKEN}" \
-            -u "${CIRCLE_PROJECT_USERNAME}" \
-            -r "${CIRCLE_PROJECT_REPONAME}" \
-            -c "${CIRCLE_SHA1}" \
-            v1.0.0 ./artifacts/
 
       - store_artifacts:
           path: ~/repo/filesystem/KasiusNextISO.iso
