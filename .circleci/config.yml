@@ -37,17 +37,3 @@ jobs:
 
       - store_artifacts:
           path: ~/repo/filesystem/KasiusNextISO.iso
-
-  publish-github-release:
-    steps:
-      - attach_workspace:
-          at: ./artifacts
-      - run: ls
-
-workflows:
-  build_and_publish:
-    jobs:
-      - build
-      - publish-github-release:
-          requires:
-            - build
