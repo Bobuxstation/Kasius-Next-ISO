@@ -7,9 +7,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: npm i
-      - run:
           name: Install required tools
           command: |
             sudo apt-get update -y
@@ -20,6 +17,9 @@ jobs:
             sudo apt-get install -y make
             sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs
             sudo apt-get install node
+      - run:
+          name: Install dependencies
+          command: npm i
       - run:
           name: Generate Builds
           command: npm run dist && ls
