@@ -15,7 +15,6 @@ jobs:
             sudo apt-get install squashfs-tools
             sudo apt-get install genisoimage
             sudo apt-get install -y make
-            sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs
             sudo apt-get install node
       - run:
           name: Install dependencies
