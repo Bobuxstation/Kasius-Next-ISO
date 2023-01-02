@@ -35,7 +35,6 @@ jobs:
           path: ~/repo/filesystem/KasiusNextISO.iso
   
   publish-github-release:
-    working_directory: ~/repo
     docker:
       - image: cibuilds/github:0.10
     steps:
