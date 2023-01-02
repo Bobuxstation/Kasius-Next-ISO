@@ -19,6 +19,7 @@ jobs:
             sudo apt-get install genisoimage
             sudo apt-get install -y make
             sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs
+            sudo apt install gh
       - run:
           name: Generate Builds
           command: npm run dist && ls
