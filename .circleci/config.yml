@@ -29,7 +29,6 @@ jobs:
 
       - store_artifacts:
           path: ~/repo/filesystem/KasiusNextISO.iso
-
   publish-github-release:
     docker:
       - image: cibuilds/github:0.10
