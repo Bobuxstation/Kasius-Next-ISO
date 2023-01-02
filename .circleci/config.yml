@@ -31,7 +31,7 @@ jobs:
 
       - store_artifacts:
           path: ~/repo/filesystem/KasiusNextISO.iso
-  test:
+  publish-github-release:
     docker:
       - image: cibuilds/github:0.10
     steps:
@@ -51,6 +51,6 @@ workflows:
   build_and_publish:
     jobs:
       - build
-      - test:
+      - publish-github-release:
           requires:
             - build
