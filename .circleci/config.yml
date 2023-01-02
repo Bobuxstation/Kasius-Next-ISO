@@ -45,7 +45,7 @@ jobs:
 
 # Orchestrate our job run sequence
 workflows:
-  build_and_test:
+  build_and_publish:
     jobs:
       - build
       - test:
