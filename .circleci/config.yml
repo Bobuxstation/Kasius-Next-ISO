@@ -9,6 +9,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: get version
+          command: node -pe "require('./package.json').version"
+      - run:
           name: Install dependencies
           command: npm i
       - run:
