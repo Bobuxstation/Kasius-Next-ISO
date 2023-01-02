@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/node:13
+      - image: cibuilds/github:0.10
     steps:
       - checkout
       - run:
@@ -14,7 +14,7 @@ jobs:
           command: |
             sudo apt-get update -y
             sudo dpkg --add-architecture i386 && sudo apt-get update -y
-            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm && sudo apt-get install squashfs-tools && sudo apt-get install genisoimage && sudo apt-get install -y make && sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs
+            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm && sudo apt-get install squashfs-tools && sudo apt-get install genisoimage && sudo apt-get install -y make && sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs && sudo apt-get install node
       - run:
           name: Generate Builds
           command: npm run dist && ls
@@ -26,16 +26,6 @@ jobs:
           name: Build ISO
           path: ~/repo/
           command: sudo npx linuxjs
-
-      - store_artifacts:
-          path: ~/repo/filesystem/KasiusNextISO.iso
-  publish-github-release:
-    docker:
-      - image: cibuilds/github:0.10
-    steps:
-      - attach_workspace:
-          at: ./artifacts
-      - run: ls
       - run:
           name: "Publish Release on GitHub"
           command: |
@@ -44,6 +34,15 @@ jobs:
             -r "${CIRCLE_PROJECT_REPONAME}" \
             -c "${CIRCLE_SHA1}" \
             v1.0.0 ./artifacts/
+
+      - store_artifacts:
+          path: ~/repo/filesystem/KasiusNextISO.iso
+
+  publish-github-release:
+    steps:
+      - attach_workspace:
+          at: ./artifacts
+      - run: ls
 
 workflows:
   build_and_publish:
