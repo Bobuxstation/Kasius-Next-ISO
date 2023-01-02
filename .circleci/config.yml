@@ -32,12 +32,13 @@ jobs:
       - store_artifacts:
           path: ~/repo/filesystem/KasiusNextISO.iso
   test:
+    working_directory: ~/repo
     docker:
       - image: cibuilds/github:0.10
     steps:
       - run:
           name: "get nodejs"
-          command: sudo apt-get install node
+          command: apt-get install node
       - run:
           name: "Publish Release on GitHub"
           command: |
