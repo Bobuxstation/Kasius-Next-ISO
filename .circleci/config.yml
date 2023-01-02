@@ -35,8 +35,6 @@ jobs:
     docker:
       - image: cibuilds/github:0.10
     steps:
-      - attach_workspace:
-          at: ./artifacts
       -run:
           name: "get nodejs"
           command: sudo apt-get install node
