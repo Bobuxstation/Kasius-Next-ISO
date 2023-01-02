@@ -3,19 +3,18 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: cibuilds/github:0.10
+      - image: circleci/node:13
     steps:
       - checkout
       - run:
-          name: Install required tools
-          command: |
-            apt-get install sudo
-            sudo apt-get update -y
-            sudo dpkg --add-architecture i386 && sudo apt-get update -y
-            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm && sudo apt-get install squashfs-tools && sudo apt-get install genisoimage && sudo apt-get install -y make && sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs && sudo apt-get install node
-      - run:
           name: Install dependencies
           command: npm i
+      - run:
+          name: Install required tools
+          command: |
+            sudo apt-get update -y
+            sudo dpkg --add-architecture i386 && sudo apt-get update -y
+            sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm && sudo apt-get install squashfs-tools && sudo apt-get install genisoimage && sudo apt-get install -y make && sudo ln -s /usr/bin/genisoimage /usr/bin/mkisofs && apt-get install golang-bin
       - run:
           name: Generate Builds
           command: npm run dist && ls
@@ -27,6 +26,7 @@ jobs:
           name: Build ISO
           path: ~/repo/
           command: sudo npx linuxjs
+      - run: go get github.com/tcnksm/ghr
       - run:
           name: "Publish Release on GitHub"
           command: |
