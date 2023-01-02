@@ -34,6 +34,8 @@ jobs:
     docker:
       - image: cibuilds/github:0.10
     steps:
+      - attach_workspace:
+          at: ./artifacts
       - run: ls
       - run:
           name: "Publish Release on GitHub"
