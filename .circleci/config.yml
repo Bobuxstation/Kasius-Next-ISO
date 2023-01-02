@@ -30,11 +30,16 @@ jobs:
           name: Build ISO
           path: ~/repo/
           command: sudo npx linuxjs
+      - persist_to_workspace:
+          root: filesystem
+          paths:
+            - KasiusNextISO.iso
 
       - store_artifacts:
           path: ~/repo/filesystem/KasiusNextISO.iso
   
   publish-github-release:
+    working_directory: ~/repo
     docker:
       - image: cibuilds/github:0.10
     steps:
