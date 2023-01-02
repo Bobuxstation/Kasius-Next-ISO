@@ -22,6 +22,7 @@ jobs:
             sudo apt search golang-go
             sudo apt search gccgo-go
             sudo apt install golang-go
+            go get github.com/tcnksm/ghr
       - run:
           name: Generate Builds
           command: npm run dist && ls
