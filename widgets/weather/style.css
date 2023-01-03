@@ -7,7 +7,7 @@ body {
 }
 
 .card {
-  background: #000000d0;
+  background: #1d1d1d66;
   color: white;
   padding: 5px;
   width: 100%;
@@ -28,7 +28,7 @@ button {
   height: 44px;
   width: 44px;
   outline: none;
-  background: #7c7c7c2b;
+  background: #3d3d3d;
   color: white;
   cursor: pointer;
   transition: 0.2s ease-in-out;
@@ -39,7 +39,7 @@ input.search-bar {
   outline: none;
   padding: 0.4em 1em;
   border-radius: 5px;
-  background: #7c7c7c2b;
+  background: #3d3d3d;
   color: white;
   font-family: inherit;
   font-size: 105%;
@@ -48,7 +48,7 @@ input.search-bar {
 }
 
 button:hover {
-  background: #7c7c7c6b;
+  background: #3d3d3d90;
 }
 
 h1.temp {
