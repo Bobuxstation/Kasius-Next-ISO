@@ -1,6 +1,5 @@
 var shutdown = new Audio('medias/shutdown.mp3'); 
 var errorsound = new Audio("medias/error.mp3");
-const electron = require('electron');
 
 //errormessage
 function error(errormsg) {

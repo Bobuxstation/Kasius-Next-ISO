@@ -102,12 +102,10 @@ function NotificationMenu() {
 function Closetestwindowterminal() {
   var x = document.getElementById("terminal");
   if (x.style.display === "none") {
-    document.getElementById("terminalframe").src = ("apps/terminal.html");
     document.getElementById("minimizedterminal").style.display = "block";
     x.style.display = "block";
   } else {
     x.style.display = "none";
-    document.getElementById("terminalframe").src = ("");
     document.getElementById("minimizedterminal").style.display = "none";
   }
 }
