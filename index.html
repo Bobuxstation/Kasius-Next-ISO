@@ -1,7 +1,7 @@
 <html lang="en">
 <head><head><title>Login - Kasius Next</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/970a0290cd.js" crossorigin="anonymous"></script>
+<script src="scripts/fontawesome.js"></script>
 <style type="text/css">
 * {
 	padding: 0;
@@ -9,6 +9,7 @@
 	overflow: hidden;
 	font-family: Inter;
 	text-align: center;
+	outline: none;
 }
 .options {
 	outline: 1px solid black;
@@ -39,14 +40,14 @@ section {
 	width: 100%;
 }
 button {
-	padding: 5px;
+	padding: 10px;
 	font-weight: bold;
 	margin-right: 5px;
     background: lightgray;
     border: #767676 solid 1px;
     border-radius: 2.5px;
     transition: all 0.2s ease;
-	width: 85;
+	width: fit-content;
 }
 nav {
 	display: inline-block;
@@ -76,30 +77,37 @@ h1 {
   text-shadow: 2px 2px 10px #fff;
   font-size: 40px;
 }
+#user1 {
+	display: flex;
+	justify-content: center;
+	place-items: center;
+}
 </style>
 </head>
 <body><section>
 	<div class="options">
-		<nav><ul>
-
+<!--<nav><ul>
 <div class="users">
-		<li><a onclick="aloginuser1()"><button><img src="Icons/user.png" style="height: 50; width: 50;"></img><br>User1</button></a>&nbsp;</li>
+		<li><a onclick="aloginuser1()"><button><img src="Icons/user.png" style="height: 50; width: 50;"></img><br>User1</button></a></li>
 		<li><a onclick="aloginuser2()"><button><img src="Icons/notes.png" style="height: 50; width: 50;"></img><br>User2</button></li></a>
 </div><br>
-		</ul></nav>
+		</ul></nav>-->
 
-<div id="user1"><br><br><br>
-	<img src="Icons/user.png" style="height: 150; width: 150;"><br><br>
-	<H1 style="text-align: center; color: black;" id="text">User1</H1><br>
-	<button style="width: 150px;" onclick="openuser1()">Sign In</button>
+<div id="user1" style="height: 100%; width: 100%;">
+	<div>
+		<img src="Icons/user.png" style="height: 150; width: 150;"><br><br>
+		<H1 style="text-align: center; color: black;" id="text">User1</H1><br>
+		<button style="width: 150px;" onclick="openuser1()">Sign In</button><br><br>
+		<button class="shutdownbtn" onclick="shutdown()"><i class="fa-solid fa-power-off"></i></button>
+	</div>
 </div>
-<div id="user2" style="display: none;"><br><br><br>
+<!--<div id="user2" style="display: none;"><br><br><br>
 	<img src="Icons/notes.png" style="height: 150; width: 150;"><br><br>
 	<H1 style="text-align: center; color: black;" id="text">User2</H1><br>
 	<input type="password" id="input" style="height: 25px; box-sizing: border-box; border-radius: 5px; margin: 0;">&nbsp;<button style="width: 30px; margin: 0;" onclick="openuser2()"><i class="fa-solid fa-arrow-right"></i></button>
 	<br><br>
 	<button style="width: fit-content; margin: 0;" onclick="openuser2()">This user is incompatible with this version of Kasius Next!</button>
-</div>
+</div>-->
 <script>
 function aloginuser1() {
 document.getElementById("user1").style.display = "block";
@@ -118,6 +126,9 @@ window.location.replace("kasiusdesktop2.html");
 } else {
 	window.alert("Incorrect Password!");
 }
+}
+function shutdown() {
+	window.close();
 }
 </script>
 </div></section>

@@ -6,15 +6,14 @@ const path = require('path');
 function createWindow () {
 
     const win = new BrowserWindow({
-      width: 1000,
-      height: 600,
       icon: './costume2.png',
       autoHideMenuBar: true,
       fullscreen: true,
       webPreferences: {
         nodeIntegration: true,
         webviewTag: true,
-        devTools: true
+        devTools: true,
+        contextIsolation: false,
       }
     })
   

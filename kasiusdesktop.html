@@ -1,7 +1,9 @@
 <html>
 <head><title>User 1 - Kasius Next</title>
 <!--Scripts-->
-<script>window.$ = window.jQuery = require('jquery');</script>
+<script>
+window.$ = window.jQuery = require('jquery');
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="scripts/jquery-ui.min.js"></script>
 <script type="text/javascript" src="scripts/jqueryui2.js"></script>
@@ -9,6 +11,9 @@
 <script type="text/javascript" src="scripts/Settings.js"></script>
 <link rel="stylesheet" href="style.css" id="style">
 <script src="scripts/fontawesome.js"></script>
+<script src="scripts/launcher.js"></script>
+<script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css"/>
 </head>
 <body id="body">
 
@@ -21,33 +26,24 @@
         <button onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);">Log Out</button>
     </div>
 </div>
-
-<div class="sidebar"></div>
 <div class="sidebar2" id="Sidebar">
 
-<div class="applist" style="width: 300px; margin-bottom: 2px; height: 485px; display: flex; flex-direction: column; float:left;">
-<button onclick="Closetestwindow2()" class="menubutton2"><img src="Icons/mememaker.png" style="height: 40px; width: 40px;"></img> Meme Maker</button>
-<button onclick="Closetestwindow3()" class="menubutton2"><img src="Icons/notes.png" style="height: 40px; width: 40px;"></img> Notes</button>
-<button onclick="Closetestwindow()" class="menubutton2"><img src="Icons/filesicon.png" style="height: 40px; width: 40px;"></img> Files</button>
-<button onclick="Closetestwindow4()" class="menubutton2"><img src="Icons/media.png" style="height: 40px; width: 40px;"></img> Media</button>
-<button onclick="Closetestwindow5()" class="menubutton2"><img src="Icons/Store.png" style="height: 40px; width: 40px;"> Store</img></button>
-<button onclick="browser()" class="menubutton2"><img src="Icons/browser.svg" style="height: 40px; width: 40px;"> KasiusNet</img></button>
-<button onclick="Closetestwindowtype()" class="menubutton2"><img src="kasiustype/logo.png" style="height: 40px; width: 40px;"> Kasius Type</img></button>
+<div class="applist" style="width: 300px; height: 100%; display: flex; flex-direction: column; float:left;">
+    <p id="span" style="text-align: center;" class="notification">TIME</p>
+    <button onclick="Closetestwindow()" class="menubutton2"><img src="Icons/filesicon.png" style="height: 30px; width: 30px;"></img> Files</button>
+    <button onclick="browser()" class="menubutton2"><img src="Icons/browser.png" style="height: 30px; width: 30px;"> KasiusNet</img></button>
+    <button onclick="Closetestwindowtype()" class="menubutton2"><img src="kasiustype/logo.png" style="height: 30px; width: 30px;"> Kasius Type</img></button>
+    <button onclick="Closetestwindow4()" class="menubutton2"><img src="Icons/media.png" style="height: 30px; width: 30px;"></img> Media</button>
+    <button onclick="Closetestwindow2()" class="menubutton2"><img src="Icons/mememaker.png" style="height: 30px; width: 30px;"></img> Meme Maker</button>
+    <button onclick="Closetestwindow3()" class="menubutton2"><img src="Icons/notes.png" style="height: 30px; width: 30px;"></img> Notes</button>
+    <button onclick="Closetestwindow6()" class="menubutton2"><img src="Icons/settings.png" style="height: 30px; width: 30px;"> Settings</img></button>
+    <button onclick="Closetestwindow5()" class="menubutton2"><img src="Icons/Store.png" style="height: 30px; width: 30px;"> Store</img></button>
+
+    <button style="margin-top: 28.5px;" onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);" class="menubutton2"><img src="Icons/logout.png" style="height: 30px; width: 30px;"> Log out...</img></button>
 </div>
 
-<div style="width: 300px; margin-bottom: 2px; height: 485px; display: flex; flex-direction: column; float:right;">
-<iframe style="height: 500px; border: none;" src="widgets.html"></iframe>
-</div>
-
-<div class="search" style="text-align: center;">
-
-<button style="width: 24% !important; height: 22px; border-radius: 0px; border: black solid 0px; background-color: #717539;" onclick="NotificationMenu()"><i class="fa-solid fa-message"></i></button>
-
-<button style="width: 24.5% !important; background-color: #717539; border: black solid 0px; height: 22px;" onclick="Closetestwindow6()"><i class="fa-solid fa-gear"></i></button>
-
-<button onclick="Closetestwindow7()" style="width: 24.5% !important; height: 22px; background-color: #717539; border: black solid 0px;"><i class="fa-solid fa-circle-info"></i></button>
-
-<button onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);" style="width: 24.5% !important; height: 22px; background-color: #717539; border: black solid 0px;"><i class="fa-solid fa-power-off"></i></button>
+<div style="width: 300px; height: 100%; display: flex; flex-direction: column; float:right;">
+<iframe style="height: 100%; border: none;" src="widgets.html"></iframe>
 </div>
 </div>
 
@@ -61,8 +57,7 @@
 
 <!--Window-->
 
-<section style="height: 615px; " id="section">
-    <h1 id="span" style="text-shadow: 2px 2px 10px #fff; z-index:-1; text-align: center;">TIME</h1>
+<section style="height: 100vh; " id="section">
 
 <div style="display: none;" class="window" id="window">
  <div class="header">
@@ -71,7 +66,7 @@
     <button onclick="hide('window')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
 </div>
  <div class="content">
-    <iframe src="" id="file" width="600" height="450" style=" border: black solid 0px; background:none;"></iframe>
+    <iframe src="" id="file" width="600" height="450" style="border: black solid 0px; background:none;"></iframe>
 </div>
 </div>
 
@@ -171,13 +166,17 @@
 
 <div style="display: none;" class="window" id="terminal">
 <div class="header">
-    <button class="headertext"><i class="fa-solid fa-gears"></i> Advanced Settings</button>
+    <button class="headertext"><i class="fa-solid fa-gears"></i> Terminal</button>
     <button onclick="Closetestwindowterminal()" class="closebutton"><i class="fa-solid fa-xmark"></i></button>
     <button onclick="hide('terminal')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
 </div>
-<div class="content">
-<iframe id="terminalframe" src="" width="600" height="450" style=" border: black solid 0px; background-color: white;"></iframe>
+<div class="content" id="terminalcontent" style="overflow: auto; background-color: #1d1d1d; color: white;">
+    <input class="input1" id="input1" placeholder="User1@KasiusNext:~$">
+    <div id="terminaltext">
+
+    </div>
 </div>
+<script src="scripts/terminal.js"></script>
 </div>
 
 <div style="display: none;" class="window" id="type">
@@ -187,7 +186,7 @@
     <button onclick="hide('type')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
 </div>
 <div class="content">
-    <iframe id="typeframe" src="" height="565" style=" border: black solid 0px; background-color: white; width: 1200px;"></iframe>
+    <iframe id="typeframe" src="" height="565" style=" border: black solid 0px; background-color: white; min-width: 1200px; min-height:565px;"></iframe>
 </div>
 </div>
 
@@ -198,7 +197,7 @@
     <button onclick="hide('browser')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
 </div>
 <div class="content" style="width: 800px;">
-    <iframe id="browserframe" src="" width="800" height="450" style=" border: black solid 0px;"></iframe>
+    <iframe id="browserframe" src="" width="800" height="450" style=" border: black solid 0px; min-width: 800px !important;"></iframe>
 </div>
 </div>
 
@@ -209,14 +208,14 @@
     <button onclick="hide('window6')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
 </div>
 <div class="content" style="width: 600px;">
-    <div class="settingssidebar" style="width: 105.30px; float: left; height: 450px; backdrop-filter: blur(1px); box-sizing: border-box; padding: 5px;">
+    <div class="settingssidebar" style="width: 105.30px; float: left; height: 450px; backdrop-filter: blur(10px); box-sizing: border-box; padding: 5px;">
         <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-gear"></i> General</H4>
         <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-palette"></i> Themes</H4>
         <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-clock"></i> Time</H4>
         <h4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-circle-question"></i> About</h4>
-        <h4 style="padding:5px; margin-bottom: 5px;" onclick="Closetestwindowterminal()"><i class="fa-solid fa-triangle-exclamation"></i> More</h4>
+        <h4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-triangle-exclamation"></i> More</h4>
     </div>
-<div class="Settings" style="background-color: lightgray; float: right; width: 484.7px; height: 440px; padding: 5px; opacity: .95; overflow: auto;">
+<div class="Settings" style="background-color: lightgray; float: right; width: 484.7px; height: 440px; padding: 5px; overflow: auto;">
 
 
 <fieldset>
@@ -251,7 +250,8 @@
 
 <fieldset>
 <legend>Experimental</legend>
-<input id="notifybeta" placeholder="Write a notification"></input> <button onclick="notifybeta()">Notify</button>
+<input id="notifybeta" placeholder="Write a notification"></input> <button onclick="notifybeta()">Notify</button><br><br>
+<button onclick="Closetestwindowterminal()">Launch Terminal</button>
 </fieldset>
 
 <fieldset>
@@ -272,7 +272,7 @@
 <!--Footer-->
 
 <footer id="footer">
-<button onclick="menu()" class="menubutton" style="width: 35px; padding-top: 0px;" id="menutogglebutton"><img id="menutogglebuttonimg" src="https://zeankundev.github.io/KaOS-13/logo.svg" style="height: 24px; margin-top: 3px; width: 22.5px;"></img></button>
+<button onclick="menu()" class="menubutton" style="width: 35px; padding-top: 0px;" id="menutogglebutton"><img id="menutogglebuttonimg" src="Icons/kasiuslogo.svg" style="height: 24px; margin-top: 3px; width: 22.5px;"></img></button>
 <nav><ul id="footer">
 <li id="quicklaunch"><button onclick="Closetestwindow2()" class="menubutton"><img src="Icons/mememaker.png" style="height: 22.5px; width: 22.5px;"></img></button></li>
 <li id="quicklaunch1"><button onclick="Closetestwindow3()" class="menubutton"><img src="Icons/notes.png" style="height: 22.5px; width: 22.5px;"></img></button></li>
@@ -287,7 +287,7 @@
 <li><button style="display: none;" onclick="show('window7')" class="menubuttonminimized" id="minimizedabout"><i style="height: 22.5px; width: 22.5px;" class="fa-solid fa-circle-info"></i></button></li>
 <li><button style="display: none;" onclick="show('window6')" class="menubuttonminimized" id="minimizedsettings"><i style="height: 22.5px; width: 22.5px;" class="fa-solid fa-gear"></i></button></li>
 <li><button style="display: none;" onclick="show('terminal')" class="menubuttonminimized" id="minimizedterminal"><img src="Icons/terminal.png" style="height: 22.5px; width: 22.5px;"></img></button></li>
-<li><button style="display: none;" onclick="show('browser')" class="menubuttonminimized" id="minimizedbrowser"><img src="Icons/browser.svg" style="height: 22.5px; width: 22.5px;"></img></button></li>
+<li><button style="display: none;" onclick="show('browser')" class="menubuttonminimized" id="minimizedbrowser"><img src="Icons/browser.png" style="height: 22.5px; width: 22.5px;"></img></button></li>
 <li><button style="display: none;" onclick="show('type')" class="menubuttonminimized" id="minimizedtype"><img src="kasiustype/logo.png" style="height: 22.5px; width: 22.5px;"></img></button></li>
 </ul></nav>
 
@@ -306,7 +306,7 @@ $( ".window" ).draggable({
 	opacity: 0.75
 });
 </script>
-<script type="text/javascript" src="scripts/note.js"></script>
-<script type="text/javascript" src="scripts/time.js"></script>
+<script type="text/javascript" src="scripts/note.js" defer></script>
+<script type="text/javascript" src="scripts/time.js" defer></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ body {
   overflow: hidden;
   background-size: cover;
   transition: all 0.2s ease;
+  background-color: black;
 }
 footer {
   overflow: hidden;
@@ -18,7 +19,7 @@ footer {
   text-align: center;
   position:fixed!important;
   z-index:3;
-  border: 2px groove #2d2d2d;
+  border: 2px solid #2d2d2d;
   border-width: 2px 0px 0px 0px;
 }
 .window {
@@ -45,6 +46,11 @@ footer {
    height: 450px;
    border-radius: 0px 0px 5px 5px;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.content iframe {
+  resize: both;
+  min-height: 450px;
+  min-width: 600px;
 }
 .headertext {
     color: white;
@@ -74,16 +80,15 @@ transition: all 0.2s ease;
     background: darkred;
     height: 23.5px;
     width: 23.5px;;
-    border: black solid 0px;
     border-radius: 5px;
     font-size: 18px;
-  margin: 3px;
-  transition: all 0.2s ease;
-  
+    margin: 3px;
+    transition: all 0.2s ease;
+    border: 1px groove darkred;
+    border-width: 1px 0px 0px 0px;
 }
 .closebutton:hover{
     background-color: red;
-    border: black solid 0px;
     transition: all 0.2s ease;
 }
 .closebutton:active {
@@ -111,14 +116,13 @@ li {
     margin: 0;
     padding: 0;
     user-select: none;
+    outline: none;
 }
 
 nav{
     display: inline-block;
 }
 #span {
-    font-size: 75px;
-    color: black;
     text-align: center;
 }
 .applist {
@@ -126,6 +130,7 @@ nav{
     border-radius: 5px 0px 0px 0px;
     padding: 5px;
     box-sizing: border-box;
+    background-color: #1d1d1d66;
 }
 .sidebar{
     height:16.6%;
@@ -151,16 +156,15 @@ nav{
     position:fixed!important;
     z-index:2;
     overflow:auto;
-    padding: 2.5px;
-    background-color: #1d1d1ddd;
+    background-color: #2d2d2ddd;
     border-radius: 5px;
     backdrop-filter: blur(10px);
     bottom: 0;
-    margin-bottom: 45px;
+    margin-bottom: 47px;
     animation: slideup;
     margin-left:5px;
     animation-duration: 0.25s;
-    border: 2px groove #2d2d2d;
+    border: 2px solid #2d2d2d;
 }
 .menubutton2 {
     background: none;
@@ -170,8 +174,9 @@ nav{
     float: left;
     text-align: left;
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border-radius: 5px;
+    padding: 5px;
 }
 button {
     padding: 2px;
@@ -192,10 +197,10 @@ button {
     backdrop-filter: blur(10px);
     animation: slideright;
     animation-duration: 0.25s;
-    margin-bottom: 45px;
+    margin-bottom: 47px;
     transition: all 0.2s ease;
     overflow: auto;
-    border: 2px groove #2d2d2d;
+    border: 2px solid #2d2d2d;
     margin-right:5px;
 }
 .list {
@@ -203,20 +208,21 @@ button {
     margin: auto;
 }
   .minimize {
-        float: right;
+    float: right;
     color: white;
     background: NONE;
     height: 23.5px;
     width: 23.5px;;
-    border: black solid 0px;
     border-radius: 5px;
     font-size: 14px;
-  margin: 3px;
-  transition: all 0.2s ease;
+    margin: 3px;
+    transition: all 0.2s ease;
+    border: none;
 }
 .minimize:hover{
     background-color: red;
-    border: black solid 0px;
+    border: 1px groove darkred;
+    border-width: 1px 0px 0px 0px;
     transition: all 0.2s ease;
 }
 .minimize:active {
@@ -261,6 +267,8 @@ button {
   padding: 5px;
   margin-bottom: 5px;
   border-radius: 5px;
+  box-sizing: border-box;
+  min-height: 30px;
 }
 fieldset {
   border-radius: 5px;
@@ -509,4 +517,11 @@ textarea {
   height: 22.5px !important;
   width: 22.5px !important;
   margin: 0 !important;
+}
+#terminalcontent {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 5px;
+  box-sizing:border-box;
+  border-radius: 0;
 }
