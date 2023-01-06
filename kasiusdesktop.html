@@ -48,7 +48,7 @@ window.$ = window.jQuery = require('jquery');
 </div>
 
 <div class="notifications" id="Sidebar2">
-<h3 style="text-align: center;">Notifications Center</h3><br>
+<p style="text-align: center;" class="notification">Notifications Center</p>
 <ul id="list" class="list">
 </ul>
 </div>
@@ -66,7 +66,13 @@ window.$ = window.jQuery = require('jquery');
     <button onclick="hide('window')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
 </div>
  <div class="content">
-    <iframe src="" id="file" width="600" height="450" style="border: black solid 0px; background:none;"></iframe>
+    <div style="width: 600px; height: 450px; background-color: lightgray;box-sizing: border-box; padding: 5px; text-align: center; display: flex; place-items: center; justify-content: center;">
+        <div>
+            <img src="Icons/filesicon.png" style="height: 150px;"><br>
+            <h1>The file manager is currently in development</h1>
+            <p>Check again in the next update</p>
+        </div>
+    </div>
 </div>
 </div>
 
@@ -197,7 +203,13 @@ window.$ = window.jQuery = require('jquery');
     <button onclick="hide('browser')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
 </div>
 <div class="content" style="width: 800px;">
-    <iframe id="browserframe" src="" width="800" height="450" style=" border: black solid 0px; min-width: 800px !important;"></iframe>
+    <div class="header" style="width: 800px; border-radius: 0; box-sizing: border-box; height: 32px;">
+        <button class="headertext" style="font-size: 15px; padding: 3px;" onclick="document.getElementById('browserwebview').src = 'https://google.com'"><i class="fa-solid fa-house"></i></button>
+        <button class="headertext" style="font-size: 15px; padding: 3px;" onclick="document.getElementById('browserwebview').src = document.getElementById('browserwebview').src;"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+        <input class="headertext" style="font-size: 15px; width: 700px; padding: 3px; text-align: center;" autocomplete="off" placeholder="Enter A URL here..." id="browserURLBar">
+        <button class="headertext" style="font-size: 15px; padding: 3px;" onclick="document.getElementById('browserwebview').src = document.getElementById('browserURLBar').value"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <webview src="https://google.com" style="height: 420px; background-color: lightgray;" id="browserwebview"></webview>
 </div>
 </div>
 
@@ -227,11 +239,18 @@ window.$ = window.jQuery = require('jquery');
 <button onclick="bg5()">Random</button><br><br>
 <input type="file" accept="image/*" onchange="custom_bg(event)">
 </fieldset>
-
 <fieldset>
-<legend>Color Scheme</legend>
-<button onclick="color1()">Reset Color</button><br><br>
-<input type="color" id="color" style="height: 21px;"> <button onclick="getcolor()">Set</button>
+<legend>Screen Resolution</legend>
+<select class="kaosbutton" style="color: black;" id="resolutionselector">
+    <option>1920x1080</option>
+    <option>1600x900</option>
+    <option>1366x768</option>
+    <option>1280x720</option>
+    <option selected="selected">1024x768</option>
+    <option>800x600</option>
+    <option>640x480</option>
+</select>
+<button onclick="setres()">Set</button>
 </fieldset>
 
 <fieldset>
@@ -252,12 +271,6 @@ window.$ = window.jQuery = require('jquery');
 <legend>Experimental</legend>
 <input id="notifybeta" placeholder="Write a notification"></input> <button onclick="notifybeta()">Notify</button><br><br>
 <button onclick="Closetestwindowterminal()">Launch Terminal</button>
-</fieldset>
-
-<fieldset>
-<legend>Updates</legend>
-<p>You Are Using The Latest Version!</p><br>
-<button>Check For Updates</button>
 </fieldset>
 </div>
 
