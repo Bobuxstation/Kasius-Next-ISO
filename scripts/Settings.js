@@ -87,3 +87,8 @@ function iconstyle1() {
 function iconstyle2() {
   document.getElementById("footer").style.textAlign = "center";
 }
+
+//resolution
+function setres() {
+  launch("xrandr -s " + document.getElementById("resolutionselector").value)
+}

@@ -124,12 +124,10 @@ function Closetestwindowtype() {
 function browser() {
   var x = document.getElementById("browser");
   if (x.style.display === "none") {
-    document.getElementById("browserframe").src = ("apps/kasiusnet.html");
     document.getElementById("minimizedbrowser").style.display = "block";
     x.style.display = "block";
   } else {
     x.style.display = "none";
-    document.getElementById("browser").src = ("");
     document.getElementById("minimizedbrowser").style.display = "none";
   }
 }
