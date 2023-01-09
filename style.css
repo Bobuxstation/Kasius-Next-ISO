@@ -358,11 +358,6 @@ input {
   background-color: #6d6d6d66;
   transition: all 0.2s ease;
 }
-textarea {
-  padding: 5px;
-  font-family: Inter;
-  font-size: 20px;
-}
 .search i {
   color: lightgray;
 }
@@ -396,12 +391,9 @@ textarea {
           transform: translateY(0%);
     }
 }
-#msg {
-  background: lightgray;
-}
 #errorbox {
   position:fixed!important;
-  z-index:2;
+  z-index:999;
   height: 100%;
   width: 100%;
   background: none;

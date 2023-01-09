@@ -22,6 +22,7 @@
     "target": "AppImage"
   },
   "dependencies": {
+    "@electron/remote": "^2.0.9",
     "jquery": "^3.6.3"
   }
 }
