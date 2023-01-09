@@ -92,3 +92,14 @@ function iconstyle2() {
 function setres() {
   launch("xrandr -s " + document.getElementById("resolutionselector").value)
 }
+
+//package installer
+function installpackage() {
+  add(
+    document.getElementById("packagename").value,
+    document.getElementById("packageurl").value,
+    document.getElementById("packageicon").value,
+    document.getElementById("windowheight").value,
+    document.getElementById("windowwidth").value
+    )
+}

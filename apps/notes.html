@@ -1,0 +1,137 @@
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="fontawesome.js"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: Inter;
+    }
+    .headerpart button {
+        padding: 5px;
+        box-sizing: border-box;
+	}
+    button {
+        background: none;
+        border:none;
+        border-radius: 2.5px;
+        color: white;
+        transition: all 0.2s ease;
+        padding: 5px;
+        font-weight: bold;
+    }
+    button:hover {
+        background: #4d4d4d90;
+        border:none;
+        border-radius: 2.5px;
+        transition: all 0.2s ease;
+    }
+    button:active {
+        background: #4d4d4d;
+        border:none;
+        border-radius: 2.5px;
+        transition: all 0.2s ease;
+    }
+    input {
+        background: none;
+        border-radius: 2.5px;
+        border:none;
+        padding: 2px;
+        transition: all 0.5s ease;
+        text-align: center;
+        color: white;
+        font-family: Inter;
+    }
+    input:focus {
+        background: lightgray;
+        border:none;
+        border-radius: 2.5px;
+        padding: 2px;
+        transition: all 0.5s ease;
+        text-align: center;
+        color: black;
+        outline: none;
+    }
+</style>
+<div style="padding: 5px; background: #1d1d1ddd; backdrop-filter: blur(10px);">
+    <button class="headertext" onclick="showsave()">Save</button>
+    <button class="headertext" onclick="clearTXT()">New</button>
+    <button class="headertext" onclick="setTXT()">Formatting</button>
+    <button class="headertext" title="Kasius Next Notes v1.1">About</button>
+</div>
+<div id="notessaveprompt" style="height: 450px; box-sizing: border-box; display:none;transition: all 0.2s ease;padding:10px;position: fixed; z-index: 1;background-color: #1d1d1ddd; backdrop-filter: blur(5px);">
+    <details open><summary style="width: 191px;color: white; padding: 5px; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-file-signature"></i> File name</summary>
+    <input class="noteinput" style="padding: 5px; width: 100%;" id="filename" value="project.txt"></details><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <button class="kaosbutton" style="width: 100%; bottom: 0;" onclick="saveTXT(document.getElementById('filename').value)">Save File</button>
+    <br><br>
+    <button class="kaosbutton" style="width: 100%; bottom: 0;" onclick="showsave()">Close</button>
+</div>
+<div id="notessaveprompt1" style="width: 164; box-sizing: border-box;height: 450px; display: none; transition: all 0.2s ease 0s; padding: 10px; position: fixed; z-index: 1; background-color: rgba(29, 29, 29, 0.867); backdrop-filter: blur(5px); box-sizing: border-box;">
+    <details><summary style="color: white; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-text-height"></i> Text size</summary>
+    <input style="width: 100%; padding: 5px; border-radius: 3px;" type="range" min="0" max="100" value="20" onchange="document.getElementById('msg').style.fontSize = value"><br></details>
+    <details><summary style="color: white; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-paint-roller"></i> Text color</summary>
+    <input style="width: 100%; padding: 5px; border-radius: 3px;" type="color" onchange="document.getElementById('msg').style.color = value"></details>
+    <details><summary style="color: white; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-font"></i> Text font</summary>
+    <select style="background: lightgray; width: 100%; padding: 5px; border-radius: 3px;" id="font" onchange="fontTXT(value)">
+        <option style="font-family: Inter;">Inter</option>
+        <option style="font-family: Arial;">Arial</option>
+        <option style="font-family: Verdana;">Verdana</option>
+        <option style="font-family: Helvetica;">Helvetica</option>
+        <option style="font-family: Times New Roman;">Times New Roman</option>
+        <option style="font-family: Georgia;">Georgia</option>
+        <option style="font-family: Garamond;">Garamond</option>
+        <option style="font-family: Courier New;">Courier New</option>
+        <option style="font-family: Lucida Console;">Lucida Console</option>
+        <option style="font-family: Monaco;">Monaco</option>
+        <option style="font-family: Brush Script MT;">Brush Script MT</option>
+        <option style="font-family: Lucida Handwriting;">Lucida Handwriting</option>
+        <option style="font-family: Copperplate;">Copperplate</option>
+        <option style="font-family: Papyrus;">Papyrus</option>
+      </select></details><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+<textarea id="msg" style="outline: none;border: black solid 0px; width: 800; height: 450; resize: none; padding: 5px; font-family: Inter; font-size: 20px;background: lightgray;"></textarea>
+<script>
+    let saveTXT = (filename) => {
+    const msg = document.getElementById('msg');
+    let data = 
+        '' + msg.value;
+    
+    const textToBLOB = new Blob([data], { type: 'text/plain' });
+    const sFileName = filename;
+
+    let newLink = document.createElement("a");
+    newLink.download = sFileName;
+
+    if (window.webkitURL != null) {
+        newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+    }
+    else {
+        newLink.href = window.URL.createObjectURL(textToBLOB);
+        newLink.style.display = "none";
+        document.body.appendChild(newLink);
+    }
+
+    newLink.click(); 
+}
+function clearTXT() {
+    document.getElementById('msg').value = "";
+}
+function fontTXT(FONT) {
+    document.getElementById('msg').style.fontFamily = FONT;
+}
+function showsave() {
+    var x = document.getElementById("notessaveprompt");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  function setTXT() {
+    var x = document.getElementById("notessaveprompt1");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
