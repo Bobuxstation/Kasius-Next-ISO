@@ -59,11 +59,12 @@
     <button class="headertext" title="Kasius Next Notes v1.1">About</button>
 </div>
 <div id="notessaveprompt" style="height: 450px; box-sizing: border-box; display:none;transition: all 0.2s ease;padding:10px;position: fixed; z-index: 1;background-color: #1d1d1ddd; backdrop-filter: blur(5px);">
-    <details open><summary style="width: 191px;color: white; padding: 5px; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-file-signature"></i> File name</summary>
-    <input class="noteinput" style="padding: 5px; width: 100%;" id="filename" value="project.txt"></details><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <button class="kaosbutton" style="width: 100%; bottom: 0;" onclick="saveTXT(document.getElementById('filename').value)">Save File</button>
-    <br><br>
-    <button class="kaosbutton" style="width: 100%; bottom: 0;" onclick="showsave()">Close</button>
+    <details open>
+        <summary style="width: 191px;color: white; padding: 5px; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-file-signature"></i> File name</summary>
+        <input class="noteinput" style="padding: 5px; width: 100%;" id="filename" value="project.txt"><br><br>
+        <button class="kaosbutton" style="width: 100%; bottom: 0;" onclick="saveTXT(document.getElementById('filename').value)">Save File</button>
+        <button class="kaosbutton" style="width: 100%; bottom: 0;" onclick="showsave()">Close</button>
+    </details>
 </div>
 <div id="notessaveprompt1" style="width: 164; box-sizing: border-box;height: 450px; display: none; transition: all 0.2s ease 0s; padding: 10px; position: fixed; z-index: 1; background-color: rgba(29, 29, 29, 0.867); backdrop-filter: blur(5px); box-sizing: border-box;">
     <details><summary style="color: white; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-text-height"></i> Text size</summary>
