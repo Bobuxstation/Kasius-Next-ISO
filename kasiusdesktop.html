@@ -28,13 +28,12 @@
 </div>
 <div class="sidebar2" id="Sidebar">
 
-<div class="applist" id="applist" style="width: 300px; height: 100%; display: flex; flex-direction: column; float:left;">
+<div class="applist" id="applist" style="width: 50%; height: 100%; display: flex; flex-direction: column; float:left;">
     <p style="text-align: center;" class="notification"><i class="fa-solid fa-right-from-bracket" style="float: right;" onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);"></i><span id="span"></span></p>
-    <button onclick="Closetestwindow()" class="menubutton2"><img src="Icons/filesicon.png" style="height: 30px; width: 30px;"></img> Files</button>
     <button onclick="Closetestwindow6()" class="menubutton2"><img src="Icons/settings.png" style="height: 30px; width: 30px;"> Settings</img></button>
 </div>
 
-<div style="width: 300px; height: 100%; display: flex; flex-direction: column; float:right;">
+<div style="width: 50%; height: 100%; display: flex; flex-direction: column; float:right;" class="widgets">
 <iframe style="height: 100%; border: none;" src="widgets.html"></iframe>
 </div>
 </div>
@@ -49,23 +48,6 @@
 <!--Window-->
 
 <section style="height: 100vh; " id="section">
-
-<div style="display: none;" class="window" id="window">
- <div class="header">
-    <button class="headertext"><i class="fa-solid fa-folder"></i> Files</button>
-    <button onclick="Closetestwindow()" class="closebutton"><i class="fa-solid fa-xmark"></i></button>
-    <button onclick="hide('window')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
-</div>
- <div class="content">
-    <div style="width: 600px; height: 450px; background-color: lightgray;box-sizing: border-box; padding: 5px; text-align: center; display: flex; place-items: center; justify-content: center;">
-        <div>
-            <img src="Icons/filesicon.png" style="height: 150px;"><br>
-            <h1>The file manager is currently in development</h1>
-            <p>Check again in the next update</p>
-        </div>
-    </div>
-</div>
-</div>
 
 <div style="display: none;" class="window" id="terminal">
 <div class="header">
