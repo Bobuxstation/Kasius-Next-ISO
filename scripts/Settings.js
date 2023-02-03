@@ -102,4 +102,5 @@ function installpackage() {
     document.getElementById("windowheight").value,
     document.getElementById("windowwidth").value
     )
+    error('The package has been installed successfully! Restart the session to launch the installed package');
 }

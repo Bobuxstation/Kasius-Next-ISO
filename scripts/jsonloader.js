@@ -11,6 +11,13 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {console.log('Package List Fou
     console.log('Package List Is Not Found! Creating Package List...')
     let jsontemplate = {"packages":[
         {
+            "name": "Files",
+            "URL": "apps/files.html",
+            "icon": "Icons/filesicon.png",
+            "height": "450",
+            "width": "800"
+        },
+        {
             "name": "Kasius Type",
             "URL": "kasiustype/index.html",
             "icon": "kasiustype/logo.png",
@@ -54,7 +61,7 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {console.log('Package List Fou
             "name": "Notes",
             "URL": "apps/notes.html",
             "icon": "Icons/notes.png",
-            "height": 600,
+            "height": 486,
             "width": 800
 
         }

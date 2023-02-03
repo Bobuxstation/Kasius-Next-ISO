@@ -1,11 +1,11 @@
-function stringGen(){
+function stringGen() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  
+
     for (var i = 0; i < 12; i++)
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-  
-   return text;
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 }
 
 function spawnwindow(name, URL, icon, height, width) {
@@ -34,7 +34,7 @@ function spawnwindow(name, URL, icon, height, width) {
     //create close button
     close.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     close.classList.add('closebutton');
-    close.onclick = function() {
+    close.onclick = function () {
         window.remove();
         minimized.remove();
     }
@@ -42,7 +42,7 @@ function spawnwindow(name, URL, icon, height, width) {
     //create minimize button
     minimize.innerHTML = '<i class="fa-solid fa-window-minimize"></i>';
     minimize.classList.add('minimize');
-    minimize.onclick = function() {
+    minimize.onclick = function () {
         hide(name + appID);
     }
 
@@ -53,10 +53,15 @@ function spawnwindow(name, URL, icon, height, width) {
     webview.style.height = height;
     webview.style.width = width;
     webview.src = URL;
+    webview.setAttribute("webpreferences", "contextIsolation=false");
+    webview.setAttribute("nodeintegration", "");
+    // webview.addEventListener('dom-ready', () => {
+    //     webview.openDevTools()
+    // })
 
     //create minimized icon
     minimized.innerHTML = "<button class='menubuttonminimized'>" + "<img style='height: 22.5px; width: 22.5px;' src='" + icon + "'></img>" + "</button>";
-    minimized.onclick = function() {
+    minimized.onclick = function () {
         show(name + appID);
     }
 
@@ -70,8 +75,8 @@ function spawnwindow(name, URL, icon, height, width) {
     footer.appendChild(minimized);
 
     //make the window draggable
-    $( ".window" ).draggable({
-        handle: ".header", 
+    $(".window").draggable({
+        handle: ".header",
         containment: "#body",
         opacity: 0.75
     });
