@@ -55,9 +55,6 @@ function spawnwindow(name, URL, icon, height, width) {
     webview.src = URL;
     webview.setAttribute("webpreferences", "contextIsolation=false");
     webview.setAttribute("nodeintegration", "");
-    // webview.addEventListener('dom-ready', () => {
-    //     webview.openDevTools()
-    // })
 
     //create minimized icon
     minimized.innerHTML = "<button class='menubuttonminimized'>" + "<img style='height: 22.5px; width: 22.5px;' src='" + icon + "'></img>" + "</button>";

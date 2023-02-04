@@ -452,13 +452,12 @@ input {
   }
 }
 
-#errorbox {
+#errorbox, #errorbox1 {
   position: fixed !important;
   z-index: 999;
   height: 100%;
   width: 100%;
-  background: none;
-  backdrop-filter: blur(10px);
+  background: #1d1d1ddd;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -593,6 +592,7 @@ input {
   box-sizing: border-box;
   border-radius: 0;
 }
+
 .widgets {
   background: #2d2d2ddd;
 }
