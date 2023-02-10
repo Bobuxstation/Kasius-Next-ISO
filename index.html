@@ -6,6 +6,7 @@
 		<title>Login - Kasius Next</title>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<script src="scripts/fontawesome.js"></script>
+		<script src="scripts/time.js" defer></script>
 		<style type="text/css">
 			* {
 				padding: 0;
@@ -49,17 +50,6 @@
 				background-color: #1d1d1d;
 			}
 
-			button {
-				padding: 10px;
-				font-weight: bold;
-				margin-right: 5px;
-				background: lightgray;
-				border: #767676 solid 1px;
-				border-radius: 2.5px;
-				transition: all 0.2s ease;
-				width: fit-content;
-			}
-
 			nav {
 				display: inline-block;
 			}
@@ -75,20 +65,6 @@
 				padding: 5px;
 			}
 
-			button:hover {
-				background: #4d4d4d90;
-				border-radius: 2.5px;
-				transition: all 0.2s ease;
-				color: white;
-			}
-
-			button:active {
-				background: #4d4d4d;
-				border-radius: 2.5px;
-				transition: all 0.2s ease;
-				color: white;
-			}
-
 			h1 {
 				text-shadow: 0 0 4px #000;
 				font-size: 40px;
@@ -100,6 +76,62 @@
 				justify-content: center;
 				place-items: center;
 			}
+
+			.sidebar2 {
+				height: 520px;
+				width: 605px;
+				overflow: auto;
+				background: none;
+				border-radius: 5px;
+				backdrop-filter: blur(10px);
+				border: 2px solid #2d2d2d;
+			}
+
+			.applist {
+				color: white;
+				border-radius: 5px 0px 0px 0px;
+				padding: 5px;
+				box-sizing: border-box;
+				background-color: #1d1d1ddd;
+				overflow: auto;
+			}
+
+			.widgets {
+				background: #2d2d2ddd;
+			}
+
+			.notification {
+				background-color: #4d4d4d;
+				padding: 5px;
+				margin-bottom: 5px;
+				border-radius: 5px;
+				box-sizing: border-box;
+				min-height: 30px;
+			}
+
+			.menubutton2 {
+				background: none;
+				border: black solid 0px;
+				font-family: Inter;
+				color: white;
+				float: left;
+				text-align: left;
+				font-size: 20px;
+				margin-bottom: 5px;
+				border-radius: 5px;
+				padding: 5px;
+			}
+
+			.menubutton2:hover {
+				background-color: #8d8d8d80;
+				transition: all 0.2s ease;
+			}
+
+			.menubutton2:active {
+				background-color: #6d6d6d66;
+				cursor: progress;
+				transition: all 0.2s ease;
+			}
 		</style>
 	</head>
 
@@ -109,11 +141,20 @@
 
 
 			<div id="user1" style="height: 100%; width: 100%;">
-				<div>
-					<img src="Icons/user.png" style="height: 150; width: 150;"><br><br>
-					<H1 style="text-align: center;" id="text">User1</H1><br>
-					<button style="width: 150px;" onclick="openuser1()">Sign In</button><br><br>
-					<button class="shutdownbtn" onclick="shutdown()"><i class="fa-solid fa-power-off"></i></button>
+				<div class="sidebar2" id="Sidebar">
+
+					<div class="applist" id="applist"
+						style="width: 50%; height: 100%; display: flex; flex-direction: column; float:left;">
+						<p style="text-align: center;" class="notification"><i class="fa-solid fa-power-off"
+								style="float: right;" onclick="shutdown()"></i><span id="span"></span></p>
+						<button onclick="openuser1()" class="menubutton2"><img src="Icons/user.png"
+								style="height: 30px; width: 30px;"> User1</img></button>
+					</div>
+
+					<div style="width: 50%; height: 100%; display: flex; flex-direction: column; float:right;"
+						class="widgets">
+						<iframe style="height: 100%; border: none;" src="widgets.html"></iframe>
+					</div>
 				</div>
 			</div>
 

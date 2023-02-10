@@ -78,3 +78,19 @@ function spawnwindow(name, URL, icon, height, width) {
         opacity: 0.75
     });
 }
+
+window.onload = function () {
+    fetch(configDir + '/kasiuspkg.json')
+        .then((res) => { return res.json(); })
+        .then((data) =>
+            data.packages.forEach(items => {
+                let applist = document.getElementById("applist");
+                let btn = document.createElement("btn");
+                btn.className = "menubutton2"
+                btn.innerHTML = "<img style='height: 30px; width: 30px;' src='" + items.icon + "'></img> " + items.name;
+                btn.onclick = function () {
+                    spawnwindow(items.name, items.URL, items.icon, items.height, items.width)
+                }
+                applist.appendChild(btn);
+            }));
+}
