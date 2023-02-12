@@ -11,7 +11,7 @@ footer {
   overflow: hidden;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: calc(100% - 10px);
   background-color: #1d1d1ddd;
   height: 40px;
   margin: 0;
@@ -21,7 +21,9 @@ footer {
   position: fixed !important;
   z-index: 3;
   border: 2px solid #2d2d2d;
-  border-width: 2px 0px 0px 0px;
+  margin: 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .window {
@@ -116,7 +118,7 @@ footer {
   width: 32px !important;
   border-radius: 3px;
   padding: 4px !important;
-  margin: 4px;
+  margin: 2px;
   transition: all 0.2s ease;
 }
 
@@ -180,7 +182,7 @@ nav {
   border-radius: 5px;
   backdrop-filter: blur(10px);
   bottom: 0;
-  margin-bottom: 47px;
+  margin-bottom: 50px;
   animation: slideup;
   margin-left: 5px;
   animation-duration: 0.25s;
@@ -220,7 +222,7 @@ button {
   backdrop-filter: blur(10px);
   animation: slideright;
   animation-duration: 0.25s;
-  margin-bottom: 47px;
+  margin-bottom: 50px;
   transition: all 0.2s ease;
   overflow: auto;
   border: 2px solid #2d2d2d;
@@ -266,7 +268,7 @@ button {
   font-size: 20px;
   height: 32px;
   width: 32px;
-  margin: 4px;
+  margin: 2px;
   transition: all 0.2s ease;
   border-radius: 3px;
   border: 1px groove #9d9d9d20;
@@ -274,7 +276,7 @@ button {
 }
 
 .menubutton2:hover {
-  background-color: #8d8d8d80;
+  background-color: #4d4d4d40;
   transition: all 0.2s ease;
 }
 

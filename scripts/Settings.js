@@ -125,7 +125,7 @@ function iconstyle(style) {
   var obj = (desktopConfig);
   obj.iconStyle = style;
   jsonStr = JSON.stringify(obj, null, "\t");
-  fs.writeFile(configDir + '/kasiuspkg.json', jsonStr, (err) => {
+  fs.writeFile(configDir + '/desktopconfig.json', jsonStr, (err) => {
     if (err) {
       console.log(err);
     }
