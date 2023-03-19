@@ -173,7 +173,7 @@ h3 {
   border: none;
   user-select: none;
   outline: none;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 #title:hover {
@@ -182,7 +182,7 @@ h3 {
   font-size: 24px; 
   background-color: #292929;
   border-radius:5px; 
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   user-select: none;
 }
 
@@ -191,7 +191,7 @@ h3 {
   background-color: #363636;
   border-radius: 5px;
   font-size: 18px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 /* Dropdown Button */
 .dropbtn {
@@ -272,10 +272,10 @@ h3 {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #545454; transition: all 0.2s ease;}
+.dropdown-content a:hover {background-color: #545454; transition: all 0.1s ease;}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content { transition: all 0.2s ease; display: block;}
+.dropdown:hover .dropdown-content { transition: all 0.1s ease; display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #363636;}
@@ -291,7 +291,7 @@ input[type="color" i]:hover {
   width: 31px;
   height: 31px;
   background-color: #353535;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   cursor: default;
   color:black, white;
 }

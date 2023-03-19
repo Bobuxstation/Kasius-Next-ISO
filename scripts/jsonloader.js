@@ -60,10 +60,26 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
 
             },
             {
+                "name": "Calculator",
+                "URL": "apps/calc.html",
+                "icon": "Icons/calc.png",
+                "height": 350,
+                "width": 300
+
+            },
+            {
                 "name": "Notes",
                 "URL": "apps/notes.html",
                 "icon": "Icons/notes.png",
                 "height": 486,
+                "width": 800
+
+            },
+            {
+                "name": "Terminal",
+                "URL": "apps/gigashell.html",
+                "icon": "Icons/terminal.png",
+                "height": 450,
                 "width": 800
 
             }

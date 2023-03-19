@@ -10,10 +10,8 @@
     <script type="text/javascript" src="scripts/jqueryui2.js"></script>
     <script type="text/javascript" src="scripts/close.js"></script>
     <script type="text/javascript" src="scripts/fontawesome.js"></script>
-    <script type="text/javascript" src="scripts/launcher.js"></script>
     <script type="text/javascript" src="scripts/time.js" defer></script>
     <script type="text/javascript" src="scripts/notify.js" defer></script>
-    <script type="text/javascript" src="scripts/terminal.js" defer></script>
     <script type="text/javascript" src="scripts/packageinit.js" defer></script>
     <script type="text/javascript" src="scripts/Settings.js" defer></script>
 </head>
@@ -43,14 +41,7 @@
     </div>
     <div class="sidebar2" id="Sidebar">
 
-        <div class="applist" id="applist"
-            style="width: 50%; height: 100%; display: flex; flex-direction: column; float:left;">
-            <p style="text-align: center;" class="notification"><i class="fa-solid fa-right-from-bracket"
-                    style="float: right;"
-                    onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);"></i><span
-                    id="span"></span></p>
-            <button onclick="Closetestwindow6()" class="menubutton2"><img src="Icons/settings.png"
-                    style="height: 30px; width: 30px;"> Settings</img></button>
+        <div class="applist" id="applist" style="width: 50%; height: 100%; display: flex; flex-direction: column; float:left;">
         </div>
 
         <div style="width: 50%; height: 100%; display: flex; flex-direction: column; float:right;" class="widgets">
@@ -69,22 +60,8 @@
 
     <section style="height: 100vh; " id="section">
 
-        <div style="display: none;" class="window" id="terminal">
-            <div class="header">
-                <button class="headertext"><i class="fa-solid fa-gears"></i> Terminal</button>
-                <button onclick="Closetestwindowterminal()" class="closebutton"><i
-                        class="fa-solid fa-xmark"></i></button>
-                <button onclick="hide('terminal')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
-            </div>
-            <div class="content" id="terminalcontent" style="overflow: auto; background-color: #1d1d1d; color: white;">
-                <input class="input1" id="input1" placeholder="User1@KasiusNext:~$">
-                <div id="terminaltext">
 
-                </div>
-            </div>
-        </div>
-
-        <div style="display: none;" class="window" id="window6">
+        <div style="display: none;" class="window" id="window6" onclick="focusWindow(this)">
             <div class="header" id="header">
                 <button class="headertext"><i class="fa-solid fa-gear"></i> Settings</button>
                 <button onclick="Closetestwindow6()" class="closebutton"><i class="fa-solid fa-xmark"></i></button>
@@ -146,7 +123,7 @@
                         <legend>Experimental</legend>
                         <input id="notifybeta" placeholder="Write a notification"></input> <button
                             onclick="notifybeta()">Notify</button><br><br>
-                        <button onclick="Closetestwindowterminal()">Launch Terminal</button>
+                        <button onclick="remote.getCurrentWindow().webContents.openDevTools()">Open Developer Console</button>
                     </fieldset>
 
                     <fieldset>
@@ -170,24 +147,15 @@
                 style="height: 24px; margin-top: 3px; width: 22.5px;"></img></button>
         <nav>
             <ul id="footer1">
-                <li><button style="display: none;" onclick="show('window')" class="menubuttonminimized"
-                        id="minimizedfiles"><img src="Icons/filesicon.png"
-                            style="height: 22.5px; width: 22.5px;"></img></button></li>
                 <li><button style="display: none;" onclick="show('window6')" class="menubuttonminimized"
                         id="minimizedsettings"><i style="height: 22.5px; width: 22.5px;"
                             class="fa-solid fa-gear"></i></button></li>
-                <li><button style="display: none;" onclick="show('terminal')" class="menubuttonminimized"
-                        id="minimizedterminal"><img src="Icons/terminal.png"
-                            style="height: 22.5px; width: 22.5px;"></img></button></li>
             </ul>
         </nav>
         <button style="float: right;" onclick="NotificationMenu()" class="menubutton"
             style="width: 50px; padding-top: 0px;" id="menutogglebutton"><i style="height: 22.5px; width: 22.5px;"
                 class="fa-solid fa-bars"></i></button>
     </footer>
-
-
-
 
     <script>$(".window").draggable({ handle: ".header", containment: "#body", opacity: 0.75 });</script>
 </body>

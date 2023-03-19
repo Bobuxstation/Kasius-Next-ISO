@@ -3,7 +3,7 @@ body {
   background-image: url("bg.jpg");
   overflow: hidden;
   background-size: cover;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   background-color: black;
 }
 
@@ -20,7 +20,7 @@ footer {
   text-align: center;
   position: fixed !important;
   z-index: 3;
-  border: 2px solid #2d2d2d;
+  border-top: 2px solid #9d9d9d20;
   margin: 5px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -31,7 +31,7 @@ footer {
   width: 0px;
   display: none;
   animation: fadein;
-  animation-duration: 0.25s;
+  animation-duration: 0.1s;
 }
 
 .header {
@@ -42,15 +42,15 @@ footer {
   border-radius: 5px 5px 0px 0px;
   overflow: auto;
   backdrop-filter: blur(10px);
-  border: #2d2d2d solid;
+  border: #9d9d9d20 solid;
   border-width: 2px 0px 0px 0px;
 }
 
 .content {
-  width: 600px;
+  width: fit-content;
   margin: 0;
   padding: 0;
-  height: 450px;
+  height: fit-content;
   border-radius: 0px 0px 5px 5px;
 }
 
@@ -68,7 +68,7 @@ footer {
   font-size: 17.5px;
   margin: 3px;
   margin-right: 0px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .headertext:hover {
@@ -80,7 +80,7 @@ footer {
   font-size: 17.5px;
   margin: 3px;
   margin-right: 0px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .closebutton {
@@ -93,19 +93,19 @@ footer {
   border-radius: 5px;
   font-size: 18px;
   margin: 3px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   border: 1px groove darkred;
   border-width: 1px 0px 0px 0px;
 }
 
 .closebutton:hover {
   background-color: red;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .closebutton:active {
   background-color: darkred;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .menubutton {
@@ -118,8 +118,8 @@ footer {
   width: 32px !important;
   border-radius: 3px;
   padding: 4px !important;
-  margin: 2px;
-  transition: all 0.2s ease;
+  margin: 3px;
+  transition: all 0.1s ease;
 }
 
 li {
@@ -185,8 +185,8 @@ nav {
   margin-bottom: 50px;
   animation: slideup;
   margin-left: 5px;
-  animation-duration: 0.25s;
-  border: 2px solid #2d2d2d;
+  animation-duration: 0.1s;
+  border-top: 2px solid #9d9d9d20;
 }
 
 .menubutton2 {
@@ -221,17 +221,21 @@ button {
   border-radius: 5px;
   backdrop-filter: blur(10px);
   animation: slideright;
-  animation-duration: 0.25s;
+  animation-duration: 0.1s;
   margin-bottom: 50px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   overflow: auto;
-  border: 2px solid #2d2d2d;
+  border-top: 2px solid #9d9d9d20;
   margin-right: 5px;
 }
 
-.list {
-  width: 60%;
-  margin: auto;
+#searchbox {
+  color: white;
+  border-radius: 5px;
+}
+
+.list li {
+  width: 100%;
 }
 
 .minimize {
@@ -244,57 +248,62 @@ button {
   border-radius: 5px;
   font-size: 14px;
   margin: 3px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   border: none;
 }
 
 .minimize:hover {
   background-color: red;
   border-width: 1px 0px 0px 0px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .minimize:active {
   background-color: darkred;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .menubuttonminimized {
-  background-color: #9d9d9d20;
-  border: black solid 0px;
   color: white;
   float: left;
   padding: 4px !important;
   font-size: 20px;
   height: 32px;
   width: 32px;
-  margin: 2px;
-  transition: all 0.2s ease;
+  margin: 3px;
+  transition: all 0.1s ease;
   border-radius: 3px;
-  border: 1px groove #9d9d9d20;
-  border-width: 2px 1px 1px 1px;
+  background: none;
+  border: solid #4d4d4d;
+  border-width: 0px 0px 3px 0px;
+}
+
+.menubuttonminimizing {
+  background-color: #9d9d9d20;
+  border: 1px solid #9d9d9d20;
+  border-width: 2px 0px 0px 0px;
 }
 
 .menubutton2:hover {
   background-color: #4d4d4d40;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .menubutton2:active {
   background-color: #6d6d6d66;
   cursor: progress;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .menubutton:hover {
   background-color: #4d4d4d40;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .menubutton:active {
   background-color: #6d6d6d66;
   cursor: progress;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .notification {
@@ -330,7 +339,7 @@ button {
   background: lightgray;
   border: #767676 solid 1px;
   border-radius: 2.5px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .settings button {
@@ -341,7 +350,7 @@ button {
   background: none;
   border: none;
   border-radius: 2.5px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   padding: 10px;
   color: white;
   font-size: 16px
@@ -351,28 +360,28 @@ button {
   background: rgb(192, 192, 192);
   border: #767676 solid 1px;
   border-radius: 2.5px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .kaosbutton:hover {
   background: #4d4d4d90;
   border: none;
   border-radius: 2.5px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .Settings button:active {
   background: gray;
   border: #1d1d1d solid 1px;
   border-radius: 2.5px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .kaosbutton:active {
   background: #4d4d4d;
   border: none;
   border-radius: 2.5px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .Settings input {
@@ -380,7 +389,7 @@ button {
   border: #767676 solid 1px;
   border-radius: 2.5px;
   padding: 2px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   padding: 5px;
 }
 
@@ -389,26 +398,25 @@ input {
   border: #767676 solid 1px;
   border-radius: 2.5px;
   padding: 2px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .Settings input:focus {
   background: white;
   border: #767676 solid 1px;
   border-radius: 2.5px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   outline: none;
 }
 
-.menubuttonminimized:hover,
-.menubuttonminimized:focus {
+.menubuttonminimized:hover {
   background-color: #8d8d8d80;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .menubuttonminimized:active {
   background-color: #6d6d6d66;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .search i {
@@ -454,7 +462,8 @@ input {
   }
 }
 
-#errorbox, #errorbox1 {
+#errorbox,
+#errorbox1 {
   position: fixed !important;
   z-index: 999;
   height: 100%;
@@ -465,7 +474,7 @@ input {
   justify-content: center;
   display: none;
   animation: fadein;
-  animation-duration: 0.25s;
+  animation-duration: 0.1s;
 }
 
 #errormessage {
@@ -484,21 +493,21 @@ input {
   background: lightgray;
   border: #767676 solid 1px;
   border-radius: 2.5px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 #errormessage button:hover {
   background: gray;
   border: #767676 solid 1px;
   border-radius: 2.5px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 #errormessage button:active {
   background: lightgray;
   border: #767676 solid 1px;
   border-radius: 2.5px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 ::-webkit-scrollbar {
@@ -597,4 +606,8 @@ input {
 
 .widgets {
   background: #2d2d2ddd;
+}
+
+.focused {
+  z-index: 1 !important;
 }

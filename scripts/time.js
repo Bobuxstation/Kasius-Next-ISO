@@ -1,6 +1,5 @@
-var span = document.getElementById('span');
-
 function time() {
+  var span = document.getElementById('span');
   var d = new Date();
   var s = d.getSeconds();
   var m = d.getMinutes();

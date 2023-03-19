@@ -5,6 +5,13 @@ function show(whattoshow) {
   document.getElementById(whattoshow).style.display = "block";
 }
 
+function focusWindow(windowElem) {
+  const windows = document.querySelectorAll('.window');
+  windows.forEach((elem) => elem.classList.remove('focused'));
+
+  windowElem.classList.add('focused');
+}
+
 function Closetestwindow6() {
   var x = document.getElementById("window6");
   if (x.style.display === "none") {
@@ -15,10 +22,19 @@ function Closetestwindow6() {
     document.getElementById("minimizedsettings").style.display = "none";
   }
 }
+function toggleSearch() {
+  var x = document.getElementById("searchbox");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 function menu() {
   var x = document.getElementById("Sidebar");
   if (x.style.display === "none") {
     x.style.display = "block";
+    loadApps('')
   } else {
     x.style.display = "none";
   }
@@ -29,15 +45,5 @@ function NotificationMenu() {
     x.style.display = "block";
   } else {
     x.style.display = "none";
-  }
-}
-function Closetestwindowterminal() {
-  var x = document.getElementById("terminal");
-  if (x.style.display === "none") {
-    document.getElementById("minimizedterminal").style.display = "block";
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-    document.getElementById("minimizedterminal").style.display = "none";
   }
 }

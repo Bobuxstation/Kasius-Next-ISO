@@ -1,0 +1,168 @@
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="fontawesome.js"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: consolas;
+        box-sizing: border-box;
+        color: green;
+    }
+
+    .headerpart button {
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background: none;
+        border: none;
+        border-radius: 2.5px;
+        color: white;
+        transition: all 0.1s ease;
+        padding: 5px;
+        font-weight: bold;
+    }
+
+    html,
+    body {
+        overflow: hidden;
+    }
+
+    button:hover {
+        background: #4d4d4d90;
+        border: none;
+        border-radius: 2.5px;
+        transition: all 0.1s ease;
+    }
+
+    button:active {
+        background: #4d4d4d;
+        border: none;
+        border-radius: 2.5px;
+        transition: all 0.1s ease;
+    }
+
+    input {
+        background: none;
+        border-radius: 2.5px;
+        border: none;
+        padding: 0;
+        transition: all 0.5s ease;
+        color: white;
+        font-size: 20px;
+        font-family: consolas;
+        font-weight: bold;
+    }
+
+    input:focus {
+        background: lightgray;
+        border: none;
+        border-radius: 2.5px;
+        transition: all 0.5s ease;
+        color: black;
+        outline: none;
+    }
+
+    #notessaveprompt,
+    #notessaveprompt1 {
+        width: 25vw;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-button {
+        width: 4px;
+        height: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #4d4d4d;
+        border: 0px none #ffffff;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #6d6d6d;
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: #8d8d8d;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #2d2d2d;
+        border: 0px none #ffffff;
+    }
+
+    ::-webkit-scrollbar-track:hover {
+        background: #2d2d2d;
+    }
+
+    ::-webkit-scrollbar-track:active {
+        background: #2d2d2d;
+    }
+</style>
+<div
+    style="outline: none; overflow: auto; display: flex; flex-direction: column-reverse;border: black solid 0px; width: 800; height: 450; resize: none; padding: 5px; font-family: Inter; font-size: 20px;background: #1d1d1ddd;backdrop-filter: blur(10px);">
+    <input class="input1" id="input1" placeholder="User1@KasiusNext:~$">
+    <div id="terminaltext" style="text-align: left;"></div>
+</div>
+<script>
+    window.$ = window.jQuery = require('jquery');
+
+    const { exec, spawn } = require('child_process');
+
+    function launch(executablePath) {
+        exec(executablePath, function (err, data) {
+            if (err) {
+                console.error(err);
+                returnerrortoterminal(err);
+                document.getElementById("input1").style.display = "block"
+                document.getElementById("input1").focus()
+                return;
+            }
+
+            returntoterminal(data.toString());
+            document.getElementById("input1").style.display = "block"
+            document.getElementById("input1").focus()
+        });
+    }
+    function redirect(redirectlink) {
+        window.location.replace(redirectlink)
+    }
+
+    $(".input1").on('keyup', function (e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            launch(document.getElementById("input1").value)
+            document.getElementById("input1").style.display = "none"
+            var ul = document.getElementById("terminaltext");
+            var li = document.createElement("p");
+            li.classList.add('notification');
+            li.innerHTML = ("<b>User1@KasiusNext$</b> " + document.getElementById("input1").value);
+            ul.appendChild(li);
+            document.getElementById("input1").value = "";
+            document.getElementById("input1").focus()
+        }
+    });
+    function returntoterminal(output) {
+        var ul = document.getElementById("terminaltext");
+        var li = document.createElement("p");
+        li.classList.add('notification');
+        li.innerText = output;
+        ul.appendChild(li);
+        document.getElementById("input1").focus()
+    }
+    function returnerrortoterminal(output) {
+        var ul = document.getElementById("terminaltext");
+        var li = document.createElement("p");
+        li.classList.add('notification');
+        li.style.color = "red";
+        li.style.background = "#ff3d3d3d";
+        li.innerText = output;
+        ul.appendChild(li);
+        document.getElementById("input1").focus()
+    }
+</script>
