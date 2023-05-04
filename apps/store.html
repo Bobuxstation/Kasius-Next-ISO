@@ -1,0 +1,289 @@
+<html>
+
+<head>
+  <script src="fontawesome.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Inter;
+      user-select: none;
+    }
+
+    input[type='file'] {
+      font-size: 0;
+      padding: 0px;
+    }
+
+    .div {
+      text-align: left;
+      background: none;
+      padding: 0;
+      height: 23px;
+    }
+
+    #applist {
+      width: 87.5%;
+      padding: 10px;
+    }
+
+    ::file-selector-button {
+      color: white;
+      font-size: initial;
+      font-family: Inter;
+      background: none;
+      border: none;
+      float: left;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      width: 600px;
+      height: 100vh;
+      float: right;
+      background: lightgray;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+
+    .applistsidebar {
+      width: 200px;
+      height: 100vh;
+      position: fixed !important;
+      z-index: 2;
+      float: left;
+      overflow: auto;
+      background-color: #1d1d1ddd;
+      backdrop-filter: blur(10px);
+      color: white;
+    }
+
+    .applistsidebar button {
+      border: none;
+      background: none;
+      color: white;
+      padding: 5px;
+      text-align: left;
+      width: 100%;
+      transition: all 0.1s ease;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .applistsidebar button:hover {
+      border: none;
+      background: #4d4d4d90;
+      color: white;
+      padding: 5px;
+      text-align: left;
+      border-radius: 5px;
+      transition: all 0.1s ease;
+    }
+
+    .applistsidebar button:active {
+      border: none;
+      background: #4d4d4d;
+      color: white;
+      padding: 5px;
+      text-align: left;
+      border-radius: 5px;
+      transition: all 0.1s ease;
+    }
+
+    input {
+      background: none;
+      border: none;
+      border-radius: 2.5px;
+      padding: 2px;
+      transition: all 0.1s ease;
+      color: white;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-button {
+      width: 4px;
+      height: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #4d4d4d;
+      border: 0px none #ffffff;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6d6d6d;
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+      background: #8d8d8d;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #2d2d2d;
+      border: 0px none #ffffff;
+    }
+
+    ::-webkit-scrollbar-track:hover {
+      background: #2d2d2d;
+    }
+
+    ::-webkit-scrollbar-track:active {
+      background: #2d2d2d;
+    }
+
+    summary {
+      font-weight: bold;
+    }
+
+    button {
+      background: lightgray;
+      border: #767676 solid 1px;
+      border-radius: 2.5px;
+      padding: 5px;
+      transition: all 0.1s ease;
+    }
+
+    .content button:hover {
+      background: rgb(192, 192, 192);
+      border: #767676 solid 1px;
+      border-radius: 2.5px;
+      transition: all 0.1s ease;
+    }
+
+    .content button:active {
+      background: gray;
+      border: #1d1d1d solid 1px;
+      border-radius: 2.5px;
+      transition: all 0.1s ease;
+    }
+  </style>
+</head>
+
+<body id="body">
+  <section>
+    <div class="div">
+      <div class="content">
+        <div id="divToShowWhenPackageIsSelected" style="display: none;">
+          <img title="App Icon" id="appIconImage" onerror="this.src='../Icons/user.png'"
+            style='height: 75px; width: 75px; float: left; margin-right: 5px;'>
+          <h1 id="appName">App Name</h1>
+          <p id="appURL">App URL</p>
+
+          <br><br>
+
+          <button style="width: 100%; color: black;" class="kaosbutton" id="removeAppButton">Remove</button><br><br>
+          <button style="width: 100%; color: black;" class="kaosbutton" onclick="exportKPK()">Export</button>
+        </div>
+      </div>
+
+      <div class="applistsidebar">
+        <div id="applist">
+          <input type="file" id="file-input" onchange="importPkg()" accept=".kpk" required
+            style="display: none;"></input>
+          <button onclick="document.getElementById('file-input').click()">+ Install Package</button>
+        </div>
+</body>
+<script>
+  const remote = require('@electron/remote');
+  const app = remote.app;
+  const configDir = app.getPath('userData');
+  var applist = document.getElementById("applist");
+  const jsonData = require(configDir + '/kasiuspkg.json');
+  const fs = require("fs")
+  console.log(configDir)
+  var item
+
+  function importPkg() {
+    var input = document.getElementById("file-input");
+    const file = input.files[0];
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      const contents = event.target.result;
+      const json = JSON.parse(contents);
+
+      add(json.name, json.URL, json.icon, json.height, json.width)
+    };
+
+    reader.readAsText(file);
+  }
+
+  function exportKPK() {
+    const json = JSON.stringify(item, null, 2);
+
+    const blob = new Blob([json], { type: "application/json" });
+    const fileName = `${item.name}.kpk`;
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    link.click();
+  }
+
+  function add(name, URL, icon, height, width) {
+    var obj = (jsonData);
+    obj['packages'].push({ "name": name, "URL": URL, "icon": icon, "height": height, "width": width });
+    jsonStr = JSON.stringify(obj, null, "\t");
+    console.log(jsonStr);
+    fs.writeFile(configDir + '/kasiuspkg.json', jsonStr, (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        reloadApps()
+      }
+    });
+  };
+
+  function removeItem(index, items) {
+    jsonData.packages.splice(index, 1);
+
+    jsonStr = JSON.stringify(jsonData, null, "\t");
+    console.log(jsonStr);
+    fs.writeFile(configDir + '/kasiuspkg.json', jsonStr, (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        reloadApps()
+      }
+    });
+  }
+
+  function reloadApps() {
+    let applist = document.getElementById("applist");
+    applist.innerHTML = `
+      <input type="file" id="file-input" onchange="importPkg()" required style="display: none;"></input>
+      <button onclick="document.getElementById('file-input').click()">+ Install Package</button>
+    `
+    jsonData.packages.forEach(function (items, index) {
+      console.log(index)
+      let btn = document.createElement("button");
+      btn.className = "menubutton2"
+      btn.innerHTML = `
+          <img style='height: 30px; width: 30px;' onerror="this.onerror=null; this.src='../Icons/user.png'" src='${items.icon}'></img> ${items.name}
+      `;
+      btn.onclick = function () {
+        item = items;
+        document.getElementById("appIconImage").src = items.icon;
+        document.getElementById("appName").innerText = items.name;
+        document.getElementById("appURL").innerText = items.URL;
+        document.getElementById("divToShowWhenPackageIsSelected").style.display = "block";
+
+        document.getElementById("removeAppButton").onclick = function () {
+          removeItem(index, items)
+          document.getElementById("divToShowWhenPackageIsSelected").style.display = "none";
+        };
+      }
+      applist.appendChild(btn);
+    })
+  }
+  reloadApps()
+</script>
+
+</html>

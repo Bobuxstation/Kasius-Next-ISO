@@ -44,12 +44,11 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
 
             },
             {
-                "name": "Store",
-                "URL": "https://zeankundev.github.io/KaOS-Store/",
+                "name": "Package Manager",
+                "URL": "apps/STORE.html",
                 "icon": "Icons/Store.png",
                 "height": 450,
-                "width": 600
-
+                "width": 800
             },
             {
                 "name": "KasiusNet",

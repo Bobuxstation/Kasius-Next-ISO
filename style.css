@@ -356,16 +356,16 @@ button {
   font-size: 16px
 }
 
-.Settings button:hover {
-  background: rgb(192, 192, 192);
-  border: #767676 solid 1px;
+.kaosbutton:hover {
+  background: #4d4d4d90;
+  border: none;
   border-radius: 2.5px;
   transition: all 0.1s ease;
 }
 
-.kaosbutton:hover {
-  background: #4d4d4d90;
-  border: none;
+.Settings button:hover {
+  background: rgb(192, 192, 192);
+  border: #767676 solid 1px;
   border-radius: 2.5px;
   transition: all 0.1s ease;
 }
