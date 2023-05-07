@@ -45,7 +45,7 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
             },
             {
                 "name": "Package Manager",
-                "URL": "apps/STORE.html",
+                "URL": "apps\store.html",
                 "icon": "Icons/Store.png",
                 "height": 450,
                 "width": 800
