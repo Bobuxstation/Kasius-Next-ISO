@@ -31,7 +31,6 @@ function spawnwindow(name, URL, icon, height, width) {
 
     //create header
     header.classList.add('header');
-    header.style.width = width;
     header.innerHTML = "<button class='headertext'>" + name + "</button>";
 
     //create close button
@@ -52,10 +51,10 @@ function spawnwindow(name, URL, icon, height, width) {
 
     //create content div
     content.classList.add('content');
+    content.style.height = height;
+    content.style.width = width;
 
     //create webview
-    webview.style.height = height;
-    webview.style.width = width;
     webview.src = URL;
     webview.setAttribute("webpreferences", "contextIsolation=false");
     webview.setAttribute("nodeintegration", "");
@@ -80,11 +79,19 @@ function spawnwindow(name, URL, icon, height, width) {
     content.appendChild(webview);
     footer.appendChild(minimized);
 
+    //focus on the window
+    focusWindow(window)
+
     //make the window draggable
     $(".window").draggable({
         handle: ".header",
         containment: "#body",
         opacity: 0.75
+    });
+
+    $( content ).resizable({
+        minHeight: height,
+        minWidth: width
     });
 }
 

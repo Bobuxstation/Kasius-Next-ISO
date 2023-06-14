@@ -45,6 +45,7 @@ input.search-bar {
   font-size: 105%;
   width: calc(100% - 100px);
   content: "Enter City Name...";
+  height: 30px;
 }
 
 button:hover {
@@ -59,6 +60,7 @@ h1.temp {
 .flex {
   display: flex;
   align-items: center;
+  text-align: center;
 }
 
 .description {

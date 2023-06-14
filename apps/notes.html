@@ -106,7 +106,7 @@
     <button class="headertext" title="Kasius Next Notes v1.1">About</button>
 </div>
 <div id="notessaveprompt"
-    style="height: 450px; box-sizing: border-box; display:none;transition: all 0.1s ease;padding:10px;position: fixed; z-index: 1;background-color: #1d1d1ddd; backdrop-filter: blur(5px);">
+    style="height: 100vh; box-sizing: border-box; display:none;transition: all 0.1s ease;padding:10px;position: fixed; z-index: 1;background-color: #1d1d1ddd; backdrop-filter: blur(5px);">
     <details open>
         <summary style="width: 191px;color: white; padding: 5px; font-weight: bold;margin-bottom: 5px;"><i
                 class="fa-solid fa-file-signature"></i> Save File</summary>
@@ -122,7 +122,7 @@
     </details>
 </div>
 <div id="notessaveprompt1"
-    style="box-sizing: border-box;height: 450px; display: none; transition: all 0.2s ease 0s; padding: 10px; position: fixed; z-index: 1; background-color: rgba(29, 29, 29, 0.867); backdrop-filter: blur(5px); box-sizing: border-box;">
+    style="box-sizing: border-box;height: 100vh; display: none; transition: all 0.2s ease 0s; padding: 10px; position: fixed; z-index: 1; background-color: rgba(29, 29, 29, 0.867); backdrop-filter: blur(5px); box-sizing: border-box;">
     <details>
         <summary style="color: white; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-text-height"></i>
             Text size</summary>
@@ -158,7 +158,7 @@
     </details><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 <textarea id="msg"
-    style="outline: none;border: black solid 0px; width: 800; height: 450; resize: none; padding: 5px; font-family: Inter; font-size: 20px;background: lightgray;"></textarea>
+    style="outline: none;border: black solid 0px; width: 100vw; height: calc(100vh - 36px); resize: none; padding: 5px; font-family: Inter; font-size: 20px;background: lightgray;"></textarea>
 <script>
     let saveTXT = (filename) => {
         const msg = document.getElementById('msg');

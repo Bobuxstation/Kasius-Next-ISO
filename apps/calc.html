@@ -46,13 +46,15 @@
     }
 
     input[type="button"] {
-        width: 71.5px;
+        width: calc(25% - 4px);
         font-size: 24px;
         font-weight: bold;
         border: none;
         background: none;
         border-radius: 5px;
         height: 75.3px;
+        box-sizing: border-box;
+        height: calc(25% - 12px);
     }
 
     input[type="button"]:hover {
@@ -108,7 +110,13 @@
 
     function solve() {
         let x = document.getElementById("result").value
-        let y = math.evaluate(x)
-        document.getElementById("result").value = y
+
+        try {
+            let y = math.evaluate(x)
+            document.getElementById("result").value = y
+        } catch {
+            let y = 'Error'
+            document.getElementById("result").value = y
+        }
     }
 </script>

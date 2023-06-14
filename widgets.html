@@ -1,32 +1,38 @@
 <html>
+
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="text/javascript" src="scripts/time.js" defer></script>
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-family: Inter;
-    overflow-x: hidden;
-    user-select: none;
-}
-.clock {
-    background: #1d1d1d55;
-    border-radius: 5px;
-    color: white;
-    padding: 10px;
-    margin-bottom: 15px;
-}.clock2 {
-    border-radius: 5px;
-    color: white;
-    height: 300px;
-}
-body {
-    padding: 15px;
-}
-</style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="scripts/time.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: Inter;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        .clock {
+            background: #1d1d1d55;
+            border-radius: 5px;
+            color: white;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .clock2 {
+            border-radius: 5px;
+            color: white;
+            height: 300px;
+        }
+
+        body {
+            padding: 15px;
+        }
+    </style>
 </head>
+
 <body id="body">
 
     <div class="clock">
@@ -41,7 +47,8 @@ body {
 
 </body>
 <script type="text/javascript">
-let date = new Date();
-document.getElementById("demo").innerHTML = date;
+    let date = new Date();
+    document.getElementById("demo").innerHTML = date;
 </script>
+
 </html>

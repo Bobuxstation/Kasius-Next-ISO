@@ -13,6 +13,22 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
     let jsontemplate = {
         "packages": [
             {
+                "name": "Calculator",
+                "URL": "apps/calc.html",
+                "icon": "Icons/calc.png",
+                "height": 350,
+                "width": 300
+
+            },
+            {
+                "name": "Cubic Productivity Suite",
+                "URL": "https://mobiz-advanced-technologies.github.io/Cubic/",
+                "icon": "https://mobiz-advanced-technologies.github.io/Cubic/Papers/icon.png",
+                "height": 450,
+                "width": 800
+
+            },
+            {
                 "name": "Files",
                 "URL": "apps/files.html",
                 "icon": "Icons/filesicon.png",
@@ -20,12 +36,11 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
                 "width": 800
             },
             {
-                "name": "Kasius Type",
-                "URL": "kasiustype/index.html",
-                "icon": "kasiustype/logo.png",
-                "height": 565,
-                "width": 1200
-
+                "name": "KasiusNet",
+                "URL": "apps/kasiusnet.html",
+                "icon": "Icons/browser.png",
+                "height": 450,
+                "width": 800
             },
             {
                 "name": "Media",
@@ -44,35 +59,19 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
 
             },
             {
-                "name": "Package Manager",
-                "URL": "apps/store.html",
-                "icon": "Icons/Store.png",
-                "height": 450,
-                "width": 800
-            },
-            {
-                "name": "KasiusNet",
-                "URL": "apps/kasiusnet.html",
-                "icon": "Icons/browser.png",
-                "height": 450,
-                "width": 800
-
-            },
-            {
-                "name": "Calculator",
-                "URL": "apps/calc.html",
-                "icon": "Icons/calc.png",
-                "height": 350,
-                "width": 300
-
-            },
-            {
                 "name": "Notes",
                 "URL": "apps/notes.html",
                 "icon": "Icons/notes.png",
                 "height": 486,
                 "width": 800
 
+            },
+            {
+                "name": "Package Manager",
+                "URL": "apps/store.html",
+                "icon": "Icons/Store.png",
+                "height": 450,
+                "width": 800
             },
             {
                 "name": "Terminal",

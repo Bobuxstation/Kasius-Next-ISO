@@ -1,86 +1,85 @@
 body {
-  font-family: Inter !important;
   background-image: url("bg.jpg");
   overflow: hidden;
   background-size: cover;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
   background-color: black;
+  font-family: Inter !important;
 }
 
 footer {
   overflow: hidden;
-  position: fixed;
-  bottom: 0;
+  bottom: 0px;
   width: calc(100% - 10px);
-  background-color: #1d1d1ddd;
+  background-color: rgba(29, 29, 29, 0.867);
   height: 40px;
-  margin: 0;
-  padding: 0;
+  padding: 0px;
   backdrop-filter: blur(10px);
   text-align: center;
-  position: fixed !important;
-  z-index: 3;
-  border-top: 2px solid #9d9d9d20;
+  z-index: 101;
+  border-top: 2px solid rgba(157, 157, 157, 0.125);
   margin: 5px;
   border-radius: 5px;
   box-sizing: border-box;
+  position: fixed !important;
 }
 
 .window {
-  height: 0px;
-  width: 0px;
+  height: fit-content !important;
+  width: fit-content !important;
   display: none;
-  animation: fadein;
-  animation-duration: 0.1s;
+  animation: 0.1s ease 0s 1 normal none running fadein;
+  position: absolute !important;
 }
 
 .header {
-  width: 600px;
+  width: 100% !important;
   height: fit-content;
-  background-color: #1d1d1ddd;
+  background-color: rgba(29, 29, 29, 0.867);
   cursor: move;
   border-radius: 5px 5px 0px 0px;
   overflow: auto;
   backdrop-filter: blur(10px);
-  border: #9d9d9d20 solid;
-  border-width: 2px 0px 0px 0px;
+  border-style: solid;
+  border-color: rgba(157, 157, 157, 0.125);
+  border-image: initial;
+  border-width: 2px 0px 0px;
 }
 
 .content {
   width: fit-content;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   height: fit-content;
   border-radius: 0px 0px 5px 5px;
 }
 
 .content webview {
-  resize: both;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .headertext {
   color: white;
   background: none;
   height: 23.5px;
-  border: black solid 0px;
+  border: 0px solid black;
   border-radius: 5px;
   font-size: 17.5px;
-  margin: 3px;
-  margin-right: 0px;
-  transition: all 0.1s ease;
+  margin: 3px 0px 3px 3px;
+  transition: all 0.1s ease 0s;
 }
 
 .headertext:hover {
   color: white;
-  background: #4d4d4d90;
+  background: rgba(77, 77, 77, 0.565);
   height: 23.5px;
-  border: black solid 0px;
+  border: 0px solid black;
   border-radius: 5px;
   font-size: 17.5px;
-  margin: 3px;
-  margin-right: 0px;
-  transition: all 0.1s ease;
+  margin: 3px 0px 3px 3px;
+  transition: all 0.1s ease 0s;
 }
 
 .closebutton {
@@ -89,37 +88,38 @@ footer {
   background: darkred;
   height: 23.5px;
   width: 23.5px;
-  ;
   border-radius: 5px;
   font-size: 18px;
   margin: 3px;
-  transition: all 0.1s ease;
-  border: 1px groove darkred;
-  border-width: 1px 0px 0px 0px;
+  transition: all 0.1s ease 0s;
+  border-style: groove;
+  border-color: darkred;
+  border-image: initial;
+  border-width: 1px 0px 0px;
 }
 
 .closebutton:hover {
   background-color: red;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .closebutton:active {
   background-color: darkred;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .menubutton {
-  background-color: #2d2d2d00;
-  border: black solid 0px;
+  background-color: rgba(45, 45, 45, 0);
+  border: 0px solid black;
   color: black;
   float: left;
   background-image: url("");
   height: 32px;
-  width: 32px !important;
   border-radius: 3px;
-  padding: 4px !important;
   margin: 3px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
+  width: 32px !important;
+  padding: 4px !important;
 }
 
 li {
@@ -128,8 +128,8 @@ li {
 }
 
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   user-select: none;
   outline: none;
 }
@@ -144,10 +144,10 @@ nav {
 
 .applist {
   color: white;
-  border-radius: 5px 0px 0px 0px;
+  border-radius: 5px 0px 0px;
   padding: 5px;
   box-sizing: border-box;
-  background-color: #1d1d1ddd;
+  background-color: rgba(29, 29, 29, 0.867);
   overflow: auto;
 }
 
@@ -156,7 +156,7 @@ nav {
 }
 
 .search {
-  bottom: 0;
+  bottom: 0px;
   width: 100%;
   padding: 3px;
   box-sizing: border-box;
@@ -175,23 +175,22 @@ nav {
 .sidebar2 {
   height: 520px;
   width: 605px;
-  position: fixed !important;
-  z-index: 2;
+  z-index: 100;
   overflow: auto;
   background: none;
   border-radius: 5px;
   backdrop-filter: blur(10px);
-  bottom: 0;
+  bottom: 0px;
   margin-bottom: 50px;
-  animation: slideup;
+  animation: 0.1s ease 0s 1 normal none running slideup;
   margin-left: 5px;
-  animation-duration: 0.1s;
-  border-top: 2px solid #9d9d9d20;
+  border-top: 2px solid rgba(157, 157, 157, 0.125);
+  position: fixed !important;
 }
 
 .menubutton2 {
   background: none;
-  border: black solid 0px;
+  border: 0px solid black;
   font-family: Inter;
   color: white;
   float: left;
@@ -210,23 +209,22 @@ button {
 .notifications {
   height: fit-content;
   width: 300px;
-  position: fixed !important;
-  z-index: 2;
+  z-index: 100;
   padding: 5px;
-  background-color: #1d1d1ddd;
+  background-color: rgba(29, 29, 29, 0.867);
   color: white;
-  right: 0;
-  bottom: 0;
+  right: 0px;
+  bottom: 0px;
   display: none;
   border-radius: 5px;
   backdrop-filter: blur(10px);
-  animation: slideright;
-  animation-duration: 0.1s;
+  animation: 0.1s ease 0s 1 normal none running slideright;
   margin-bottom: 50px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
   overflow: auto;
-  border-top: 2px solid #9d9d9d20;
+  border-top: 2px solid rgba(157, 157, 157, 0.125);
   margin-right: 5px;
+  position: fixed !important;
 }
 
 #searchbox {
@@ -241,73 +239,76 @@ button {
 .minimize {
   float: right;
   color: white;
-  background: NONE;
+  background: none;
   height: 23.5px;
   width: 23.5px;
-  ;
   border-radius: 5px;
   font-size: 14px;
   margin: 3px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
   border: none;
 }
 
 .minimize:hover {
   background-color: red;
-  border-width: 1px 0px 0px 0px;
-  transition: all 0.1s ease;
+  border-width: 1px 0px 0px;
+  transition: all 0.1s ease 0s;
 }
 
 .minimize:active {
   background-color: darkred;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .menubuttonminimized {
   color: white;
   float: left;
-  padding: 4px !important;
   font-size: 20px;
   height: 32px;
   width: 32px;
   margin: 3px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
   border-radius: 3px;
   background: none;
-  border: solid #4d4d4d;
-  border-width: 0px 0px 3px 0px;
+  border-style: solid;
+  border-color: rgb(77, 77, 77);
+  border-image: initial;
+  border-width: 0px 0px 3px;
+  padding: 4px !important;
 }
 
 .menubuttonminimizing {
-  background-color: #9d9d9d20;
-  border: 1px solid #9d9d9d20;
-  border-width: 2px 0px 0px 0px;
+  background-color: rgba(157, 157, 157, 0.125);
+  border-style: solid;
+  border-color: rgba(157, 157, 157, 0.125);
+  border-image: initial;
+  border-width: 2px 0px 0px;
 }
 
 .menubutton2:hover {
-  background-color: #4d4d4d40;
-  transition: all 0.1s ease;
+  background-color: rgba(77, 77, 77, 0.25);
+  transition: all 0.1s ease 0s;
 }
 
 .menubutton2:active {
-  background-color: #6d6d6d66;
+  background-color: rgba(109, 109, 109, 0.4);
   cursor: progress;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .menubutton:hover {
-  background-color: #4d4d4d40;
-  transition: all 0.1s ease;
+  background-color: rgba(77, 77, 77, 0.25);
+  transition: all 0.1s ease 0s;
 }
 
 .menubutton:active {
-  background-color: #6d6d6d66;
+  background-color: rgba(109, 109, 109, 0.4);
   cursor: progress;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .notification {
-  background-color: #4d4d4d;
+  background-color: rgb(77, 77, 77);
   padding: 5px;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -318,6 +319,7 @@ button {
 fieldset {
   border-radius: 5px;
   padding: 5px;
+  margin: 5px;
 }
 
 #menutogglebutton {
@@ -327,7 +329,7 @@ fieldset {
 
 .settingssidebar {
   backdrop-filter: blur(10px);
-  background-color: #1d1d1ddd;
+  background-color: rgba(29, 29, 29, 0.867);
   color: white;
 }
 
@@ -337,9 +339,9 @@ fieldset {
 
 button {
   background: lightgray;
-  border: #767676 solid 1px;
+  border: 1px solid rgb(118, 118, 118);
   border-radius: 2.5px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .settings button {
@@ -350,73 +352,72 @@ button {
   background: none;
   border: none;
   border-radius: 2.5px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
   padding: 10px;
   color: white;
-  font-size: 16px
+  font-size: 16px;
 }
 
 .kaosbutton:hover {
-  background: #4d4d4d90;
+  background: rgba(77, 77, 77, 0.565);
   border: none;
   border-radius: 2.5px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .Settings button:hover {
   background: rgb(192, 192, 192);
-  border: #767676 solid 1px;
+  border: 1px solid rgb(118, 118, 118);
   border-radius: 2.5px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .Settings button:active {
   background: gray;
-  border: #1d1d1d solid 1px;
+  border: 1px solid rgb(29, 29, 29);
   border-radius: 2.5px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .kaosbutton:active {
-  background: #4d4d4d;
+  background: rgb(77, 77, 77);
   border: none;
   border-radius: 2.5px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .Settings input {
   background: lightgray;
-  border: #767676 solid 1px;
+  border: 1px solid rgb(118, 118, 118);
   border-radius: 2.5px;
-  padding: 2px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
   padding: 5px;
 }
 
 input {
   background: lightgray;
-  border: #767676 solid 1px;
+  border: 1px solid rgb(118, 118, 118);
   border-radius: 2.5px;
   padding: 2px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 .Settings input:focus {
   background: white;
-  border: #767676 solid 1px;
+  border: 1px solid rgb(118, 118, 118);
   border-radius: 2.5px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
   outline: none;
 }
 
 .menubuttonminimized:hover {
-  background-color: #8d8d8d80;
-  transition: all 0.1s ease;
+  background-color: rgba(141, 141, 141, 0.5);
+  transition: all 0.1s ease 0s;
 }
 
 .menubuttonminimized:active {
-  background-color: #6d6d6d66;
-  transition: all 0.1s ease;
+  background-color: rgba(109, 109, 109, 0.4);
+  transition: all 0.1s ease 0s;
 }
 
 .search i {
@@ -464,23 +465,22 @@ input {
 
 #errorbox,
 #errorbox1 {
-  position: fixed !important;
   z-index: 999;
   height: 100%;
   width: 100%;
-  background: #1d1d1ddd;
-  display: flex;
+  background: rgba(29, 29, 29, 0.867);
   align-items: center;
   justify-content: center;
   display: none;
-  animation: fadein;
-  animation-duration: 0.1s;
+  animation: 0.1s ease 0s 1 normal none running fadein;
+  backdrop-filter: blur(10px);
+  position: fixed !important;
 }
 
 #errormessage {
   text-align: center;
-  background-color: #1d1d1ddd;
-  border: #2d2d2d solid 1px;
+  background-color: rgba(29, 29, 29, 0.867);
+  border: 1px solid rgb(45, 45, 45);
   color: white;
   border-radius: 5px;
   padding: 5px;
@@ -491,23 +491,23 @@ input {
   height: 30px;
   margin-bottom: 5px;
   background: lightgray;
-  border: #767676 solid 1px;
+  border: 1px solid rgb(118, 118, 118);
   border-radius: 2.5px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 #errormessage button:hover {
   background: gray;
-  border: #767676 solid 1px;
+  border: 1px solid rgb(118, 118, 118);
   border-radius: 2.5px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 #errormessage button:active {
   background: lightgray;
-  border: #767676 solid 1px;
+  border: 1px solid rgb(118, 118, 118);
   border-radius: 2.5px;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease 0s;
 }
 
 ::-webkit-scrollbar {
@@ -521,29 +521,29 @@ input {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4d4d4d;
-  border: 0px none #ffffff;
+  background: rgb(77, 77, 77);
+  border: 0px none rgb(255, 255, 255);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6d6d6d;
+  background: rgb(109, 109, 109);
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background: #8d8d8d;
+  background: rgb(141, 141, 141);
 }
 
 ::-webkit-scrollbar-track {
-  background: #2d2d2d;
-  border: 0px none #ffffff;
+  background: rgb(45, 45, 45);
+  border: 0px none rgb(255, 255, 255);
 }
 
 ::-webkit-scrollbar-track:hover {
-  background: #2d2d2d;
+  background: rgb(45, 45, 45);
 }
 
 ::-webkit-scrollbar-track:active {
-  background: #2d2d2d;
+  background: rgb(45, 45, 45);
 }
 
 .noteinput {
@@ -576,24 +576,24 @@ input {
 }
 
 #notessaveprompt1 select {
-  background: none !important;
   border: none;
   color: white;
   font-family: inter;
+  background: none !important;
 }
 
 #notessaveprompt1 select:focus {
-  background: lightgray !important;
   border: none;
   color: black;
   font-family: inter;
   outline: none;
+  background: lightgray !important;
 }
 
 #menutogglebuttonimg {
   height: 22.5px !important;
   width: 22.5px !important;
-  margin: 0 !important;
+  margin: 0px !important;
 }
 
 #terminalcontent {
@@ -601,13 +601,13 @@ input {
   flex-direction: column-reverse;
   padding: 5px;
   box-sizing: border-box;
-  border-radius: 0;
+  border-radius: 0px;
 }
 
 .widgets {
-  background: #2d2d2ddd;
+  background: rgba(45, 45, 45, 0.867);
 }
 
 .focused {
-  z-index: 1 !important;
+  z-index: 99 !important;
 }

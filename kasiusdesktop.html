@@ -5,6 +5,8 @@
     <!--Scripts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="style.css" id="style">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     <script type="text/javascript" src="scripts/jsonloader.js"></script>
     <script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
     <script type="text/javascript" src="scripts/jqueryui2.js"></script>
@@ -19,12 +21,12 @@
 <body id="body">
 
     <div id="errorbox1" style="display: flex;">
-        <div>
-            <p style="text-align: center; color: white;" class="notification">
-                Welcome Back!
-                <br>
-                <progress></progress>
-            </p>
+        <div style="text-align: center;">
+            <img src="Icons/user.png" style="width: 12.5vw;">
+            <br><br>
+            <h3 style="color: white;">Welcome Back!</h3>
+            <br>
+            <progress></progress>
         </div>
     </div>
 
@@ -41,7 +43,8 @@
     </div>
     <div class="sidebar2" id="Sidebar">
 
-        <div class="applist" id="applist" style="width: 50%; height: 100%; display: flex; flex-direction: column; float:left;">
+        <div class="applist" id="applist"
+            style="width: 50%; height: 100%; display: flex; flex-direction: column; float:left;">
         </div>
 
         <div style="width: 50%; height: 100%; display: flex; flex-direction: column; float:right;" class="widgets">
@@ -67,41 +70,27 @@
                 <button onclick="Closetestwindow6()" class="closebutton"><i class="fa-solid fa-xmark"></i></button>
                 <button onclick="hide('window6')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
             </div>
-            <div class="content" style="width: 600px;">
+            <div class="content" style="width: 800px;">
                 <div class="settingssidebar"
-                    style="width: 105.30px; float: left; height: 450px; backdrop-filter: blur(10px); box-sizing: border-box; padding: 5px;">
-                    <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-gear"></i> General</H4>
+                    style="width: 162px; float: left; height: 450px; backdrop-filter: blur(10px); box-sizing: border-box; padding: 5px;">
+                    <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-paint-roller"></i> Background
+                    </H4>
                     <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-palette"></i> Themes</H4>
-                    <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-clock"></i> Time</H4>
-                    <h4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-circle-question"></i> About</h4>
-                    <h4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-triangle-exclamation"></i> More
-                    </h4>
+                    <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-rectangle-list"></i> Footer</H4>
+                    <h4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-flask"></i> Experimental</h4>
                 </div>
                 <div class="Settings"
-                    style="background-color: lightgray; float: right; width: 484.7px; height: 440px; padding: 5px; overflow: auto;">
+                    style="background-color: lightgray; float: right; width: 628px; height: 440px; padding: 5px; overflow: auto;">
 
 
                     <fieldset>
-                        <legend>Background/Wallpaper</legend>
+                        <legend>Background</legend>
                         <button onclick="bg('bg.jpg')">Normal</button><br><br>
                         <button onclick="bg('background/citywater.png')">City With Water</button><br><br>
                         <button onclick="bg('background/Flowers.png')">Flowers</button><br><br>
                         <button onclick="bg('background/Boardwalk.png')">Boardwalk</button><br><br>
                         <button onclick="bg('https://source.unsplash.com/1600x900/?landscape')">Random</button><br><br>
                         <input type="file" accept="image/*" onchange="custom_bg(event)">
-                    </fieldset>
-                    <fieldset>
-                        <legend>Screen Resolution</legend>
-                        <select class="kaosbutton" style="color: black;" id="resolutionselector">
-                            <option value="1920x1080">1920x1080</option>
-                            <option value="1600x900">1600x900</option>
-                            <option value="1366x768">1366x768</option>
-                            <option value="1280x720">1280x720</option>
-                            <option value="1024x768" selected="selected">1024x768</option>
-                            <option value="800x600">800x600</option>
-                            <option value="640x480">640x480</option>
-                        </select>
-                        <button onclick="setres()">Set</button>
                     </fieldset>
 
                     <fieldset>
@@ -123,7 +112,8 @@
                         <legend>Experimental</legend>
                         <input id="notifybeta" placeholder="Write a notification"></input> <button
                             onclick="notifybeta()">Notify</button><br><br>
-                        <button onclick="remote.getCurrentWindow().webContents.openDevTools()">Open Developer Console</button>
+                        <button onclick="remote.getCurrentWindow().webContents.openDevTools()">Open Developer
+                            Console</button>
                     </fieldset>
                 </div>
     </section>

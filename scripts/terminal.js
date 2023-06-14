@@ -8,20 +8,20 @@ $(".input1").on('keyup', function (e) {
         ul.appendChild(li);
         document.getElementById("input1").value = "";
     }
-    });
-    function returntoterminal(output) {
-        var ul = document.getElementById("terminaltext");
-        var li = document.createElement("p");
-        li.classList.add('notification');
-        li.innerText = output;
-        ul.appendChild(li);
-    }
-    function returnerrortoterminal(output) {
-        var ul = document.getElementById("terminaltext");
-        var li = document.createElement("p");
-        li.classList.add('notification');
-        li.style.color = "red";
-        li.style.background = "#ff3d3d3d";
-        li.innerText = output;
-        ul.appendChild(li);
-    }
+});
+function returntoterminal(output) {
+    var ul = document.getElementById("terminaltext");
+    var li = document.createElement("p");
+    li.classList.add('notification');
+    li.innerText = output;
+    ul.appendChild(li);
+}
+function returnerrortoterminal(output) {
+    var ul = document.getElementById("terminaltext");
+    var li = document.createElement("p");
+    li.classList.add('notification');
+    li.style.color = "red";
+    li.style.background = "#ff3d3d3d";
+    li.innerText = output;
+    ul.appendChild(li);
+}
