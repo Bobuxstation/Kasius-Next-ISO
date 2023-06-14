@@ -5,7 +5,7 @@
     <!--Scripts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="style.css" id="style">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="apps/jqueryUI.css">
 
     <script type="text/javascript" src="scripts/jsonloader.js"></script>
     <script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
@@ -66,9 +66,11 @@
 
         <div style="display: none;" class="window" id="window6" onclick="focusWindow(this)">
             <div class="header" id="header">
-                <button class="headertext"><i class="fa-solid fa-gear"></i> Settings</button>
+                <button class="headertext">Settings</button>
                 <button onclick="Closetestwindow6()" class="closebutton"><i class="fa-solid fa-xmark"></i></button>
-                <button onclick="hide('window6')" class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
+                <button
+                    onclick="hide('window6'); document.getElementById('minimizedsettings').className = 'menubuttonminimized'"
+                    class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
             </div>
             <div class="content" style="width: 800px;">
                 <div class="settingssidebar"
@@ -127,8 +129,9 @@
                 style="height: 24px; margin-top: 3px; width: 22.5px;"></img></button>
         <nav>
             <ul id="footer1">
-                <li><button style="display: none;" onclick="show('window6')" class="menubuttonminimized"
-                        id="minimizedsettings"><i style="height: 22.5px; width: 22.5px;"
+                <li><button style="display: none;"
+                        onclick="show('window6'); this.className = 'menubuttonminimized menubuttonminimizing'"
+                        class="menubuttonminimized" id="minimizedsettings"><i style="height: 22.5px; width: 22.5px;"
                             class="fa-solid fa-gear"></i></button></li>
             </ul>
         </nav>

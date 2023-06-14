@@ -17,6 +17,7 @@ function Closetestwindow6() {
   if (x.style.display === "none") {
     x.style.display = "block";
     document.getElementById("minimizedsettings").style.display = "block";
+    document.getElementById("minimizedsettings").className = "menubuttonminimized menubuttonminimizing"
   } else {
     x.style.display = "none";
     document.getElementById("minimizedsettings").style.display = "none";

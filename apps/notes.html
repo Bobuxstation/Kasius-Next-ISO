@@ -107,18 +107,18 @@
 </div>
 <div id="notessaveprompt"
     style="height: 100vh; box-sizing: border-box; display:none;transition: all 0.1s ease;padding:10px;position: fixed; z-index: 1;background-color: #1d1d1ddd; backdrop-filter: blur(5px);">
-    <details open>
+    <details>
         <summary style="width: 191px;color: white; padding: 5px; font-weight: bold;margin-bottom: 5px;"><i
                 class="fa-solid fa-file-signature"></i> Save File</summary>
-        <input class="noteinput" style="padding: 5px; width: 100%;" id="filename" value="project.txt"><br><br>
+        <input class="noteinput" style="padding: 5px; width: 100%; display: none;" id="filename" value="file.txt">
         <button class="kaosbutton" style="width: 100%; bottom: 0;"
             onclick="saveTXT(document.getElementById('filename').value)">Save File</button>
     </details>
     <details>
         <summary style="width: 191px;color: white; padding: 5px; font-weight: bold;margin-bottom: 5px;"><i
                 class="fa-solid fa-folder-open"></i> Open File</summary>
-        <input type="file" id="fileToLoad" style="width: 100%; bottom: 0;"><br><br>
-        <button onclick="loadFileAsText()" style="width: 100%; bottom: 0;">Load Selected Project</button>
+        <input type="file" id="fileToLoad" onchange="loadFileAsText()" style="width: 100%; bottom: 0; display: none;">
+        <button onclick="document.getElementById('fileToLoad').click()" style="width: 100%; bottom: 0;">Open File</button>
     </details>
 </div>
 <div id="notessaveprompt1"
