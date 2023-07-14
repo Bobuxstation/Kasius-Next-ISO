@@ -116,16 +116,18 @@
     const { exec, spawn } = require('child_process');
 
     function launch(executablePath) {
-        exec(executablePath, function (err, data) {
-            if (err) {
-                console.error(err);
-                returnerrortoterminal(err);
-                document.getElementById("input1").style.display = "block"
-                document.getElementById("input1").focus()
-                return;
-            }
+        var spawn = require('child_process').exec;
+        ls = spawn(executablePath, { stdio: 'inherit' });
 
+        ls.stdout.on('data', function (data) {
             returntoterminal(data.toString());
+        });
+
+        ls.stderr.on('data', function (err) {
+            returnerrortoterminal(err);
+        });
+
+        ls.on('exit', function (code) {
             document.getElementById("input1").style.display = "block"
             document.getElementById("input1").focus()
         });

@@ -91,6 +91,7 @@ function spawnwindow(name, URL, icon, height, width) {
 
     $( content ).resizable({
         minHeight: height,
+        containment: "#body",
         minWidth: width
     });
 }
@@ -121,7 +122,7 @@ function loadApps(searchQuery) {
                 menu()
             }
             let nameOfApp = items.name.toLowerCase()
-            if (nameOfApp.includes(searchQuery)) {
+            if (nameOfApp.includes(searchQuery.toLowerCase())) {
                 applist.appendChild(btn);
             }
         })

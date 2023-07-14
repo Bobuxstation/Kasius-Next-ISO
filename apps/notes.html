@@ -42,7 +42,6 @@
         border: none;
         padding: 2px;
         transition: all 0.5s ease;
-        text-align: center;
         color: white;
         font-family: Inter;
     }
@@ -53,7 +52,6 @@
         border-radius: 2.5px;
         padding: 2px;
         transition: all 0.5s ease;
-        text-align: center;
         color: black;
         outline: none;
     }
@@ -98,31 +96,40 @@
     ::-webkit-scrollbar-track:active {
         background: #2d2d2d;
     }
+    #notessaveprompt, #notessaveprompt1, #notessaveprompt2{
+        height: fit-content; 
+        margin: 5px; 
+        box-sizing: border-box; 
+        display:none; 
+        transition: all 0.1s ease; 
+        padding:10px; 
+        position: fixed; 
+        z-index: 1; 
+        background-color: #1d1d1ddd; 
+        backdrop-filter: blur(5px); 
+        border-radius: 5px;
+        color: white;
+    }
+    #notessaveprompt button {
+        text-align: left;
+        width: 100%;
+    }
 </style>
 <div style="padding: 5px; background: #1d1d1ddd; backdrop-filter: blur(10px);">
     <button class="headertext" onclick="showsave()">File</button>
-    <button class="headertext" onclick="clearTXT()">New</button>
     <button class="headertext" onclick="setTXT()">Formatting</button>
-    <button class="headertext" title="Kasius Next Notes v1.1">About</button>
+    <button class="headertext" onclick="showattr()">About</button>
 </div>
-<div id="notessaveprompt"
-    style="height: 100vh; box-sizing: border-box; display:none;transition: all 0.1s ease;padding:10px;position: fixed; z-index: 1;background-color: #1d1d1ddd; backdrop-filter: blur(5px);">
-    <details>
-        <summary style="width: 191px;color: white; padding: 5px; font-weight: bold;margin-bottom: 5px;"><i
-                class="fa-solid fa-file-signature"></i> Save File</summary>
-        <input class="noteinput" style="padding: 5px; width: 100%; display: none;" id="filename" value="file.txt">
-        <button class="kaosbutton" style="width: 100%; bottom: 0;"
-            onclick="saveTXT(document.getElementById('filename').value)">Save File</button>
-    </details>
-    <details>
-        <summary style="width: 191px;color: white; padding: 5px; font-weight: bold;margin-bottom: 5px;"><i
-                class="fa-solid fa-folder-open"></i> Open File</summary>
-        <input type="file" id="fileToLoad" onchange="loadFileAsText()" style="width: 100%; bottom: 0; display: none;">
-        <button onclick="document.getElementById('fileToLoad').click()" style="width: 100%; bottom: 0;">Open File</button>
-    </details>
+<div id="notessaveprompt" style="display: none;">
+    <button onclick="saveTXT(document.getElementById('Untitled.txt').value)"><i class="fa-solid fa-file-signature"></i> Save note</button>
+
+    <button onclick="clearTXT()"><i class="fa-solid fa-file"></i> New note</button>
+
+    <input type="file" id="fileToLoad" onchange="loadFileAsText()" style="display: none;">
+
+    <button onclick="document.getElementById('fileToLoad').click()"><i class="fa-solid fa-folder-open"></i> Open file...</button>
 </div>
-<div id="notessaveprompt1"
-    style="box-sizing: border-box;height: 100vh; display: none; transition: all 0.2s ease 0s; padding: 10px; position: fixed; z-index: 1; background-color: rgba(29, 29, 29, 0.867); backdrop-filter: blur(5px); box-sizing: border-box;">
+<div id="notessaveprompt1" style="display: none;">
     <details>
         <summary style="color: white; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-text-height"></i>
             Text size</summary>
@@ -155,7 +162,10 @@
             <option style="font-family: Copperplate;">Copperplate</option>
             <option style="font-family: Papyrus;">Papyrus</option>
         </select>
-    </details><br><br><br><br><br><br><br><br><br><br><br>
+    </details>
+</div>
+<div id="notessaveprompt2" style="display: none;">
+    Kasius Next Notes v1.1
 </div>
 <textarea id="msg"
     style="outline: none;border: black solid 0px; width: 100vw; height: calc(100vh - 36px); resize: none; padding: 5px; font-family: Inter; font-size: 20px;background: lightgray;"></textarea>
@@ -182,23 +192,42 @@
 
         newLink.click();
     }
+
     function clearTXT() {
         document.getElementById('msg').value = "";
     }
+
     function fontTXT(FONT) {
         document.getElementById('msg').style.fontFamily = FONT;
     }
+
     function showsave() {
         var x = document.getElementById("notessaveprompt");
         if (x.style.display === "none") {
+            document.getElementById("notessaveprompt1").style.display = "none";
+            document.getElementById("notessaveprompt2").style.display = "none";
             x.style.display = "block";
         } else {
             x.style.display = "none";
         }
     }
+
     function setTXT() {
         var x = document.getElementById("notessaveprompt1");
         if (x.style.display === "none") {
+            document.getElementById("notessaveprompt2").style.display = "none";
+            document.getElementById("notessaveprompt").style.display = "none";
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function showattr() {
+        var x = document.getElementById("notessaveprompt2");
+        if (x.style.display === "none") {
+            document.getElementById("notessaveprompt1").style.display = "none";
+            document.getElementById("notessaveprompt").style.display = "none";
             x.style.display = "block";
         } else {
             x.style.display = "none";

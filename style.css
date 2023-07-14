@@ -611,3 +611,12 @@ input {
 .focused {
   z-index: 99 !important;
 }
+
+.notificationMessage {
+  background-color: rgba(77, 77, 77, 0.25);
+  padding: 20px;
+}
+
+.notificationDate {
+  opacity: 0.25;
+}
