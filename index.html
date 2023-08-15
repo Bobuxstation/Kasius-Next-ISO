@@ -1,194 +1,83 @@
 <html lang="en">
 
 <head>
+	<title>Login - Kasius Next</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<script src="scripts/fontawesome.js"></script>
+	<script src="scripts/time.js" defer></script>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
+			font-family: Inter;
+			outline: none;
+			color: white;
+		}
 
-	<head>
-		<title>Login - Kasius Next</title>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-		<script src="scripts/fontawesome.js"></script>
-		<script src="scripts/time.js" defer></script>
-		<style type="text/css">
-			* {
-				padding: 0;
-				margin: 0;
-				overflow: hidden;
-				font-family: Inter;
-				text-align: center;
-				outline: none;
-			}
+		div	{
+			position: absolute;
+			bottom: 0;
+			padding: 20px;
+		}
 
-			.options {
-				outline: 1px solid black;
-				height: 100%;
-				width: 100%;
-			}
+		h1 {
+			font-size: 100px;
+		}
 
-			input {
-				background: lightgray;
-				border: #767676 solid 1px;
-				border-radius: 2.5px;
-				padding: 2px;
-				transition: all 0.1s ease;
-				padding: 5px;
-			}
+		button {
+			background: none;
+			border: none;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body id="body">
+	<section>
 
-			input:focus {
-				background: white;
-				border: #767676 solid 1px;
-				border-radius: 2.5px;
-				transition: all 0.1s ease;
-				outline: none;
-			}
-
-			section {
-				background-size: cover;
-				height: 100%;
-				padding: 0;
-				margin: 0;
-				width: 100%;
-				background-color: #1d1d1d;
-				transition: all 0.1s ease;
-			}
-
-			nav {
-				display: inline-block;
-			}
-
-			li {
-				float: left;
-				display: block;
-			}
-
-			.users {
-				background-color: none;
-				border-radius: 0px 0px 5px 5px;
-				padding: 5px;
-			}
-
-			h1 {
-				text-shadow: 0 0 4px #000;
-				font-size: 40px;
-				color: white;
-			}
-
-			#user1 {
-				display: flex;
-				justify-content: center;
-				place-items: center;
-			}
-
-			.sidebar2 {
-				height: 520px;
-				width: 605px;
-				overflow: auto;
-				background: none;
-				border-radius: 5px;
-				backdrop-filter: blur(10px);
-				border-top: 2px solid #2d2d2d;
-			}
-
-			.applist {
-				color: white;
-				border-radius: 5px 0px 0px 0px;
-				padding: 5px;
-				box-sizing: border-box;
-				background-color: #1d1d1ddd;
-				overflow: auto;
-			}
-
-			.widgets {
-				background: #2d2d2ddd;
-			}
-
-			.notification {
-				background-color: #4d4d4d;
-				padding: 5px;
-				margin-bottom: 5px;
-				border-radius: 5px;
-				box-sizing: border-box;
-				min-height: 30px;
-			}
-
-			.menubutton2 {
-				background: none;
-				border: black solid 0px;
-				font-family: Inter;
-				color: white;
-				float: left;
-				text-align: left;
-				font-size: 20px;
-				margin-bottom: 5px;
-				border-radius: 5px;
-				padding: 5px;
-			}
-
-			.menubutton2:hover {
-				background-color: #8d8d8d80;
-				transition: all 0.1s ease;
-			}
-
-			.menubutton2:active {
-				background-color: #6d6d6d66;
-				cursor: progress;
-				transition: all 0.1s ease;
-			}
-		</style>
-	</head>
-
-<body>
-	<section id="body">
-		<div class="options">
-
-
-			<div id="user1" style="height: 100%; width: 100%;">
-				<div class="sidebar2" id="Sidebar">
-
-					<div class="applist" id="applist"
-						style="width: 50%; height: 100%; display: flex; flex-direction: column; float:left;">
-						<p style="text-align: center;" class="notification"><i class="fa-solid fa-power-off"
-								style="float: right;" onclick="shutdown()"></i><span id="span"></span></p>
-						<button onclick="openuser1()" class="menubutton2"><img src="Icons/user.png"
-								style="height: 30px; width: 30px;"> User1</img></button>
-					</div>
-
-					<div style="width: 50%; height: 100%; display: flex; flex-direction: column; float:right;"
-						class="widgets">
-						<iframe style="height: 100%; border: none;" src="widgets.html"></iframe>
-					</div>
-				</div>
+			<div>
+				<h3>Press any key to start.</h3>
+				<h1 id="span">12:00</h1>
+				<h3 id="wttr">Getting weather information...</h3>
 			</div>
 
-			<div class="applist" id="applist"></div>
-			<script type="text/javascript" src="scripts/jsonloader.js"></script>
-			<script defer>
-				window.addEventListener('load', function () {
-					document.getElementById("body").style.backgroundImage = `url(${desktopConfig.backgroundImage})`;
-				})
+			<button onclick="shutdown()">
+				<h3><i class="fa-solid fa-right-from-bracket"></i></h3>
+			</button>
 
-				function aloginuser1() {
-					document.getElementById("user1").style.display = "block";
-					document.getElementById("user2").style.display = "none";
-				}
-				function aloginuser2() {
-					document.getElementById("user2").style.display = "block";
-					document.getElementById("user1").style.display = "none";
-				}
-				function openuser1() {
-					window.location.replace("kasiusdesktop.html")
-				}
-				function openuser2() {
-					if (document.getElementById("input").value == "69420") {
-						window.location.replace("kasiusdesktop2.html");
-					} else {
-						window.alert("Incorrect Password!");
-					}
-				}
-				function shutdown() {
-					window.close();
-				}
-			</script>
-		</div>
 	</section>
+
+	<script type="text/javascript" src="scripts/jsonloader.js"></script>
+	<script defer>
+		window.addEventListener('load', function () {
+			document.getElementById("body").style.background = `
+				 linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 1)), url(${desktopConfig.backgroundImage})
+			`;
+		})
+
+		function openuser1() {
+			window.location.replace("kasiusdesktop.html")
+		}
+
+		function shutdown() {
+			if (!confirm('Are you sure?')) return;
+
+			window.close();
+		}
+
+		fetch('https://wttr.in/London?format=3')
+			.then((response) => response.text())
+			.then((text) => {
+			document.getElementById('wttr').innerText = text;
+			});
+
+	    document.addEventListener('keydown',function(ev) {
+	    	openuser1()
+	    });
+	</script>
 </body>
 
 </html>

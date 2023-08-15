@@ -12,6 +12,7 @@ function notifications(msg, app) {
     let min = today.getMinutes();
     if (dd < 10) dd = '0' + dd;
     if (mm < 10) mm = '0' + mm;
+    if (min < 10) min = '0' + min;
     const formattedToday = dd + '/' + mm + '/' + yyyy + '  ' + hour + ':' + min;
 
     li.classList.add('notification');

@@ -8,7 +8,7 @@ window.addEventListener('load', function () {
   document.getElementById("footer").style.textAlign = desktopConfig.iconStyle;
   document.getElementById("menutogglebuttonimg").src = desktopConfig.footerIcon;
   setTimeout(function () {
-    document.getElementById('errorbox1').style.display = "none";
+    document.getElementById('welcomescreen').style.display = "none";
   }, 3000);
 })
 

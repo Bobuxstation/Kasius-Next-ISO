@@ -20,13 +20,12 @@
 
 <body id="body">
 
-    <div id="errorbox1" style="display: flex;">
-        <div style="text-align: center;">
-            <img src="Icons/user.png" style="width: 12.5vw;">
-            <br><br>
-            <h3 style="color: white;">Welcome Back!</h3>
-            <br>
-            <progress></progress>
+    <div id="welcomescreen" style="display: flex;">
+        <div>
+            <h3 style="color: white;">
+                <span id="activationProgress"></span>
+                <P>Welcome Back!</P>
+            </h3>
         </div>
     </div>
 
@@ -41,8 +40,8 @@
                 Out</p>
         </div>
     </div>
-    <div class="sidebar2" id="Sidebar">
 
+    <div class="sidebar2" id="Sidebar">
         <div class="applist" id="applist"
             style="width: 50%; height: 100%; display: flex; flex-direction: column; float:left;">
         </div>
@@ -74,7 +73,7 @@
             </div>
             <div class="content" style="width: 800px;">
                 <div class="settingssidebar"
-                    style="width: 162px; float: left; height: 450px; backdrop-filter: blur(10px); box-sizing: border-box; padding: 5px;">
+                    style="width: 162px;float: left;height: 450px;backdrop-filter: blur(10px);box-sizing: border-box;padding: 10px;">
                     <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-paint-roller"></i> Background
                     </H4>
                     <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-palette"></i> Themes</H4>
@@ -82,7 +81,7 @@
                     <h4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-flask"></i> Experimental</h4>
                 </div>
                 <div class="Settings"
-                    style="background-color: lightgray; float: right; width: 628px; height: 440px; padding: 5px; overflow: auto;">
+                    style="background-color: lightgray;float: right;width: 638px;height: 450px;padding: 10px;overflow: auto;box-sizing: border-box;">
 
 
                     <fieldset>
@@ -131,7 +130,7 @@
             <ul id="footer1">
                 <li><button style="display: none;"
                         onclick="show('window6'); this.className = 'menubuttonminimized menubuttonminimizing'"
-                        class="menubuttonminimized" id="minimizedsettings"><i style="height: 22.5px; width: 22.5px;"
+                        class="menubuttonminimized" id="minimizedsettings"><i style="padding-top: 2px;padding-left: 1px;"
                             class="fa-solid fa-gear"></i></button></li>
             </ul>
         </nav>

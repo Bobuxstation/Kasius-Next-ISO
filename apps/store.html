@@ -25,7 +25,7 @@
 
     #applist {
       width: 87.5%;
-      padding: 10px;
+      padding: 15px;
     }
 
     ::file-selector-button {
@@ -44,7 +44,7 @@
       height: 100vh;
       float: right;
       background: lightgray;
-      padding: 5px;
+      padding: 15px;
       box-sizing: border-box;
     }
 
@@ -58,6 +58,7 @@
       background-color: #1d1d1ddd;
       backdrop-filter: blur(10px);
       color: white;
+      overflow-x: hidden;
     }
 
     .applistsidebar button {
@@ -102,7 +103,7 @@
     }
 
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 2px;
       height: 6px;
     }
 
@@ -147,6 +148,7 @@
       border-radius: 2.5px;
       padding: 5px;
       transition: all 0.1s ease;
+      padding: 10px;
     }
 
     .content button:hover {
@@ -172,13 +174,16 @@
         <div id="divToShowWhenPackageIsSelected" style="display: none;">
           <img title="App Icon" id="appIconImage" onerror="this.src='../Icons/user.png'"
             style='height: 75px; width: 75px; float: left; margin-right: 5px;'>
-          <h1 id="appName">App Name</h1>
-          <p id="appURL">App URL</p>
+          <h1 id="appName" style="
+              padding-top: 11.5px;
+              padding-left: 90px;
+          ">App Name</h1>
+          <p id="appURL" style="
+              padding-left: 90px;
+          ">App URL</p>
 
-          <br><br>
-
-          <button style="width: 100%; color: black;" class="kaosbutton" id="removeAppButton">Remove</button><br><br>
-          <button style="width: 100%; color: black;" class="kaosbutton" onclick="exportKPK()">Export</button>
+          <button style="width: 100%; color: black; margin-top: 15px;" class="kaosbutton" id="removeAppButton">Remove</button><br>
+          <button style="width: 100%; color: black; margin-top: 15px;" class="kaosbutton" onclick="exportKPK()">Export</button>
         </div>
       </div>
 

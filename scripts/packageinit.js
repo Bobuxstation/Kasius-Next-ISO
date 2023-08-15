@@ -1,3 +1,5 @@
+var appDebugMode = false
+
 function stringGen() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -58,9 +60,11 @@ function spawnwindow(name, URL, icon, height, width) {
     webview.src = URL;
     webview.setAttribute("webpreferences", "contextIsolation=false");
     webview.setAttribute("nodeintegration", "");
-    // webview.addEventListener('did-finish-load', function () {
-    //     webview.openDevTools()
-    // });
+    if (appDebugMode == true) {
+        webview.addEventListener('did-finish-load', function () {
+            webview.openDevTools()
+        });
+    }
 
     //create minimized icon
     minimized.innerHTML = "<img style='height: 22.5px; width: 22.5px;' src='" + icon + "'></img>";
@@ -102,21 +106,21 @@ function loadApps(searchQuery) {
     .then((data) => {
         applist.innerHTML = `
         <p style="text-align: center;" class="notification">
-            <i class="fa-solid fa-right-from-bracket" style="float: right;" onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);"></i>
-            <i class="fa-solid fa-search" style="float: left;" onclick="toggleSearch()"></i>
+            <i class="fa-solid fa-right-from-bracket" style="float: right; margin: 2px;" onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);"></i>
+            <i class="fa-solid fa-search" style="float: left; margin: 2px;" onclick="toggleSearch()"></i>
             <span id="span"></span>
         </p>
         <input class="notification" id="searchbox" style="display: none;" onchange="loadApps(this.value)" value="${searchQuery}" placeholder="Search Apps">
         
         <button onclick="Closetestwindow6(); menu()" class="menubutton2">
-            <img src="Icons/settings.png"style="height: 30px; width: 30px;"> Settings</img>
+            <img src="Icons/settings.png"style="height: 30px; width: 30px;"> <span>Settings</span>
         </button>
         `
         data.packages.forEach(items => {
             let applist = document.getElementById("applist");
             let btn = document.createElement("btn");
             btn.className = "menubutton2"
-            btn.innerHTML = "<img style='height: 30px; width: 30px;' src='" + items.icon + "'></img> " + items.name;
+            btn.innerHTML = "<img style='height: 30px; width: 30px;' src='" + items.icon + "'></img> <span>" + items.name + "</span>";
             btn.onclick = function () {
                 spawnwindow(items.name, items.URL, items.icon, items.height, items.width)
                 menu()
