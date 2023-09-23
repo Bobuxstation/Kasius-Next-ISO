@@ -185,6 +185,7 @@ nav {
     margin-left: 5px;
     border: 1px solid rgba(157, 157, 157, 0.125);
     position: fixed !important;
+    display: none;
 }
 
 .menubutton2 {
@@ -229,6 +230,10 @@ button {
 #searchbox {
     color: white;
     border-radius: 5px !important;
+    background: #1d1d1d;
+    border: 1px solid rgba(157, 157, 157, 0.125);
+    margin: 5px;
+    margin-top: 0;
 }
 
 .list li {
@@ -521,42 +526,6 @@ input {
     border: 1px solid rgb(118, 118, 118);
     border-radius: 2.5px;
     transition: all 0.1s ease 0s;
-}
-
-::-webkit-scrollbar {
-    width: 2px;
-    height: 6px;
-}
-
-::-webkit-scrollbar-button {
-    width: 4px;
-    height: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgb(77, 77, 77);
-    border: 0px none rgb(255, 255, 255);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(109, 109, 109);
-}
-
-::-webkit-scrollbar-thumb:active {
-    background: rgb(141, 141, 141);
-}
-
-::-webkit-scrollbar-track {
-    background: rgb(45, 45, 45);
-    border: 0px none rgb(255, 255, 255);
-}
-
-::-webkit-scrollbar-track:hover {
-    background: rgb(45, 45, 45);
-}
-
-::-webkit-scrollbar-track:active {
-    background: rgb(45, 45, 45);
 }
 
 .noteinput {

@@ -4,7 +4,9 @@ function time() {
   var s = d.getSeconds();
   var m = d.getMinutes();
   var h = d.getHours();
-  span.innerText = (" ") + ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2);
+  try {
+    span.innerText = (" ") + ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2);
+  } catch {}
 };
 
 setInterval(time)

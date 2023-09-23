@@ -5,6 +5,7 @@
     <!--Scripts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="style.css" id="style">
+    <link rel="stylesheet" href="scroll.css" id="style">
     <link rel="stylesheet" href="apps/jqueryUI.css">
 
     <script type="text/javascript" src="scripts/jsonloader.js"></script>
@@ -41,7 +42,7 @@
         </div>
     </div>
 
-    <div class="sidebar2" id="Sidebar">
+    <div class="sidebar2" id="Sidebar" style="display: none;">
         <div class="applist" id="applist"
             style="width: 50%; height: 100%; display: flex; flex-direction: column; float:left;">
         </div>
@@ -51,7 +52,7 @@
         </div>
     </div>
 
-    <div class="notifications" id="Sidebar2">
+    <div class="notifications" id="Sidebar2" style="display: none;">
         <p style="text-align: center;" class="notification">Notifications Center</p>
         <ul id="list" class="list">
         </ul>
@@ -115,6 +116,7 @@
                             onclick="notifybeta()">Notify</button><br><br>
                         <button onclick="remote.getCurrentWindow().webContents.openDevTools()">Open Developer
                             Console</button>
+                        <button onclick="appDebugMode = true">Enable app developer mode</button>
                     </fieldset>
                 </div>
     </section>

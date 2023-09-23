@@ -1,6 +1,6 @@
 var notify = new Audio("medias/notification.mp3");
 
-function notifications(msg, app) {
+function notifications(msg, app, isSilent) {
     var ul = document.getElementById("list");
     var li = document.createElement("li");
 
@@ -25,7 +25,9 @@ function notifications(msg, app) {
 
     ul.appendChild(li);
     notify.play();
-    document.getElementById("Sidebar2").style.display = "block";
+    if (!isSilent) {
+        document.getElementById("Sidebar2").style.display = "block";
+    }
 }
 
 function notifybeta() {
@@ -33,4 +35,4 @@ function notifybeta() {
     notifications(notificationvar);
 }
 
-notifications("Welcome To Kasius Next!", "System")
+notifications("Welcome To Kasius Next!", "System", true)

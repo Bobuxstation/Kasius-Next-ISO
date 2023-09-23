@@ -40,6 +40,11 @@ function menu() {
     x.style.display = "none";
   }
 }
+document.addEventListener("keydown", (event) => {
+  if (event.key === 'Meta') {
+    menu()
+  }
+});
 function NotificationMenu() {
   var x = document.getElementById("Sidebar2");
   if (x.style.display === "none") {

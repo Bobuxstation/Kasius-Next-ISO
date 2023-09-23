@@ -74,6 +74,13 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
                 "width": 800
             },
             {
+                "name": "Pixel",
+                "URL": "apps/pixel.html",
+                "icon": "Icons/pixel.png",
+                "height": 450,
+                "width": 800
+            },
+            {
                 "name": "Terminal",
                 "URL": "apps/gigashell.html",
                 "icon": "Icons/terminal.png",

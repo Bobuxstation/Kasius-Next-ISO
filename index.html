@@ -44,8 +44,11 @@
 				<h3 id="wttr">Getting weather information...</h3>
 			</div>
 
-			<button onclick="shutdown()">
+			<button onclick="exitDesktop()" style="margin-right: 76px;">
 				<h3><i class="fa-solid fa-right-from-bracket"></i></h3>
+			</button>
+			<button onclick="shutdown()">
+				<h3><i class="fa-solid fa-power-off"></i></h3>
 			</button>
 
 	</section>
@@ -62,13 +65,20 @@
 			window.location.replace("kasiusdesktop.html")
 		}
 
-		function shutdown() {
+		function exitDesktop() {
 			if (!confirm('Are you sure?')) return;
 
 			window.close();
 		}
 
-		fetch('https://wttr.in/London?format=3')
+		function shutdown() {
+			if (!confirm('Are you sure?')) return;
+
+			const { spawn } = require('child_process');
+			spawn('shutdown', ['now']);
+		}
+
+		fetch('https://wttr.in/?format=3')
 			.then((response) => response.text())
 			.then((text) => {
 			document.getElementById('wttr').innerText = text;
