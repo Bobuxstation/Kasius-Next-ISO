@@ -77,6 +77,7 @@
                     style="width: 162px;float: left;height: 450px;backdrop-filter: blur(10px);box-sizing: border-box;padding: 10px;">
                     <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-paint-roller"></i> Background
                     </H4>
+                    <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-display"></i> Display</H4>
                     <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-palette"></i> Themes</H4>
                     <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-rectangle-list"></i> Footer</H4>
                     <h4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-flask"></i> Experimental</h4>
@@ -93,6 +94,13 @@
                         <button onclick="bg('background/Boardwalk.png')">Boardwalk</button><br><br>
                         <button onclick="bg('https://source.unsplash.com/1600x900/?landscape')">Random</button><br><br>
                         <input type="file" accept="image/*" onchange="custom_bg(event)">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Display</legend>
+                        <button onclick="zoom(-0.25)">-</button>
+                        <button id="zoomMeter">1</button>
+                        <button onclick="zoom(0.25)">+</button>
                     </fieldset>
 
                     <fieldset>
@@ -131,9 +139,9 @@
         <nav>
             <ul id="footer1">
                 <li><button style="display: none;"
-                        onclick="show('window6'); this.className = 'menubuttonminimized menubuttonminimizing'"
-                        class="menubuttonminimized" id="minimizedsettings"><i style="padding-top: 2px;padding-left: 1px;"
-                            class="fa-solid fa-gear"></i></button></li>
+                        onclick="show('window6'); this.className = 'menubuttonminimized menubuttonminimizing'; focusWindow(document.getElementById('window6'))"
+                        class="menubuttonminimized" id="minimizedsettings"><i
+                            style="padding-top: 2px;padding-left: 1px;" class="fa-solid fa-gear"></i></button></li>
             </ul>
         </nav>
         <button style="float: right;" onclick="NotificationMenu()" class="menubutton"

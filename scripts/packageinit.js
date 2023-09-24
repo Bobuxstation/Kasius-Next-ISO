@@ -72,6 +72,7 @@ function spawnwindow(name, URL, icon, height, width) {
     minimized.onclick = function () {
         window.style.display = "block"
         minimized.className = "menubuttonminimized menubuttonminimizing"
+        focusWindow(window)
     }
 
     //append the elements

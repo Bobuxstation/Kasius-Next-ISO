@@ -1,3 +1,4 @@
+const { webFrame } = require('electron');
 window.$ = window.jQuery = require('jquery');
 const electron = require('electron');
 const remote = require('@electron/remote');
@@ -103,6 +104,7 @@ if (fs.existsSync(configDir + '/desktopconfig.json')) {
         "theme": "style.css",
         "iconStyle": "center",
         "footerIcon": "https://zeankundev.github.io/KaOS-13/logo.svg",
+        "zoomVal": 0
     };
     let data = JSON.stringify(jsontemplate, null, "\t");
     fs.writeFileSync(configDir + '/desktopconfig.json', data);

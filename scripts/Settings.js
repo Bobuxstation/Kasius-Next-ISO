@@ -1,12 +1,31 @@
 var shutdown = new Audio('medias/shutdown.mp3');
 var errorsound = new Audio("medias/error.mp3");
 
+function zoom(val) {
+  webFrame.setZoomLevel(webFrame.getZoomLevel() + val);
+  document.getElementById('zoomMeter').innerText = webFrame.getZoomLevel();
+
+  var obj = (desktopConfig);
+  obj.zoomVal = webFrame.getZoomLevel();
+  jsonStr = JSON.stringify(obj, null, "\t");
+  console.log(jsonStr)
+  fs.writeFile(configDir + '/desktopconfig.json', jsonStr, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
+
 //load all settings
 window.addEventListener('load', function () {
   document.getElementById("body").style.backgroundImage = `url(${desktopConfig.backgroundImage})`;
   document.getElementById("style").href = desktopConfig.theme;
   document.getElementById("footer").style.textAlign = desktopConfig.iconStyle;
   document.getElementById("menutogglebuttonimg").src = desktopConfig.footerIcon;
+
+  webFrame.setZoomLevel(desktopConfig.zoomVal);
+  document.getElementById('zoomMeter').innerText = desktopConfig.zoomVal;
+
   setTimeout(function () {
     document.getElementById('welcomescreen').style.display = "none";
   }, 3000);
