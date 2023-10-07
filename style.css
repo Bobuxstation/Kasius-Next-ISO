@@ -408,7 +408,7 @@ input {
 }
 
 .menubuttonminimized:hover {
-    background-color: rgba(141, 141, 141, 0.5);
+    background-color: rgba(77, 77, 77, 0.25);
     transition: all 0.1s ease 0s;
 }
 
