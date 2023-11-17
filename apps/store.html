@@ -72,6 +72,10 @@
       transition: all 0.1s ease;
       margin-bottom: 5px;
       font-size: 16px;
+      text-overflow: ellipsis;
+      height: 44px;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     .applistsidebar button:hover {
@@ -129,6 +133,17 @@
       border-radius: 2.5px;
       transition: all 0.1s ease;
     }
+
+    .card img {
+      width: 10vw;
+      margin-bottom: 10px;
+      aspect-ratio: 1/1;
+    }
+
+    .card {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 
@@ -136,6 +151,9 @@
   <section>
     <div class="div">
       <div class="content">
+        <div id="divToShowWhenStoreIsSelected">
+          <h1 style="margin-bottom: 15px;">Download Packages</h1>
+        </div>
         <div id="divToShowWhenPackageIsSelected" style="display: none;">
           <img title="App Icon" id="appIconImage" onerror="this.src='../Icons/user.png'"
             style='height: 75px; width: 75px; float: left; margin-right: 5px;'>
@@ -147,17 +165,19 @@
               padding-left: 90px;
           ">App URL</p>
 
-          <button style="width: 100%; color: black; margin-top: 15px;" class="kaosbutton" id="removeAppButton">Remove</button><br>
-          <button style="width: 100%; color: black; margin-top: 15px;" class="kaosbutton" onclick="exportKPK()">Export</button>
+          <button style="width: 100%; color: black; margin-top: 15px;" class="kaosbutton"
+            id="removeAppButton">Remove</button><br>
+          <button style="width: 100%; color: black; margin-top: 15px;" class="kaosbutton"
+            onclick="exportKPK()">Export</button>
         </div>
       </div>
 
       <div class="applistsidebar">
         <div id="applist">
-          <input type="file" id="file-input" onchange="importPkg()" accept=".kpk" required
-            style="display: none;"></input>
-          <button onclick="document.getElementById('file-input').click()">+ Install Package</button>
         </div>
+      </div>
+    </div>
+  </section>
 </body>
 <script>
   const remote = require('@electron/remote');
@@ -166,7 +186,6 @@
   var applist = document.getElementById("applist");
   const jsonData = require(configDir + '/kasiuspkg.json');
   const fs = require("fs")
-  console.log(configDir)
   var item
 
   function importPkg() {
@@ -225,25 +244,62 @@
     });
   }
 
+  async function fetchStore() {
+    let fetchJSON = await fetch('https://bobuxstation.github.io/KasiusNextCDN/')
+    let data = await fetchJSON.json()
+
+    data.packages.forEach(function (items) {
+      let btn = document.createElement("button");
+      btn.className = 'card'
+      btn.innerHTML = `
+        <img src="${items.icon}" alt="${items.name}"><br>
+        <b>${items.name}</b><br>
+        ${items.by}
+      `
+      btn.onclick = function () {
+        item = items;
+        document.getElementById('divToShowWhenStoreIsSelected').style.display = 'none'
+        document.getElementById("appIconImage").src = items.icon;
+        document.getElementById("appName").innerText = items.name;
+        document.getElementById("appURL").innerText = items.desc;
+        document.getElementById("divToShowWhenPackageIsSelected").style.display = "block";
+        document.getElementById("removeAppButton").innerText = 'Install'
+
+        document.getElementById("removeAppButton").onclick = function () {
+          add(items.name, items.URL, items.icon, items.height, items.width)
+        };
+      }
+
+      document.getElementById('divToShowWhenStoreIsSelected').appendChild(btn)
+    })
+  }
+
+  function showStore() {
+    document.getElementById("divToShowWhenPackageIsSelected").style.display = "none";
+    document.getElementById("divToShowWhenStoreIsSelected").style.display = "block";
+  }
+
   function reloadApps() {
     let applist = document.getElementById("applist");
     applist.innerHTML = `
       <input type="file" id="file-input" onchange="importPkg()" required style="display: none;"></input>
-      <button onclick="document.getElementById('file-input').click()">+ Install Package</button>
+      <button onclick="showStore()">+ Download Package</button>
+      <button onclick="document.getElementById('file-input').click()">+ Sideload Package</button>
     `
     jsonData.packages.forEach(function (items, index) {
-      console.log(index)
       let btn = document.createElement("button");
       btn.className = "menubutton2"
       btn.innerHTML = `
           <img style='height: 30px; width: 30px;' onerror="this.onerror=null; this.src='../Icons/user.png'" src='${items.icon}'></img> ${items.name}
       `;
       btn.onclick = function () {
+        document.getElementById('divToShowWhenStoreIsSelected').style.display = 'none'
         item = items;
         document.getElementById("appIconImage").src = items.icon;
         document.getElementById("appName").innerText = items.name;
         document.getElementById("appURL").innerText = items.URL;
         document.getElementById("divToShowWhenPackageIsSelected").style.display = "block";
+        document.getElementById("removeAppButton").innerText = 'Remove'
 
         document.getElementById("removeAppButton").onclick = function () {
           removeItem(index, items)
@@ -254,6 +310,7 @@
     })
   }
   reloadApps()
+  fetchStore()
 </script>
 
 </html>

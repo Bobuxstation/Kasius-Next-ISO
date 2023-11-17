@@ -22,14 +22,6 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
 
             },
             {
-                "name": "Cubic Productivity Suite",
-                "URL": "https://mobiz-advanced-technologies.github.io/Cubic/",
-                "icon": "https://mobiz-advanced-technologies.github.io/Cubic/Papers/icon.png",
-                "height": 450,
-                "width": 800
-
-            },
-            {
                 "name": "Files",
                 "URL": "apps/files.html",
                 "icon": "Icons/filesicon.png",
@@ -49,14 +41,6 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
                 "icon": "Icons/media.png",
                 "height": 450,
                 "width": 800
-
-            },
-            {
-                "name": "Meme Maker",
-                "URL": "apps/mememaker.html",
-                "icon": "Icons/mememaker.png",
-                "height": 450,
-                "width": 600
 
             },
             {
