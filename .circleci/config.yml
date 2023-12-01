@@ -51,7 +51,7 @@ jobs:
             -u "${CIRCLE_PROJECT_USERNAME}" \
             -r "${CIRCLE_PROJECT_REPONAME}" \
             -c "${CIRCLE_SHA1}" \
-            v1.2.3 /tmp/filesystem
+            v1.2.4 /tmp/filesystem
 
 workflows:
   build_and_publish:

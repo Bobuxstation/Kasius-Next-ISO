@@ -87,7 +87,7 @@ if (fs.existsSync(configDir + '/desktopconfig.json')) {
         "backgroundImage": "bg.jpg",
         "theme": "style.css",
         "iconStyle": "center",
-        "footerIcon": "https://zeankundev.github.io/KaOS-13/logo.svg",
+        "footerIcon": "logo.svg",
         "zoomVal": 0
     };
     let data = JSON.stringify(jsontemplate, null, "\t");
