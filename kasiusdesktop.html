@@ -20,7 +20,6 @@
 </head>
 
 <body id="body">
-
     <div id="welcomescreen" style="display: flex;">
         <div>
             <h3 style="color: white;">
@@ -53,17 +52,20 @@
     </div>
 
     <div class="notifications" id="Sidebar2" style="display: none;">
+        <p style="text-align: center;" class="notification">Quick Actions</p>
+        <div class="notification notificationMessage" id="batteryInfo"></div>
+        <div class="notification notificationMessage" id="internetSettings"></div>
         <p style="text-align: center;" class="notification">Notifications Center</p>
         <ul id="list" class="list">
         </ul>
     </div>
 
-
     <!--Window-->
 
     <section style="height: 100vh; " id="section">
+        <div id="shortcuts">
 
-
+        </div>
         <div style="display: none;" class="window" id="window6" onclick="focusWindow(this)">
             <div class="header" id="header">
                 <button class="headertext">Settings</button>
@@ -84,7 +86,6 @@
                 </div>
                 <div class="Settings"
                     style="background-color: lightgray;float: right;width: 638px;height: 450px;padding: 10px;overflow: auto;box-sizing: border-box;">
-
 
                     <fieldset>
                         <legend>Background</legend>
@@ -129,7 +130,6 @@
                 </div>
     </section>
 
-
     <!--Footer-->
 
     <footer id="footer">
@@ -144,11 +144,10 @@
                             style="padding-top: 2px;padding-left: 1px;" class="fa-solid fa-gear"></i></button></li>
             </ul>
         </nav>
-        <button style="float: right;" onclick="NotificationMenu()" class="menubutton"
+        <button style="float: right;" onclick="NotificationMenu(); refreshWifiPicker(); getBatteryInfo()" class="menubutton"
             style="width: 50px; padding-top: 0px;" id="menutogglebutton"><i style="height: 22.5px; width: 22.5px;"
                 class="fa-solid fa-bars"></i></button>
     </footer>
-
     <script>$(".window").draggable({ handle: ".header", containment: "#body", opacity: 0.75 });</script>
 </body>
 

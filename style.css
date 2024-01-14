@@ -97,6 +97,18 @@ footer {
     border-width: 1px 0px 0px;
 }
 
+.shortcut img {
+    backdrop-filter: blur(10px);
+    background-color: rgba(29, 29, 29, 0.867) !important;
+    padding: 15px !important;
+    cursor: pointer;
+}
+
+.shortcut {
+    padding: 0px !important;
+    margin: 15px !important;
+}
+
 .closebutton:hover {
     background-color: red;
     transition: all 0.1s ease 0s;
@@ -184,8 +196,8 @@ nav {
     animation: 0.1s ease 0s 1 normal none running slideup;
     margin-left: 5px;
     border: 1px solid rgba(157, 157, 157, 0.125);
-    position: fixed !important;
     display: none;
+    position: fixed !important;
 }
 
 .menubutton2 {
@@ -225,15 +237,15 @@ button {
     border: 1px solid rgba(157, 157, 157, 0.125);
     margin-right: 5px;
     position: fixed !important;
+    max-height: calc(100vh - 72px);
 }
 
 #searchbox {
     color: white;
-    border-radius: 5px !important;
-    background: #1d1d1d;
+    background: rgba(77, 77, 77, 0.25);
     border: 1px solid rgba(157, 157, 157, 0.125);
-    margin: 5px;
-    margin-top: 0;
+    margin: 0px 5px 5px;
+    border-radius: 5px !important;
 }
 
 .list li {
@@ -613,7 +625,7 @@ input {
 .menubutton2 img {
     float: left;
     aspect-ratio: 1 / 1;
-    background: rgba(29, 29, 29, 0.67);
+    background: rgba(77, 77, 77, 0.25);
     padding: 5px;
     border-radius: 5px;
     border: 1px solid rgba(157, 157, 157, 0.125);

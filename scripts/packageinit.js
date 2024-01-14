@@ -1,4 +1,5 @@
 var appDebugMode = false
+var shortcutAdded = false
 
 function stringGen() {
     var text = "";
@@ -119,6 +120,7 @@ function loadApps(searchQuery) {
         `
         data.packages.forEach(items => {
             let applist = document.getElementById("applist");
+
             let btn = document.createElement("btn");
             btn.className = "menubutton2"
             btn.innerHTML = "<img style='height: 30px; width: 30px;' src='" + items.icon + "'></img> <span>" + items.name + "</span>";
@@ -126,11 +128,23 @@ function loadApps(searchQuery) {
                 spawnwindow(items.name, items.URL, items.icon, items.height, items.width)
                 menu()
             }
+
+            let shortcut = document.createElement("btn");
+            shortcut.className = "menubutton2 shortcut"
+            shortcut.innerHTML = "<img style='height: 50px; width: 50px;' src='" + items.icon + "'></img>";
+            shortcut.onclick = function () {
+                spawnwindow(items.name, items.URL, items.icon, items.height, items.width)
+            }
+
             let nameOfApp = items.name.toLowerCase()
             if (nameOfApp.includes(searchQuery.toLowerCase())) {
                 applist.appendChild(btn);
+                if (!shortcutAdded) {
+                    //document.getElementById("section").appendChild(shortcut)
+                }
             }
         })
+        shortcutAdded = true
     });
 }
 
