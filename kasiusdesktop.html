@@ -10,7 +10,6 @@
 
     <script type="text/javascript" src="scripts/jsonloader.js"></script>
     <script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="scripts/jqueryui2.js"></script>
     <script type="text/javascript" src="scripts/close.js"></script>
     <script type="text/javascript" src="scripts/fontawesome.js"></script>
     <script type="text/javascript" src="scripts/time.js" defer></script>
@@ -63,71 +62,6 @@
     <!--Window-->
 
     <section style="height: 100vh; " id="section">
-        <div id="shortcuts">
-
-        </div>
-        <div style="display: none;" class="window" id="window6" onclick="focusWindow(this)">
-            <div class="header" id="header">
-                <button class="headertext">Settings</button>
-                <button onclick="Closetestwindow6()" class="closebutton"><i class="fa-solid fa-xmark"></i></button>
-                <button
-                    onclick="hide('window6'); document.getElementById('minimizedsettings').className = 'menubuttonminimized'"
-                    class="minimize"><i class="fa-solid fa-window-minimize"></i></button>
-            </div>
-            <div class="content" style="width: 800px;">
-                <div class="settingssidebar"
-                    style="width: 162px;float: left;height: 450px;backdrop-filter: blur(10px);box-sizing: border-box;padding: 10px;">
-                    <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-paint-roller"></i> Background
-                    </H4>
-                    <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-display"></i> Display</H4>
-                    <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-palette"></i> Themes</H4>
-                    <H4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-rectangle-list"></i> Footer</H4>
-                    <h4 style="padding:5px; margin-bottom: 5px;"><i class="fa-solid fa-flask"></i> Experimental</h4>
-                </div>
-                <div class="Settings"
-                    style="background-color: lightgray;float: right;width: 638px;height: 450px;padding: 10px;overflow: auto;box-sizing: border-box;">
-
-                    <fieldset>
-                        <legend>Background</legend>
-                        <button onclick="bg('bg.jpg')">Normal</button><br><br>
-                        <button onclick="bg('background/citywater.png')">City With Water</button><br><br>
-                        <button onclick="bg('background/Flowers.png')">Flowers</button><br><br>
-                        <button onclick="bg('background/Boardwalk.png')">Boardwalk</button><br><br>
-                        <button onclick="bg('https://source.unsplash.com/1600x900/?landscape')">Random</button><br><br>
-                        <input type="file" accept="image/*" onchange="custom_bg(event)">
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Display</legend>
-                        <button onclick="zoom(-0.25)">-</button>
-                        <button id="zoomMeter">1</button>
-                        <button onclick="zoom(0.25)">+</button>
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Themes</legend>
-                        <button onclick="theme1()">Default</button><br><br>
-                        <input id="cssimport" placeholder="Import Theme"></input> <button
-                            onclick="cssimport()">Import</button>
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Footer</legend>
-                        <input id="changelogo" placeholder="Customize menu launch icon"></input> <button
-                            onclick="changelogo()">Change</button><br><br>
-                        <button onclick="iconstyle('left')">Left align icons</button>
-                        <button onclick="iconstyle('center')">Center icons</button>
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Experimental</legend>
-                        <input id="notifybeta" placeholder="Write a notification"></input> <button
-                            onclick="notifybeta()">Notify</button><br><br>
-                        <button onclick="remote.getCurrentWindow().webContents.openDevTools()">Open Developer
-                            Console</button>
-                        <button onclick="appDebugMode = true">Enable app developer mode</button>
-                    </fieldset>
-                </div>
     </section>
 
     <!--Footer-->
@@ -138,10 +72,7 @@
                 style="height: 24px; margin-top: 3px; width: 22.5px;"></img></button>
         <nav>
             <ul id="footer1">
-                <li><button style="display: none;"
-                        onclick="show('window6'); this.className = 'menubuttonminimized menubuttonminimizing'; focusWindow(document.getElementById('window6'))"
-                        class="menubuttonminimized" id="minimizedsettings"><i
-                            style="padding-top: 2px;padding-left: 1px;" class="fa-solid fa-gear"></i></button></li>
+
             </ul>
         </nav>
         <button style="float: right;" onclick="NotificationMenu(); refreshWifiPicker(); getBatteryInfo()" class="menubutton"

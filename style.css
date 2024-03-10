@@ -2,7 +2,7 @@ body {
     background-image: url("bg.jpg");
     overflow: hidden;
     background-size: cover;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
     background-color: black;
     font-family: Inter !important;
 }
@@ -26,7 +26,7 @@ footer {
 
 .window {
     display: none;
-    animation: 0.1s ease 0s 1 normal none running fadein;
+    animation: 0.5s ease 0s 1 normal none running fadein;
     border: 1px solid rgba(157, 157, 157, 0.125);
     border-radius: 5px;
     height: fit-content !important;
@@ -67,7 +67,7 @@ footer {
     border-radius: 5px;
     font-size: 17.5px;
     margin: 3px 0px 3px 3px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .headertext:hover {
@@ -78,7 +78,7 @@ footer {
     border-radius: 5px;
     font-size: 17.5px;
     margin: 3px 0px 3px 3px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .closebutton {
@@ -90,7 +90,7 @@ footer {
     border-radius: 5px;
     font-size: 18px;
     margin: 3px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
     border-style: groove;
     border-color: darkred;
     border-image: initial;
@@ -111,12 +111,12 @@ footer {
 
 .closebutton:hover {
     background-color: red;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .closebutton:active {
     background-color: darkred;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .menubutton {
@@ -128,7 +128,7 @@ footer {
     height: 32px;
     border-radius: 3px;
     margin: 3px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
     width: 32px !important;
     padding: 4px !important;
 }
@@ -193,7 +193,7 @@ nav {
     backdrop-filter: blur(10px);
     bottom: 0px;
     margin-bottom: 54px;
-    animation: 0.1s ease 0s 1 normal none running slideup;
+    animation: 0.25s ease 0s 1 normal none running slideup;
     margin-left: 5px;
     border: 1px solid rgba(157, 157, 157, 0.125);
     display: none;
@@ -230,9 +230,9 @@ button {
     display: none;
     border-radius: 5px;
     backdrop-filter: blur(10px);
-    animation: 0.1s ease 0s 1 normal none running slideright;
+    animation: 0.25s ease 0s 1 normal none running slideright;
     margin-bottom: 54px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
     overflow: auto;
     border: 1px solid rgba(157, 157, 157, 0.125);
     margin-right: 5px;
@@ -261,19 +261,19 @@ button {
     border-radius: 5px;
     font-size: 14px;
     margin: 3px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
     border: none;
 }
 
 .minimize:hover {
     background-color: red;
     border-width: 1px 0px 0px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .minimize:active {
     background-color: darkred;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .menubuttonminimized {
@@ -283,7 +283,7 @@ button {
     height: 32px;
     width: 32px;
     margin: 3px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
     border-radius: 3px;
     background: none;
     border: 1px solid rgba(0, 0, 0, 0);
@@ -297,24 +297,24 @@ button {
 
 .menubutton2:hover {
     background-color: rgba(77, 77, 77, 0.25);
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .menubutton2:active {
     background-color: rgba(109, 109, 109, 0.4);
     cursor: progress;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .menubutton:hover {
     background-color: rgba(77, 77, 77, 0.25);
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .menubutton:active {
     background-color: rgba(109, 109, 109, 0.4);
     cursor: progress;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .notification {
@@ -336,32 +336,18 @@ fieldset {
     color: white;
 }
 
-.settingssidebar {
-    backdrop-filter: blur(10px);
-    background-color: rgba(29, 29, 29, 0.867);
-    color: white;
-}
-
-.Settings {
-    backdrop-filter: blur(10px);
-}
-
 button {
     background: lightgray;
     border: 1px solid rgb(118, 118, 118);
     border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
-}
-
-.settings button {
-    padding: 5px;
+    transition: all 0.25s ease 0s;
 }
 
 .kaosbutton {
     background: none;
     border: none;
     border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
     padding: 10px;
     color: white;
     font-size: 16px;
@@ -371,36 +357,14 @@ button {
     background: rgba(77, 77, 77, 0.565);
     border: none;
     border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
-}
-
-.Settings button:hover {
-    background: rgb(192, 192, 192);
-    border: 1px solid rgb(118, 118, 118);
-    border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
-}
-
-.Settings button:active {
-    background: gray;
-    border: 1px solid rgb(29, 29, 29);
-    border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .kaosbutton:active {
     background: rgb(77, 77, 77);
     border: none;
     border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
-}
-
-.Settings input {
-    background: lightgray;
-    border: 1px solid rgb(118, 118, 118);
-    border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
-    padding: 5px;
+    transition: all 0.25s ease 0s;
 }
 
 input {
@@ -408,32 +372,25 @@ input {
     border: 1px solid rgb(118, 118, 118);
     border-radius: 2.5px;
     padding: 2px;
-    transition: all 0.1s ease 0s;
-}
-
-.Settings input:focus {
-    background: white;
-    border: 1px solid rgb(118, 118, 118);
-    border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
-    outline: none;
+    transition: all 0.25s ease 0s;
 }
 
 .menubuttonminimized:hover {
     background-color: rgba(77, 77, 77, 0.25);
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .menubuttonminimized:active {
     background-color: rgba(109, 109, 109, 0.4);
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .search i {
     color: lightgray;
 }
 
-.search button, input {
+.search button,
+input {
     border-radius: 2px !important;
 }
 
@@ -453,11 +410,21 @@ input {
 
 @keyframes slideright {
     0% {
-        transform: translateX(50%);
+        transform: translateX(100%);
     }
 
     100% {
         transform: translateX(0%);
+    }
+}
+
+@keyframes slideleft {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(100%);
     }
 }
 
@@ -471,7 +438,18 @@ input {
     }
 }
 
-#errorbox, #errorbox1 {
+@keyframes slidedown {
+    0% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+#errorbox,
+#errorbox1 {
     z-index: 999;
     height: 100%;
     width: 100%;
@@ -479,7 +457,7 @@ input {
     align-items: center;
     justify-content: center;
     display: none;
-    animation: 0.1s ease 0s 1 normal none running fadein;
+    animation: 0.25s ease 0s 1 normal none running fadein;
     backdrop-filter: blur(10px);
     position: fixed !important;
 }
@@ -490,7 +468,7 @@ input {
     width: 100%;
     background: rgba(29, 29, 29, 0.867);
     display: none;
-    animation: 0.1s ease 0s 1 normal none running fadein;
+    animation: 0.25s ease 0s 1 normal none running fadein;
     backdrop-filter: blur(10px);
     position: fixed !important;
 }
@@ -523,21 +501,21 @@ input {
     background: lightgray;
     border: 1px solid rgb(118, 118, 118);
     border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 #errormessage button:hover {
     background: gray;
     border: 1px solid rgb(118, 118, 118);
     border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 #errormessage button:active {
     background: lightgray;
     border: 1px solid rgb(118, 118, 118);
     border-radius: 2.5px;
-    transition: all 0.1s ease 0s;
+    transition: all 0.25s ease 0s;
 }
 
 .noteinput {
@@ -656,4 +634,10 @@ input {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.ui-effects-transfer {
+    background-color: rgba(29, 29, 29, 0.867);
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
 }

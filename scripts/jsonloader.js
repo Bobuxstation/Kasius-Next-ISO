@@ -6,6 +6,7 @@ const app = remote.app;
 let fs = require('fs');
 const configDir = app.getPath('userData');
 console.log(configDir);
+const ipcMain = remote.ipcMain
 
 if (fs.existsSync(configDir + '/kasiuspkg.json')) {
     console.log('Package List Found!')
@@ -19,6 +20,14 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
                 "icon": "Icons/calc.png",
                 "height": 350,
                 "width": 300
+
+            },
+            {
+                "name": "Settings",
+                "URL": "apps/settings.html",
+                "icon": "Icons/settings.png",
+                "height": 450,
+                "width": 800
 
             },
             {

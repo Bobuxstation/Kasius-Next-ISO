@@ -12,17 +12,6 @@ function focusWindow(windowElem) {
   windowElem.classList.add('focused');
 }
 
-function Closetestwindow6() {
-  var x = document.getElementById("window6");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-    document.getElementById("minimizedsettings").style.display = "block";
-    document.getElementById("minimizedsettings").className = "menubuttonminimized menubuttonminimizing"
-  } else {
-    x.style.display = "none";
-    document.getElementById("minimizedsettings").style.display = "none";
-  }
-}
 function toggleSearch() {
   var x = document.getElementById("searchbox");
   if (x.style.display === "none") {
@@ -31,15 +20,21 @@ function toggleSearch() {
     x.style.display = "none";
   }
 }
+
 function menu() {
   var x = document.getElementById("Sidebar");
   if (x.style.display === "none") {
     x.style.display = "block";
     loadApps('')
   } else {
-    x.style.display = "none";
+    x.style.animation = '0.25s ease 0s 1 normal none running slidedown'
+    setTimeout(() => {
+      x.style.display = "none";
+      x.style.animation = ''
+    }, 250);
   }
 }
+
 document.addEventListener("keydown", (event) => {
   if (event.key === 'Meta') {
     menu()
@@ -50,6 +45,10 @@ function NotificationMenu() {
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
-    x.style.display = "none";
+    x.style.animation = '0.25s ease 0s 1 normal none running slideleft'
+    setTimeout(() => {
+      x.style.display = "none";
+      x.style.animation = ''
+    }, 250);
   }
 }

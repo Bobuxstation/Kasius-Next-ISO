@@ -5,7 +5,7 @@ function stringGen() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < 12; i++)
+    for (var i = 0; i < 512; i++)
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
@@ -15,21 +15,27 @@ function spawnwindow(name, URL, icon, height, width) {
     //configure elements
     var section = document.getElementById("section");
     var footer = document.getElementById("footer1");
-    var window = document.createElement("div");
+    var windowelem = document.createElement("div");
     var header = document.createElement("div");
     var content = document.createElement("div");
     var webview = document.createElement("webview");
     var minimized = document.createElement("button");
     var close = document.createElement("button");
+    var maximize = document.createElement("button");
     var minimize = document.createElement("button");
     var appID = stringGen()
+    var lastTop
+    var lastLeft
+    var lastWidth
+    var lastHeight
 
     //create window
-    window.classList.add('window');
-    window.id = name + appID;
-    window.style.display = "block";
-    window.onclick = function () {
-        focusWindow(window)
+    windowelem.classList.add('window');
+    windowelem.id = appID;
+    windowelem.style.display = "block";
+    windowelem.style.opacity = 1
+    windowelem.onclick = function () {
+        focusWindow(windowelem)
     }
 
     //create header
@@ -40,53 +46,102 @@ function spawnwindow(name, URL, icon, height, width) {
     close.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     close.classList.add('closebutton');
     close.onclick = function () {
-        window.remove();
-        minimized.remove();
+        $(`#${windowelem.id}`).effect('fade', {}, 250, function () {
+            windowelem.remove();
+            minimized.remove();
+        })
+    }
+
+    //create maximize button
+    maximize.innerHTML = '<i class="fa-regular fa-window-maximize"></i>';
+    maximize.classList.add('minimize');
+    maximize.onclick = function () {
+        if (content.style.width == '100vw' && content.style.height == window.innerHeight - 55 - 29.5 + 'px') {
+            content.style.height = lastHeight;
+            content.style.width = lastWidth;
+
+            windowelem.style.left = lastLeft
+            windowelem.style.top = lastTop
+
+            $('#body').effect('transfer', { to: `#${windowelem.id}`, className: "ui-effects-transfer" }, 250)
+        } else {
+            $(`#${windowelem.id}`).effect('transfer', { to: `#body`, className: "ui-effects-transfer" }, 250, function () {
+                lastLeft = windowelem.style.left
+                lastTop = windowelem.style.top
+    
+                lastHeight = content.style.height;
+                lastWidth = content.style.width;
+    
+                windowelem.style.left = ''
+                windowelem.style.top = ''
+    
+                content.style.width = '100vw'
+                content.style.height = window.innerHeight - 55 - 29.5 + 'px'
+            })
+        }
     }
 
     //create minimize button
     minimize.innerHTML = '<i class="fa-solid fa-window-minimize"></i>';
     minimize.classList.add('minimize');
     minimize.onclick = function () {
-        window.style.display = "none"
         minimized.className = "menubuttonminimized"
+        windowelem.style.opacity = 0
+        windowelem.style.pointerEvents = 'none'
+        $(`#${windowelem.id}`).effect('transfer', { to: `#${minimized.id}`, className: "ui-effects-transfer" }, 250);
     }
 
     //create content div
     content.classList.add('content');
     content.style.height = height;
     content.style.width = width;
+    windowelem.style.top = (window.innerHeight / 2) - (height / 2) - 29.5
+    windowelem.style.left = (window.innerWidth / 2) - (width / 2)
 
     //create webview
     webview.src = URL;
     webview.setAttribute("webpreferences", "contextIsolation=false");
     webview.setAttribute("nodeintegration", "");
-    if (appDebugMode == true) {
-        webview.addEventListener('did-finish-load', function () {
+    webview.setAttribute("preload", "scripts/applicationAPI.js");
+    webview.style.background = "lightgray";
+    webview.addEventListener('did-finish-load', function () {
+        webview.style.background = "none";
+        if (appDebugMode == true) {
             webview.openDevTools()
-        });
-    }
+        }
+    });
 
     //create minimized icon
     minimized.innerHTML = "<img style='height: 22.5px; width: 22.5px;' src='" + icon + "'></img>";
     minimized.className = "menubuttonminimized menubuttonminimizing"
+    minimized.id = "ICON_" + appID;
     minimized.onclick = function () {
-        window.style.display = "block"
+        if (windowelem.style.opacity == 0) {
+            $(`#${minimized.id}`).effect('transfer', { to: `#${windowelem.id}`, className: "ui-effects-transfer" }, 250, function () {
+                windowelem.style.animation = 'none'
+                windowelem.style.opacity = 1
+                windowelem.style.pointerEvents = ''
+            });
+        }
+
         minimized.className = "menubuttonminimized menubuttonminimizing"
-        focusWindow(window)
+        focusWindow(windowelem)
     }
 
     //append the elements
-    section.prepend(window);
-    window.appendChild(header);
+    section.prepend(windowelem);
+
+    windowelem.appendChild(header);
     header.appendChild(close);
+    header.appendChild(maximize);
     header.appendChild(minimize)
-    window.appendChild(content);
+
+    windowelem.appendChild(content);
     content.appendChild(webview);
     footer.appendChild(minimized);
 
     //focus on the window
-    focusWindow(window)
+    focusWindow(windowelem)
 
     //make the window draggable
     $(".window").draggable({
@@ -95,7 +150,7 @@ function spawnwindow(name, URL, icon, height, width) {
         opacity: 0.75
     });
 
-    $( content ).resizable({
+    $(content).resizable({
         minHeight: height,
         containment: "#body",
         minWidth: width
@@ -104,48 +159,44 @@ function spawnwindow(name, URL, icon, height, width) {
 
 function loadApps(searchQuery) {
     fetch(configDir + '/kasiuspkg.json')
-    .then((res) => { return res.json(); })
-    .then((data) => {
-        applist.innerHTML = `
+        .then((res) => { return res.json(); })
+        .then((data) => {
+            applist.innerHTML = `
         <p style="text-align: center;" class="notification">
             <i class="fa-solid fa-right-from-bracket" style="float: right; margin: 2px;" onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);"></i>
             <i class="fa-solid fa-search" style="float: left; margin: 2px;" onclick="toggleSearch()"></i>
             <span id="span"></span>
         </p>
         <input class="notification" id="searchbox" style="display: none;" onchange="loadApps(this.value)" value="${searchQuery}" placeholder="Search Apps">
-        
-        <button onclick="Closetestwindow6(); menu()" class="menubutton2">
-            <img src="Icons/settings.png"style="height: 30px; width: 30px;"> <span>Settings</span>
-        </button>
         `
-        data.packages.forEach(items => {
-            let applist = document.getElementById("applist");
+            data.packages.forEach(items => {
+                let applist = document.getElementById("applist");
 
-            let btn = document.createElement("btn");
-            btn.className = "menubutton2"
-            btn.innerHTML = "<img style='height: 30px; width: 30px;' src='" + items.icon + "'></img> <span>" + items.name + "</span>";
-            btn.onclick = function () {
-                spawnwindow(items.name, items.URL, items.icon, items.height, items.width)
-                menu()
-            }
-
-            let shortcut = document.createElement("btn");
-            shortcut.className = "menubutton2 shortcut"
-            shortcut.innerHTML = "<img style='height: 50px; width: 50px;' src='" + items.icon + "'></img>";
-            shortcut.onclick = function () {
-                spawnwindow(items.name, items.URL, items.icon, items.height, items.width)
-            }
-
-            let nameOfApp = items.name.toLowerCase()
-            if (nameOfApp.includes(searchQuery.toLowerCase())) {
-                applist.appendChild(btn);
-                if (!shortcutAdded) {
-                    //document.getElementById("section").appendChild(shortcut)
+                let btn = document.createElement("btn");
+                btn.className = "menubutton2"
+                btn.innerHTML = "<img style='height: 30px; width: 30px;' src='" + items.icon + "'></img> <span>" + items.name + "</span>";
+                btn.onclick = function () {
+                    spawnwindow(items.name, items.URL, items.icon, items.height, items.width)
+                    menu()
                 }
-            }
-        })
-        shortcutAdded = true
-    });
+
+                let shortcut = document.createElement("btn");
+                shortcut.className = "menubutton2 shortcut"
+                shortcut.innerHTML = "<img style='height: 50px; width: 50px;' src='" + items.icon + "'></img>";
+                shortcut.onclick = function () {
+                    spawnwindow(items.name, items.URL, items.icon, items.height, items.width)
+                }
+
+                let nameOfApp = items.name.toLowerCase()
+                if (nameOfApp.includes(searchQuery.toLowerCase())) {
+                    applist.appendChild(btn);
+                    if (!shortcutAdded) {
+                        //document.getElementById("section").appendChild(shortcut)
+                    }
+                }
+            })
+            shortcutAdded = true
+        });
 }
 
 window.onload = function () {

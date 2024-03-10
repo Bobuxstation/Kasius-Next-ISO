@@ -1,5 +1,9 @@
 var notify = new Audio("medias/notification.mp3");
 
+ipcMain.on('notify', (event, data) => {
+    notifications(data.msg, data.app, data.isSilent)
+})
+
 function notifications(msg, app, isSilent) {
     var ul = document.getElementById("list");
     var li = document.createElement("li");
@@ -28,11 +32,6 @@ function notifications(msg, app, isSilent) {
     if (!isSilent) {
         document.getElementById("Sidebar2").style.display = "block";
     }
-}
-
-function notifybeta() {
-    notificationvar = document.getElementById('notifybeta').value;
-    notifications(notificationvar);
 }
 
 notifications("Welcome To Kasius Next!", "System", true)
