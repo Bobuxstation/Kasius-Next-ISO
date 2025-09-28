@@ -1,12 +1,13 @@
 const { webFrame } = require('electron');
-window.$ = window.jQuery = require('jquery');
 const electron = require('electron');
 const remote = require('@electron/remote');
 const app = remote.app;
-let fs = require('fs');
+const fs = require('fs');
 const configDir = app.getPath('userData');
-console.log(configDir);
 const ipcMain = remote.ipcMain
+
+window.$ = window.jQuery = require('jquery');
+console.log(configDir);
 
 if (fs.existsSync(configDir + '/kasiuspkg.json')) {
     console.log('Package List Found!')
@@ -17,7 +18,7 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
             {
                 "name": "Calculator",
                 "URL": "apps/calc.html",
-                "icon": "Icons/calc.png",
+                "icon": "apps/icons/calc.png",
                 "height": 350,
                 "width": 300
 
@@ -25,7 +26,7 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
             {
                 "name": "Settings",
                 "URL": "apps/settings.html",
-                "icon": "Icons/settings.png",
+                "icon": "apps/icons/settings.png",
                 "height": 450,
                 "width": 800
 
@@ -33,21 +34,14 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
             {
                 "name": "Files",
                 "URL": "apps/files.html",
-                "icon": "Icons/filesicon.png",
-                "height": 450,
-                "width": 800
-            },
-            {
-                "name": "KasiusNet",
-                "URL": "apps/kasiusnet.html",
-                "icon": "Icons/browser.png",
+                "icon": "apps/icons/filesicon.png",
                 "height": 450,
                 "width": 800
             },
             {
                 "name": "Media",
                 "URL": "apps/MEDIA.html",
-                "icon": "Icons/media.png",
+                "icon": "apps/icons/media.png",
                 "height": 450,
                 "width": 800
 
@@ -55,29 +49,29 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
             {
                 "name": "Notes",
                 "URL": "apps/notes.html",
-                "icon": "Icons/notes.png",
-                "height": 486,
+                "icon": "apps/icons/notes.png",
+                "height": 450,
                 "width": 800
 
             },
             {
                 "name": "Package Manager",
                 "URL": "apps/store.html",
-                "icon": "Icons/Store.png",
+                "icon": "apps/icons/Store.png",
                 "height": 450,
                 "width": 800
             },
             {
-                "name": "Pixel",
-                "URL": "apps/pixel.html",
-                "icon": "Icons/pixel.png",
+                "name": "Paint",
+                "URL": "apps/paint.html",
+                "icon": "apps/icons/paint.png",
                 "height": 450,
                 "width": 800
             },
             {
                 "name": "Terminal",
                 "URL": "apps/gigashell.html",
-                "icon": "Icons/terminal.png",
+                "icon": "apps/icons/terminal.png",
                 "height": 450,
                 "width": 800
 
@@ -93,11 +87,12 @@ if (fs.existsSync(configDir + '/desktopconfig.json')) {
 } else {
     console.log('Package List Is Not Found! Creating Package List...')
     let jsontemplate = {
-        "backgroundImage": "bg.jpg",
-        "theme": "style.css",
+        "backgroundImage": "assets/bg.jpg",
+        "theme": "assets/style.css",
         "iconStyle": "center",
-        "footerIcon": "logo.svg",
-        "zoomVal": 0
+        "footerIcon": "assets/logo.svg",
+        "zoomVal": 0,
+        "autoHideNavbar": false
     };
     let data = JSON.stringify(jsontemplate, null, "\t");
     fs.writeFileSync(configDir + '/desktopconfig.json', data);

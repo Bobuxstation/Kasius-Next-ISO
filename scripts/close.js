@@ -1,6 +1,7 @@
 function hide(whattohide) {
   document.getElementById(whattohide).style.display = "none";
 }
+
 function show(whattoshow) {
   document.getElementById(whattoshow).style.display = "block";
 }
@@ -22,7 +23,7 @@ function toggleSearch() {
 }
 
 function menu() {
-  var x = document.getElementById("Sidebar");
+  var x = document.getElementById("launcher");
   if (x.style.display === "none") {
     x.style.display = "block";
     loadApps('')
@@ -41,7 +42,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 function NotificationMenu() {
-  var x = document.getElementById("Sidebar2");
+  var x = document.getElementById("notifications");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {

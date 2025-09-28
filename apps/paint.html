@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>Paint</title>
+
+    <script src="../scripts/fontawesome.js"></script>
+    <script src="deps/react.js"></script>
+    <script src="deps/literallycanvas.js"></script>
+
+    <link rel="stylesheet" href="../assets/scroll.css" id="style">
+    <link rel="stylesheet" href="WebDESDK.css" id="style">
+    <link rel="stylesheet" href="deps/literallycanvas.css" id="style">
+    <link href="../assets/inter.css" rel="stylesheet">
+
+    <style>
+        .literally {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" id="file-input" onchange="loadImage()" accept="image/png, image/jpeg" hidden>
+    <ul class="ul" id="controls">
+        <li class="dropdown li">
+            <a class="dropbtn">
+                <span>File</span>
+            </a>
+            <div class="dropdown-content">
+                <a onclick="canvas.clear();"><span>New</span></a>
+                <a onclick="document.getElementById('file-input').click();"><span>Open</span></a>
+                <a onclick="saveFile();"><span>Save</span></a>
+            </div>
+        </li>
+        <li class="dropdown li">
+            <a class="dropbtn">
+                <span>About</span>
+            </a>
+            <div class="dropdown-content">
+                <a><span>Kasius-Next Paint</span></a>
+                <a><span>Version 0.1.0</span></a>
+            </div>
+        </li>
+    </ul>
+
+    <section id="section"></section>
+
+    <script>
+        const canvas = LC.init(document.getElementById("section"), {
+            imageSize: { width: 800, height: 600 },
+            imageURLPrefix: 'deps/img/'
+        });
+
+        function saveFile() {
+            const image = canvas.getImage().toDataURL();
+            const link = document.createElement("a");
+            link.href = image;
+            link.download = "Untitled";
+            link.click();
+        }
+
+        function loadImage() {
+            const fileToLoad = document.getElementById("file-input").files[0];
+            const fileReader = new FileReader();
+            canvas.clear();
+
+            fileReader.onload = function (fileLoadedEvent) {
+                const data = fileLoadedEvent.target.result;
+                const img = new Image()
+                img.src = data;
+                img.onload = function () {
+                    canvas.setImageSize(img.width, img.height)
+                    canvas.saveShape(LC.createShape('Image', { x: 0, y: 0, image: img }));
+                }
+            };
+
+            fileReader.readAsDataURL(fileToLoad);
+        }
+    </script>
+</body>
+
+</html>

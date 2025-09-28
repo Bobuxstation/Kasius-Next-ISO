@@ -1,0 +1,114 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Inter';
+    outline: none;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+:root {
+    --ui-base-color: #1d1d1ddd;
+    --ui-button-color: #1d1d1d;
+    --ui-button-hover-color: #4d4d4d90;
+    --ui-button-active-color: #5a5a5a90;
+    --ui-button-disabled-color: #303030;
+    --ui-base-text-color: #fff;
+}
+
+body {
+    color: var(--ui-base-text-color);
+    overflow: hidden;
+    background: var(--ui-base-color);
+    backdrop-filter: blur(10px);
+}
+
+#controls {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 5px;
+    padding-top: 0px;
+}
+
+.li {
+    float: left;
+    border-radius: 2.5px;
+}
+
+.li a,
+.dropbtn {
+    color: white;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.li a:hover,
+.dropdown:hover .dropbtn,
+button:hover {
+    background-color: var(--ui-button-hover-color) !important;
+}
+
+.li a:hover select {
+    background-color: var(--ui-button-active-color) !important;
+}
+
+.li a i {
+    float: left;
+    margin-right: 10px;
+}
+
+.li.dropdown {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 150px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px 0px;
+    z-index: 9999;
+    padding-top: 10px;
+}
+
+.dropdown-content a {
+    background-color: var(--ui-button-hover-color);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 2.5px;
+    border: var(--ui-base-color) solid 1px;
+}
+
+.dropdown-content a:first-child {
+    border-radius: 2.5px 2.5px 0px 0px;
+}
+
+.dropdown-content a:last-child {
+    border-radius: 0px 0px 2.5px 2.5px;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--ui-button-active-color) !important;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+section {
+    height: calc(100% - 35px);
+}

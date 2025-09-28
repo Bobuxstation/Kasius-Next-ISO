@@ -1,6 +1,5 @@
-var shutdown = new Audio('medias/shutdown.mp3');
-var errorsound = new Audio("medias/error.mp3");
-var WiFiControl = require('wifi-control');
+var shutdown = new Audio('assets/shutdown.mp3');
+var errorsound = new Audio("assets/error.mp3");
 var latestConfig
 
 //load all settings
@@ -19,7 +18,7 @@ window.addEventListener('load', function () {
   setInterval(async () => {
     const fetchconfig = await fetch(configDir + '/desktopconfig.json')
     const newDesktopConfig = await fetchconfig.json()
-    
+
     if (JSON.stringify(newDesktopConfig) == JSON.stringify(latestConfig)) return;
     latestConfig = newDesktopConfig
 
@@ -28,18 +27,12 @@ window.addEventListener('load', function () {
     document.getElementById("footer").style.textAlign = newDesktopConfig.iconStyle;
     document.getElementById("menutogglebuttonimg").src = newDesktopConfig.footerIcon;
     webFrame.setZoomLevel(newDesktopConfig.zoomVal);
+
+    if (typeof newDesktopConfig.autoHideNavbar !== "undefined") {
+      document.getElementById("footer").className = (newDesktopConfig.autoHideNavbar ? "autohide" : "")
+    }
   }, 250);
 })
-
-//errormessage
-function error(errormsg) {
-  document.getElementById('errorbox').style.display = "flex";
-  document.getElementById('errormessagetext').innerHTML = errormsg;
-}
-
-function hideerror() {
-  document.getElementById('errorbox').style.display = "none";
-}
 
 async function getBatteryInfo() {
   const battery = await navigator.getBattery();
@@ -73,9 +66,10 @@ async function getBatteryInfo() {
 }
 
 function refreshWifiPicker() {
+  const WiFiControl = require('wifi-control');
   const WiFiDiv = document.getElementById("internetSettings")
 
-  WiFiControl.init({ debug: true });
+  WiFiControl.init({ debug: false });
   WiFiControl.scanForWiFi(function (err, response) {
     if (err) {
       WiFiDiv.innerText = "Could not find Wi-Fi adapter!";
@@ -118,7 +112,6 @@ function refreshWifiPicker() {
               if (err) {
                 refreshWifiPicker()
                 console.log(err)
-                error(err)
               };
 
               refreshWifiPicker()

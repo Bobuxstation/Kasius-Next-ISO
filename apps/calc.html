@@ -1,122 +1,128 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
-    integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
-    integrity="sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="fontawesome.js"></script>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        font-family: Inter;
-        box-sizing: border-box;
-        overflow: hidden;
-        transition: all 0.1s ease;
-    }
+<html>
 
-    .headerpart button {
-        padding: 5px;
-        box-sizing: border-box;
-    }
-
-    button {
-        background: none;
-        border: none;
-        border-radius: 2.5px;
-        color: white;
-        transition: all 0.1s ease;
-        padding: 5px;
-        font-weight: bold;
-    }
-
-    button:hover {
-        background: #4d4d4d90;
-        border: none;
-        border-radius: 2.5px;
-        transition: all 0.1s ease;
-    }
-
-    button:active {
-        background: #4d4d4d;
-        border: none;
-        border-radius: 2.5px;
-        transition: all 0.1s ease;
-    }
-
-    input[type="button"] {
-        width: calc(25% - 3.5px);
-        font-size: 24px;
-        font-weight: bold;
-        border: none;
-        background: none;
-        border-radius: 5px;
-        height: 75.3px;
-        box-sizing: border-box;
-        height: calc(25% - 17px);
-    }
-
-    input[type="button"]:hover {
-        background: #eaeaea;
-    }
-
-    #result {
-        height: 39px;
-        width: 100%;
-        box-sizing: border-box;
-        font-size: 2em;
-        text-align: right;
-        font-weight: bold;
-        background: none;
-        border: none;
-        color: white;
-    }
-</style>
-<div style="padding: 15px; background: #1d1d1ddd; backdrop-filter: blur(10px); color: white; text-align: right;">
-    <input id="result">
-</div>
-<div style="width: 100%; background: lightgray;">
-    <tr>
-        <td><input type="button" value="1" onclick="dis('1')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="2" onclick="dis('2')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="3" onclick="dis('3')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="/" onclick="dis('/')" onkeydown="myFunction(event)"> </td>
-    </tr>
-    <tr>
-        <td><input type="button" value="4" onclick="dis('4')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="5" onclick="dis('5')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="6" onclick="dis('6')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="*" onclick="dis('*')" onkeydown="myFunction(event)"> </td>
-    </tr>
-    <tr>
-        <td><input type="button" value="7" onclick="dis('7')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="8" onclick="dis('8')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="9" onclick="dis('9')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="-" onclick="dis('-')" onkeydown="myFunction(event)"> </td>
-    </tr>
-    <tr>
-        <td><input type="button" value="0" onclick="dis('0')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="." onclick="dis('.')" onkeydown="myFunction(event)"> </td>
-        <td><input type="button" value="=" onclick="solve()"> </td>
-        <td><input type="button" value="+" onclick="dis('+')" onkeydown="myFunction(event)"> </td>
-    </tr>
-    </table>
-</div>
-<script>
-    function dis(val) {
-        document.getElementById("result").value += val
-    }
-
-    function solve() {
-        let x = document.getElementById("result").value
-
-        try {
-            let y = math.evaluate(x)
-            document.getElementById("result").value = y
-        } catch {
-            let y = 'Error'
-            document.getElementById("result").value = y
+<head>
+    <link href="../assets/inter.css" rel="stylesheet">
+    <script src="deps/math.min.js"></script>
+    <script src="../scripts/fontawesome.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Inter;
+            box-sizing: border-box;
+            overflow: hidden;
+            transition: all 0.1s ease;
         }
-    }
-</script>
+
+        .headerpart button {
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: none;
+            border: none;
+            border-radius: 2.5px;
+            color: white;
+            transition: all 0.1s ease;
+            padding: 5px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #4d4d4d90;
+            border: none;
+            border-radius: 2.5px;
+            transition: all 0.1s ease;
+        }
+
+        button:active {
+            background: #4d4d4d;
+            border: none;
+            border-radius: 2.5px;
+            transition: all 0.1s ease;
+        }
+
+        input[type="button"] {
+            width: calc(25% - 3.5px);
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            background: none;
+            border-radius: 5px;
+            height: 75.3px;
+            box-sizing: border-box;
+            height: calc(25% - 17px);
+        }
+
+        input[type="button"]:hover {
+            background: #eaeaea;
+        }
+
+        #result {
+            height: 39px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 2em;
+            text-align: right;
+            font-weight: bold;
+            background: none;
+            border: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="padding: 15px; background: #1d1d1ddd; backdrop-filter: blur(10px); color: white; text-align: right;">
+        <input id="result">
+    </div>
+
+    <div style="width: 100%; background: lightgray;">
+        <tr>
+            <td><input type="button" value="1" onclick="dis('1')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="2" onclick="dis('2')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="3" onclick="dis('3')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="/" onclick="dis('/')" onkeydown="myFunction(event)"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="dis('4')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="5" onclick="dis('5')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="6" onclick="dis('6')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="*" onclick="dis('*')" onkeydown="myFunction(event)"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="dis('7')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="8" onclick="dis('8')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="9" onclick="dis('9')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="-" onclick="dis('-')" onkeydown="myFunction(event)"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="0" onclick="dis('0')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="." onclick="dis('.')" onkeydown="myFunction(event)"> </td>
+            <td><input type="button" value="=" onclick="solve()"> </td>
+            <td><input type="button" value="+" onclick="dis('+')" onkeydown="myFunction(event)"> </td>
+        </tr>
+        </table>
+    </div>
+
+    <script>
+        function dis(val) {
+            document.getElementById("result").value += val
+        }
+
+        function solve() {
+            let x = document.getElementById("result").value
+
+            try {
+                let y = math.evaluate(x)
+                document.getElementById("result").value = y
+            } catch {
+                let y = 'Error'
+                document.getElementById("result").value = y
+            }
+        }
+    </script>
+</body>
+
+</html>

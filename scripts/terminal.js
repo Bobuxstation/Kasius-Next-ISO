@@ -9,6 +9,7 @@ $(".input1").on('keyup', function (e) {
         document.getElementById("input1").value = "";
     }
 });
+
 function returntoterminal(output) {
     var ul = document.getElementById("terminaltext");
     var li = document.createElement("p");
@@ -16,6 +17,7 @@ function returntoterminal(output) {
     li.innerText = output;
     ul.appendChild(li);
 }
+
 function returnerrortoterminal(output) {
     var ul = document.getElementById("terminaltext");
     var li = document.createElement("p");

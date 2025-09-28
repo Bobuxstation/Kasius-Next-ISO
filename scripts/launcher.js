@@ -11,6 +11,7 @@ function launch(executablePath) {
         returntoterminal(data.toString());
     });
 }
+
 function redirect(redirectlink) {
     window.location.replace(redirectlink)
 }

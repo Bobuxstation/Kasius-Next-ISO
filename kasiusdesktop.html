@@ -3,9 +3,9 @@
 <head>
     <title>User 1 - Kasius Next</title>
     <!--Scripts-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="style.css" id="style">
-    <link rel="stylesheet" href="scroll.css" id="style">
+    <link rel="stylesheet" href="assets/inter.css">
+    <link rel="stylesheet" href="assets/style.css" id="style">
+    <link rel="stylesheet" href="assets/scroll.css" id="style">
     <link rel="stylesheet" href="apps/jqueryUI.css">
 
     <script type="text/javascript" src="scripts/jsonloader.js"></script>
@@ -28,29 +28,17 @@
         </div>
     </div>
 
-    <div id="errorbox">
-        <div id="errormessage">
-            <p style="text-align: center;" class="notification">An Error Has Occured!</p>
-            <h4 id="errormessagetext">messagehere</h4>
-            <br><br><br><br>
-            <p class="notification" onclick="hideerror()">OK</p>
-            <p class="notification"
-                onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);">Log
-                Out</p>
-        </div>
-    </div>
-
-    <div class="sidebar2" id="Sidebar" style="display: none;">
+    <div class="launcher" id="launcher" style="display: none;">
         <div class="applist" id="applist"
             style="width: 50%; height: 100%; display: flex; flex-direction: column; float:left;">
         </div>
 
         <div style="width: 50%; height: 100%; display: flex; flex-direction: column; float:right;" class="widgets">
-            <iframe style="height: 100%; border: none;" src="widgets.html"></iframe>
+            <iframe style="height: 100%; border: none;" src="apps/widgets.html"></iframe>
         </div>
     </div>
 
-    <div class="notifications" id="Sidebar2" style="display: none;">
+    <div class="notifications" id="notifications" style="display: none;">
         <p style="text-align: center;" class="notification">Quick Actions</p>
         <div class="notification notificationMessage" id="batteryInfo"></div>
         <div class="notification notificationMessage" id="internetSettings"></div>
@@ -61,23 +49,22 @@
 
     <!--Window-->
 
-    <section style="height: 100vh; " id="section">
-    </section>
+    <section style="height: 100vh;" id="section"></section>
 
     <!--Footer-->
 
     <footer id="footer">
         <button onclick="menu()" class="menubutton" style="width: 35px; padding-top: 0px;" id="menutogglebutton"><img
-                id="menutogglebuttonimg" src="Icons/kasiuslogo.svg"
+                id="menutogglebuttonimg" src="assets/kasiuslogo.svg"
                 style="height: 24px; margin-top: 3px; width: 22.5px;"></img></button>
         <nav>
             <ul id="footer1">
 
             </ul>
         </nav>
-        <button style="float: right;" onclick="NotificationMenu(); refreshWifiPicker(); getBatteryInfo()" class="menubutton"
-            style="width: 50px; padding-top: 0px;" id="menutogglebutton"><i style="height: 22.5px; width: 22.5px;"
-                class="fa-solid fa-bars"></i></button>
+        <button style="float: right;" onclick="NotificationMenu(); refreshWifiPicker(); getBatteryInfo()"
+            class="menubutton" style="width: 50px; padding-top: 0px;" id="menutogglebutton"><i
+                style="height: 22.5px; width: 22.5px;" class="fa-solid fa-bars"></i></button>
     </footer>
     <script>$(".window").draggable({ handle: ".header", containment: "#body", opacity: 0.75 });</script>
 </body>

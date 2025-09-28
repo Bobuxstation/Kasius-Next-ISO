@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <link href="../assets/inter.css" rel="stylesheet">
+    <script type="text/javascript" src="../scripts/time.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: Inter;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        .clock {
+            background: #1d1d1d55;
+            border-radius: 5px;
+            color: white;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .clock2 {
+            border-radius: 5px;
+            color: white;
+            height: 300px;
+        }
+
+        body {
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body id="body">
+
+    <div class="clock">
+        <h1 id="span"></h1>
+        <br>
+        <p id="demo"></p>
+    </div>
+
+    <div class="clock">
+        <p id="wttr">Fetching Weather Information...</p>
+    </div>
+
+</body>
+<script type="text/javascript">
+    let date = new Date();
+    document.getElementById("demo").innerHTML = date;
+
+    async function wttr() {
+        let fetching = await fetch('https://wttr.in/?format=3')
+        let res = await fetching.text()
+        document.getElementById('wttr').innerText = res
+    }
+
+    setInterval(wttr, 2500)
+</script>
+
+</html>

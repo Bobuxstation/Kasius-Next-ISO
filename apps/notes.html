@@ -1,213 +1,162 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="fontawesome.js"></script>
-<link rel="stylesheet" href="../scroll.css" id="style">
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        font-family: Inter;
-    }
+<html>
 
-    .headerpart button {
-        padding: 5px;
-        box-sizing: border-box;
-    }
-
-    button {
-        background: none;
-        border: none;
-        border-radius: 2.5px;
-        color: white;
-        transition: all 0.1s ease;
-        padding: 5px;
-        font-weight: bold;
-    }
-
-    button:hover {
-        background: #4d4d4d90;
-        border: none;
-        border-radius: 2.5px;
-        transition: all 0.1s ease;
-    }
-
-    button:active {
-        background: #4d4d4d;
-        border: none;
-        border-radius: 2.5px;
-        transition: all 0.1s ease;
-    }
-
-    input {
-        background: none;
-        border-radius: 2.5px;
-        border: none;
-        padding: 2px;
-        transition: all 0.5s ease;
-        color: white;
-        font-family: Inter;
-    }
-
-    input:focus {
-        background: lightgray;
-        border: none;
-        border-radius: 2.5px;
-        padding: 2px;
-        transition: all 0.5s ease;
-        color: black;
-        outline: none;
-    }
-
-    #notessaveprompt,
-    #notessaveprompt1 {
-        width: 25vw;
-    }
-
-    #notessaveprompt, #notessaveprompt1, #notessaveprompt2{
-        height: fit-content; 
-        margin: 5px; 
-        box-sizing: border-box; 
-        display:none; 
-        transition: all 0.1s ease; 
-        padding:10px; 
-        position: fixed; 
-        z-index: 1; 
-        background-color: #1d1d1ddd; 
-        backdrop-filter: blur(5px); 
-        border-radius: 5px;
-        color: white;
-    }
-    #notessaveprompt button {
-        text-align: left;
-        width: 100%;
-    }
-</style>
-<div style="padding: 5px; background: #1d1d1ddd; backdrop-filter: blur(10px);">
-    <button class="headertext" onclick="showsave()">File</button>
-    <button class="headertext" onclick="setTXT()">Formatting</button>
-    <button class="headertext" onclick="showattr()">About</button>
-</div>
-<div id="notessaveprompt" style="display: none;">
-    <button onclick="saveTXT(document.getElementById('Untitled.txt').value)"><i class="fa-solid fa-file-signature"></i> Save note</button>
-
-    <button onclick="clearTXT()"><i class="fa-solid fa-file"></i> New note</button>
-
-    <input type="file" id="fileToLoad" onchange="loadFileAsText()" style="display: none;">
-
-    <button onclick="document.getElementById('fileToLoad').click()"><i class="fa-solid fa-folder-open"></i> Open file...</button>
-</div>
-<div id="notessaveprompt1" style="display: none;">
-    <details>
-        <summary style="color: white; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-text-height"></i>
-            Text size</summary>
-        <input style="width: 100%; padding: 5px; border-radius: 3px;" type="range" min="0" max="100" value="20"
-            onchange="document.getElementById('msg').style.fontSize = value"><br>
-    </details>
-    <details>
-        <summary style="color: white; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-paint-roller"></i>
-            Text color</summary>
-        <input style="width: 100%; padding: 5px; border-radius: 3px;" type="color"
-            onchange="document.getElementById('msg').style.color = value">
-    </details>
-    <details>
-        <summary style="color: white; font-weight: bold;margin-bottom: 5px;"><i class="fa-solid fa-font"></i> Text font
-        </summary>
-        <select style="background: lightgray; width: 100%; padding: 5px; border-radius: 3px;" id="font"
-            onchange="fontTXT(value)">
-            <option style="font-family: Inter;">Inter</option>
-            <option style="font-family: Arial;">Arial</option>
-            <option style="font-family: Verdana;">Verdana</option>
-            <option style="font-family: Helvetica;">Helvetica</option>
-            <option style="font-family: Times New Roman;">Times New Roman</option>
-            <option style="font-family: Georgia;">Georgia</option>
-            <option style="font-family: Garamond;">Garamond</option>
-            <option style="font-family: Courier New;">Courier New</option>
-            <option style="font-family: Lucida Console;">Lucida Console</option>
-            <option style="font-family: Monaco;">Monaco</option>
-            <option style="font-family: Brush Script MT;">Brush Script MT</option>
-            <option style="font-family: Lucida Handwriting;">Lucida Handwriting</option>
-            <option style="font-family: Copperplate;">Copperplate</option>
-            <option style="font-family: Papyrus;">Papyrus</option>
-        </select>
-    </details>
-</div>
-<div id="notessaveprompt2" style="display: none;">
-    Kasius Next Notes v1.1
-</div>
-<textarea id="msg"
-    style="outline: none;border: black solid 0px; width: 100vw; height: calc(100vh - 36px); resize: none; padding: 5px; font-family: Inter; font-size: 20px;background: lightgray;"></textarea>
-<script>
-    let saveTXT = (filename) => {
-        const msg = document.getElementById('msg');
-        let data =
-            '' + msg.value;
-
-        const textToBLOB = new Blob([data], { type: 'text/plain' });
-        const sFileName = filename;
-
-        let newLink = document.createElement("a");
-        newLink.download = sFileName;
-
-        if (window.webkitURL != null) {
-            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+<head>
+    <link href="../assets/inter.css" rel="stylesheet">
+    <script src="../scripts/fontawesome.js"></script>
+    <link rel="stylesheet" href="../assets/scroll.css" id="style">
+    <link rel="stylesheet" href="WebDESDK.css" id="style">
+    <style>
+        #msg {
+            outline: none;
+            border: black solid 0px;
+            width: 100%;
+            height: 100%;
+            resize: none;
+            padding: 5px;
+            font-family: Inter;
+            font-size: 20px;
+            background: lightgray;
+            overflow: auto;
         }
-        else {
-            newLink.href = window.URL.createObjectURL(textToBLOB);
-            newLink.style.display = "none";
-            document.body.appendChild(newLink);
+    </style>
+</head>
+
+<body>
+    <input type="file" id="file-input" onchange="loadFileAsText()" hidden>
+    <ul class="ul" id="controls">
+        <li class="dropdown li">
+            <a class="dropbtn">
+                <span>File</span>
+            </a>
+            <div class="dropdown-content">
+                <a onclick="document.getElementById('file-input').click();"><span>Open</span></a>
+                <a onclick="saveTXT('Untitled.txt');"><span>Save</span></a>
+            </div>
+        </li>
+        <li class="dropdown li">
+            <a class="dropbtn">
+                <span>Formatting</span>
+            </a>
+            <div class="dropdown-content">
+                <a>
+                    <input type="number" min="0" max="100" value="20"
+                        onchange="document.getElementById('msg').style.fontSize = value">
+                </a>
+                <a>
+                    <input type="color" onchange="document.getElementById('msg').style.color = value">
+                </a>
+                <a>
+                    <select style="background: lightgray; width: 100%; padding: 5px; border-radius: 3px;" id="font"
+                        onchange="fontTXT(value)">
+                        <option style="font-family: Inter;">Inter</option>
+                        <option style="font-family: Arial;">Arial</option>
+                        <option style="font-family: Verdana;">Verdana</option>
+                        <option style="font-family: Helvetica;">Helvetica</option>
+                        <option style="font-family: Times New Roman;">Times New Roman</option>
+                        <option style="font-family: Georgia;">Georgia</option>
+                        <option style="font-family: Garamond;">Garamond</option>
+                        <option style="font-family: Courier New;">Courier New</option>
+                        <option style="font-family: Lucida Console;">Lucida Console</option>
+                        <option style="font-family: Monaco;">Monaco</option>
+                        <option style="font-family: Brush Script MT;">Brush Script MT</option>
+                        <option style="font-family: Lucida Handwriting;">Lucida Handwriting</option>
+                        <option style="font-family: Copperplate;">Copperplate</option>
+                        <option style="font-family: Papyrus;">Papyrus</option>
+                    </select>
+                </a>
+            </div>
+        </li>
+        <li class="dropdown li">
+            <a class="dropbtn">
+                <span>About</span>
+            </a>
+            <div class="dropdown-content">
+                <a><span>Kasius-Next Notes</span></a>
+                <a><span>Version 0.2.0</span></a>
+            </div>
+        </li>
+    </ul>
+
+    <section>
+        <textarea id="msg"></textarea>
+    </section>
+
+    <script>
+        let saveTXT = (filename) => {
+            const msg = document.getElementById('msg');
+            let data =
+                '' + msg.value;
+
+            const textToBLOB = new Blob([data], { type: 'text/plain' });
+            const sFileName = filename;
+
+            let newLink = document.createElement("a");
+            newLink.download = sFileName;
+
+            if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+            }
+            else {
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+            }
+
+            newLink.click();
         }
 
-        newLink.click();
-    }
-
-    function clearTXT() {
-        document.getElementById('msg').value = "";
-    }
-
-    function fontTXT(FONT) {
-        document.getElementById('msg').style.fontFamily = FONT;
-    }
-
-    function showsave() {
-        var x = document.getElementById("notessaveprompt");
-        if (x.style.display === "none") {
-            document.getElementById("notessaveprompt1").style.display = "none";
-            document.getElementById("notessaveprompt2").style.display = "none";
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
+        function clearTXT() {
+            document.getElementById('msg').value = "";
         }
-    }
 
-    function setTXT() {
-        var x = document.getElementById("notessaveprompt1");
-        if (x.style.display === "none") {
-            document.getElementById("notessaveprompt2").style.display = "none";
-            document.getElementById("notessaveprompt").style.display = "none";
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
+        function fontTXT(FONT) {
+            document.getElementById('msg').style.fontFamily = FONT;
         }
-    }
 
-    function showattr() {
-        var x = document.getElementById("notessaveprompt2");
-        if (x.style.display === "none") {
-            document.getElementById("notessaveprompt1").style.display = "none";
-            document.getElementById("notessaveprompt").style.display = "none";
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
+        function showsave() {
+            var x = document.getElementById("notessaveprompt");
+            if (x.style.display === "none") {
+                document.getElementById("notessaveprompt1").style.display = "none";
+                document.getElementById("notessaveprompt2").style.display = "none";
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
         }
-    }
 
-    function loadFileAsText() {
-        var fileToLoad = document.getElementById("fileToLoad").files[0];
+        function setTXT() {
+            var x = document.getElementById("notessaveprompt1");
+            if (x.style.display === "none") {
+                document.getElementById("notessaveprompt2").style.display = "none";
+                document.getElementById("notessaveprompt").style.display = "none";
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
 
-        var fileReader = new FileReader();
-        fileReader.onload = function (fileLoadedEvent) {
-            var textFromFileLoaded = fileLoadedEvent.target.result;
-            document.getElementById("msg").value = textFromFileLoaded;
-        };
-        fileReader.readAsText(fileToLoad, "UTF-8");
-    }
-</script>
+        function showattr() {
+            var x = document.getElementById("notessaveprompt2");
+            if (x.style.display === "none") {
+                document.getElementById("notessaveprompt1").style.display = "none";
+                document.getElementById("notessaveprompt").style.display = "none";
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function loadFileAsText() {
+            var fileToLoad = document.getElementById("file-input").files[0];
+
+            var fileReader = new FileReader();
+            fileReader.onload = function (fileLoadedEvent) {
+                var textFromFileLoaded = fileLoadedEvent.target.result;
+                document.getElementById("msg").value = textFromFileLoaded;
+            };
+            fileReader.readAsText(fileToLoad, "UTF-8");
+        }
+    </script>
+</body>
+
+</html>

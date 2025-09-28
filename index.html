@@ -2,7 +2,7 @@
 
 <head>
 	<title>Login - Kasius Next</title>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link href="assets/inter.css" rel="stylesheet">
 	<script src="scripts/fontawesome.js"></script>
 	<script src="scripts/time.js" defer></script>
 	<style type="text/css">
@@ -16,7 +16,7 @@
 			color: white;
 		}
 
-		div	{
+		div {
 			position: absolute;
 			bottom: 0;
 			padding: 20px;
@@ -36,22 +36,20 @@
 		}
 	</style>
 </head>
+
 <body id="body">
 	<section>
-
-			<div>
-				<h3>Press any key to start.</h3>
-				<h1 id="span">12:00</h1>
-				<h3 id="wttr">Getting weather information...</h3>
-			</div>
-
-			<button onclick="exitDesktop()" style="margin-right: 76px;">
-				<h3><i class="fa-solid fa-right-from-bracket"></i></h3>
-			</button>
-			<button onclick="shutdown()">
-				<h3><i class="fa-solid fa-power-off"></i></h3>
-			</button>
-
+		<div>
+			<h3>Press any key to start.</h3>
+			<h1 id="span">12:00</h1>
+			<h3 id="wttr">Getting weather information...</h3>
+		</div>
+		<button onclick="exitDesktop()" style="margin-right: 76px;">
+			<h3><i class="fa-solid fa-right-from-bracket"></i></h3>
+		</button>
+		<button onclick="shutdown()">
+			<h3><i class="fa-solid fa-power-off"></i></h3>
+		</button>
 	</section>
 
 	<script type="text/javascript" src="scripts/jsonloader.js"></script>
@@ -79,12 +77,12 @@
 		fetch('https://wttr.in/?format=3')
 			.then((response) => response.text())
 			.then((text) => {
-			document.getElementById('wttr').innerText = text;
+				document.getElementById('wttr').innerText = text;
 			});
 
-	    document.addEventListener('keydown',function(ev) {
-	    	openuser1()
-	    });
+		document.addEventListener('keydown', function (ev) {
+			openuser1()
+		});
 	</script>
 </body>
 

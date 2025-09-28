@@ -35,7 +35,6 @@ app.whenReady().then(() => {
     if (changedMetrics.size && !currentScreenSize.equals(changedMetrics.size)) {
       const { width, height } = screen.getPrimaryDisplay().workAreaSize;
       win.setSize(width, height)
-      console.log('resized')
     }
   });
 });

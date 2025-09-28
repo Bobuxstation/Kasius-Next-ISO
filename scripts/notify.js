@@ -1,4 +1,4 @@
-var notify = new Audio("medias/notification.mp3");
+var notify = new Audio("assets/notification.mp3");
 
 ipcMain.on('notify', (event, data) => {
     notifications(data.msg, data.app, data.isSilent)
@@ -30,7 +30,7 @@ function notifications(msg, app, isSilent) {
     ul.appendChild(li);
     notify.play();
     if (!isSilent) {
-        document.getElementById("Sidebar2").style.display = "block";
+        document.getElementById("notifications").style.display = "block";
     }
 }
 

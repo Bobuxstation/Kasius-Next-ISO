@@ -1,9 +1,9 @@
 <html>
 
 <head>
-  <script src="fontawesome.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../scroll.css" id="style">
+  <script src="../scripts/fontawesome.js"></script>
+  <link href="../assets/inter.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/scroll.css" id="style">
   <style>
     * {
       margin: 0;
@@ -47,6 +47,7 @@
       background: lightgray;
       padding: 15px;
       box-sizing: border-box;
+      overflow: auto;
     }
 
     .applistsidebar {
@@ -155,7 +156,7 @@
           <h1 style="margin-bottom: 15px;">Download Packages</h1>
         </div>
         <div id="divToShowWhenPackageIsSelected" style="display: none;">
-          <img title="App Icon" id="appIconImage" onerror="this.src='../Icons/user.png'"
+          <img title="App Icon" id="appIconImage" onerror="this.src='Icons/user.png'"
             style='height: 75px; width: 75px; float: left; margin-right: 5px;'>
           <h1 id="appName" style="
               padding-top: 11.5px;
@@ -220,7 +221,7 @@
     var obj = (jsonData);
     obj['packages'].push({ "name": name, "URL": URL, "icon": icon, "height": height, "width": width });
     jsonStr = JSON.stringify(obj, null, "\t");
-    console.log(jsonStr);
+    
     fs.writeFile(configDir + '/kasiuspkg.json', jsonStr, (err) => {
       if (err) {
         console.log(err);
@@ -232,9 +233,8 @@
 
   function removeItem(index, items) {
     jsonData.packages.splice(index, 1);
-
     jsonStr = JSON.stringify(jsonData, null, "\t");
-    console.log(jsonStr);
+    
     fs.writeFile(configDir + '/kasiuspkg.json', jsonStr, (err) => {
       if (err) {
         console.log(err);
@@ -245,7 +245,7 @@
   }
 
   async function fetchStore() {
-    let fetchJSON = await fetch('https://bobuxstation.github.io/KasiusNextCDN/')
+    let fetchJSON = await fetch('https://bobuxstation.github.io/KasiusNextCDN/', {cache: "no-store"})
     let data = await fetchJSON.json()
 
     data.packages.forEach(function (items) {
@@ -290,7 +290,7 @@
       let btn = document.createElement("button");
       btn.className = "menubutton2"
       btn.innerHTML = `
-          <img style='height: 30px; width: 30px;' onerror="this.onerror=null; this.src='../Icons/user.png'" src='${items.icon}'></img> ${items.name}
+          <img style='height: 30px; width: 30px;' onerror="this.onerror=null; this.src='Icons/user.png'" src='${items.icon}'></img> ${items.name}
       `;
       btn.onclick = function () {
         document.getElementById('divToShowWhenStoreIsSelected').style.display = 'none'

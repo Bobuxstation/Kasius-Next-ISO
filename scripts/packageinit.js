@@ -46,7 +46,7 @@ function spawnwindow(name, URL, icon, height, width) {
     close.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     close.classList.add('closebutton');
     close.onclick = function () {
-        $(`#${windowelem.id}`).effect('fade', {}, 250, function () {
+        $(`#${windowelem.id}`).effect('fade', {}, 125, function () {
             windowelem.remove();
             minimized.remove();
         })
@@ -63,9 +63,9 @@ function spawnwindow(name, URL, icon, height, width) {
             windowelem.style.left = lastLeft
             windowelem.style.top = lastTop
 
-            $('#body').effect('transfer', { to: `#${windowelem.id}`, className: "ui-effects-transfer" }, 250)
+            $('#body').effect('transfer', { to: `#${windowelem.id}`, className: "ui-effects-transfer" }, 125)
         } else {
-            $(`#${windowelem.id}`).effect('transfer', { to: `#body`, className: "ui-effects-transfer" }, 250, function () {
+            $(`#${windowelem.id}`).effect('transfer', { to: `#body`, className: "ui-effects-transfer" }, 125, function () {
                 lastLeft = windowelem.style.left
                 lastTop = windowelem.style.top
     
@@ -88,7 +88,7 @@ function spawnwindow(name, URL, icon, height, width) {
         minimized.className = "menubuttonminimized"
         windowelem.style.opacity = 0
         windowelem.style.pointerEvents = 'none'
-        $(`#${windowelem.id}`).effect('transfer', { to: `#${minimized.id}`, className: "ui-effects-transfer" }, 250);
+        $(`#${windowelem.id}`).effect('transfer', { to: `#${minimized.id}`, className: "ui-effects-transfer" }, 125);
     }
 
     //create content div
@@ -117,7 +117,7 @@ function spawnwindow(name, URL, icon, height, width) {
     minimized.id = "ICON_" + appID;
     minimized.onclick = function () {
         if (windowelem.style.opacity == 0) {
-            $(`#${minimized.id}`).effect('transfer', { to: `#${windowelem.id}`, className: "ui-effects-transfer" }, 250, function () {
+            $(`#${minimized.id}`).effect('transfer', { to: `#${windowelem.id}`, className: "ui-effects-transfer" }, 125, function () {
                 windowelem.style.animation = 'none'
                 windowelem.style.opacity = 1
                 windowelem.style.pointerEvents = ''
