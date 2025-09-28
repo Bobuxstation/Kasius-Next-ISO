@@ -18,7 +18,7 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
             {
                 "name": "Calculator",
                 "URL": "apps/calc.html",
-                "icon": "apps/icons/calc.png",
+                "icon": "apps/icon/calc.png",
                 "height": 350,
                 "width": 300
 
@@ -26,7 +26,7 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
             {
                 "name": "Settings",
                 "URL": "apps/settings.html",
-                "icon": "apps/icons/settings.png",
+                "icon": "apps/icon/settings.png",
                 "height": 450,
                 "width": 800
 
@@ -34,14 +34,14 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
             {
                 "name": "Files",
                 "URL": "apps/files.html",
-                "icon": "apps/icons/filesicon.png",
+                "icon": "apps/icon/filesicon.png",
                 "height": 450,
                 "width": 800
             },
             {
                 "name": "Media",
                 "URL": "apps/MEDIA.html",
-                "icon": "apps/icons/media.png",
+                "icon": "apps/icon/media.png",
                 "height": 450,
                 "width": 800
 
@@ -49,7 +49,7 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
             {
                 "name": "Notes",
                 "URL": "apps/notes.html",
-                "icon": "apps/icons/notes.png",
+                "icon": "apps/icon/notes.png",
                 "height": 450,
                 "width": 800
 
@@ -57,21 +57,21 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
             {
                 "name": "Package Manager",
                 "URL": "apps/store.html",
-                "icon": "apps/icons/Store.png",
+                "icon": "apps/icon/Store.png",
                 "height": 450,
                 "width": 800
             },
             {
                 "name": "Paint",
                 "URL": "apps/paint.html",
-                "icon": "apps/icons/paint.png",
+                "icon": "apps/icon/paint.png",
                 "height": 450,
                 "width": 800
             },
             {
                 "name": "Terminal",
                 "URL": "apps/gigashell.html",
-                "icon": "apps/icons/terminal.png",
+                "icon": "apps/icon/terminal.png",
                 "height": 450,
                 "width": 800
 
