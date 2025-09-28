@@ -24,6 +24,7 @@
   "dependencies": {
     "@electron/remote": "^2.0.9",
     "jquery": "^3.6.3",
+    "jquery.terminal": "^1.0.0",
     "loudness": "^0.4.2",
     "wifi-control": "^2.0.1"
   }

@@ -1,135 +1,83 @@
-<link href="../assets/inter.css" rel="stylesheet">
-<script src="../scripts/fontawesome.js"></script>
-<link rel="stylesheet" href="../assets/scroll.css" id="style">
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        font-family: consolas;
-        box-sizing: border-box;
-        color: green;
-    }
+<!DOCTYPE html>
+<html>
 
-    .headerpart button {
-        padding: 5px;
-        box-sizing: border-box;
-    }
+<head>
+    <title>Terminal</title>
 
-    button {
-        background: none;
-        border: none;
-        border-radius: 2.5px;
-        color: white;
-        transition: all 0.1s ease;
-        padding: 5px;
-        font-weight: bold;
-    }
+    <link rel="stylesheet" href="deps/xterm.css">
+    <link rel="stylesheet" href="../assets/scroll.css" id="style">
 
-    html,
-    body {
-        overflow: hidden;
-    }
+    <script src="deps/xterm.js"></script>
+    <script src="deps/xterm-fit.js"></script>
 
-    button:hover {
-        background: #4d4d4d90;
-        border: none;
-        border-radius: 2.5px;
-        transition: all 0.1s ease;
-    }
-
-    button:active {
-        background: #4d4d4d;
-        border: none;
-        border-radius: 2.5px;
-        transition: all 0.1s ease;
-    }
-
-    input {
-        background: none;
-        border-radius: 2.5px;
-        border: none;
-        padding: 0;
-        transition: all 0.5s ease;
-        color: white;
-        font-size: 20px;
-        font-family: consolas;
-        font-weight: bold;
-    }
-
-    input:focus {
-        background: lightgray;
-        border: none;
-        border-radius: 2.5px;
-        transition: all 0.5s ease;
-        color: black;
-        outline: none;
-    }
-
-    #notessaveprompt,
-    #notessaveprompt1 {
-        width: 25vw;
-    }
-</style>
-<div
-    style="outline: none; overflow: auto; display: flex; flex-direction: column-reverse;border: black solid 0px; width: 100vw; height: 100vh; resize: none; padding: 5px; font-family: Inter; font-size: 20px;background: #1d1d1ddd;backdrop-filter: blur(10px);">
-    <input class="input1" id="input1" placeholder="User1@KasiusNext:~$">
-    <div id="terminaltext" style="text-align: left;"></div>
-</div>
-<script>
-    window.$ = window.jQuery = require('jquery');
-
-    const { exec, spawn } = require('child_process');
-
-    function launch(executablePath) {
-        var spawn = require('child_process').exec;
-        ls = spawn(executablePath, { stdio: 'inherit' });
-
-        ls.stdout.on('data', function (data) {
-            returntoterminal(data.toString());
-        });
-
-        ls.stderr.on('data', function (err) {
-            returnerrortoterminal(err);
-        });
-
-        ls.on('exit', function (code) {
-            document.getElementById("input1").style.display = "block"
-            document.getElementById("input1").focus()
-        });
-    }
-    function redirect(redirectlink) {
-        window.location.replace(redirectlink)
-    }
-
-    $(".input1").on('keyup', function (e) {
-        if (e.key === 'Enter' || e.keyCode === 13) {
-            launch(document.getElementById("input1").value)
-            document.getElementById("input1").style.display = "none"
-            var ul = document.getElementById("terminaltext");
-            var li = document.createElement("p");
-            li.classList.add('notification');
-            li.innerHTML = ("<b>User1@KasiusNext$</b> " + document.getElementById("input1").value);
-            ul.appendChild(li);
-            document.getElementById("input1").value = "";
-            document.getElementById("input1").focus()
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
         }
-    });
-    function returntoterminal(output) {
-        var ul = document.getElementById("terminaltext");
-        var li = document.createElement("p");
-        li.classList.add('notification');
-        li.innerText = output;
-        ul.appendChild(li);
-        document.getElementById("input1").focus()
-    }
-    function returnerrortoterminal(output) {
-        var ul = document.getElementById("terminaltext");
-        var li = document.createElement("p");
-        li.classList.add('notification');
-        li.style.color = "red";
-        li.style.background = "#ff3d3d3d";
-        li.innerText = output;
-        ul.appendChild(li);
-        document.getElementById("input1").focus()
-    }
-</script>
+
+        #terminal {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .terminal {
+            height: 100vh;
+        }
+
+        .xterm-viewport {
+            background-color: #1d1d1ddd !important;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="terminal"></div>
+    <script>
+        const { exec } = require('child_process');
+        const { Terminal } = window;
+        const term = new Terminal();
+        const fitAddon = new window.FitAddon.FitAddon();
+        term.loadAddon(fitAddon);
+
+        term.open(document.getElementById('terminal'));
+        fitAddon.fit();
+        term.write('Kasius Next Terminal\r\n$ ');
+        let command = '';
+
+        window.addEventListener('resize', () => {
+            fitAddon.fit();
+        });
+
+        term.onKey(e => {
+            const ev = e.domEvent;
+            const printable = !ev.altKey && !ev.ctrlKey && !ev.metaKey;
+
+            if (ev.keyCode === 13) {
+                term.write('\r\n');
+                if (command.trim().length > 0) {
+                    exec(command, (error, stdout, stderr) => {
+                        if (stdout) term.write(stdout.replace(/\n/g, '\r\n'));
+                        if (stderr) term.write(stderr.replace(/\n/g, '\r\n'));
+                        term.write('$ ');
+                    });
+                } else {
+                    term.write('$ ');
+                }
+                command = '';
+            } else if (ev.keyCode === 8) {
+                if (command.length > 0) {
+                    term.write('\b \b');
+                    command = command.slice(0, -1);
+                }
+            } else if (printable) {
+                term.write(e.key);
+                command += e.key;
+            }
+        });
+    </script>
+</body>
+
+</html>
