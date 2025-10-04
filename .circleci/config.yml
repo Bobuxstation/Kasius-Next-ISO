@@ -17,9 +17,7 @@ jobs:
             sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm
             sudo apt-get install squashfs-tools
             sudo apt-get install genisoimage
-            sudo apt-get install -y make
-            sudo apt-get install -y python3
-            sudo apt-get install -y build-essential
+            sudo apt-get install -y python3 make g++ build-essential
       - run:
           name: Build AppImage for ISO
           command: npm run dist && ls
