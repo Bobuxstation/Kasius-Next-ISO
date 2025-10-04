@@ -1,5 +1,5 @@
 body {
-    background-image: url("assets/bg.jpg");
+    background-image: url("bg.jpg");
     overflow: hidden;
     background-size: cover;
     transition: all 0.25s ease 0s;
@@ -581,7 +581,7 @@ input {
 }
 
 .menubutton2 span {
-    margin-top: 10px;
+    margin-top: 4px;
     margin-left: 7.5px;
     display: inline-block;
 }

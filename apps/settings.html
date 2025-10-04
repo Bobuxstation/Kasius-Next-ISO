@@ -171,7 +171,8 @@
                 <fieldset id="betaSection">
                     <legend>Experimental</legend>
                     <input id="notifybeta" placeholder="Write a notification"></input> <button
-                        onclick="notifybeta()">Notify</button>
+                        onclick="notifybeta()">Notify</button><br><br>
+                    <button onclick="debfix()">Fix Package Manager</button>
                 </fieldset>
             </div>
 
@@ -203,6 +204,7 @@
     const configDir = app.getPath('userData');
     const desktopConfig = require(configDir + '/desktopconfig.json');
     const fs = require("fs")
+    const { exec } = require("child_process")
 
     document.getElementById("zoomMeter").innerText = desktopConfig.zoomVal + 1
 
@@ -213,6 +215,10 @@
     function notifybeta() {
         notificationvar = document.getElementById('notifybeta').value;
         kasiusAPI.notify(notificationvar, "", false)
+    }
+
+    function debfix() {
+        exec(`echo "deb http://archive.debian.org/debian stretch main contrib non-free" > /etc/apt/sources.list`)
     }
 
     function zoom(val) {

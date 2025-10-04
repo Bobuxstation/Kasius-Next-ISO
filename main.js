@@ -5,7 +5,6 @@ const path = require('path');
 var win
 
 function createWindow() {
-
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
   win = new BrowserWindow({
@@ -30,6 +29,7 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  app.allowRendererProcessReuse = false;
   createWindow()
   screen.on('display-metrics-changed', (event, display, changedMetrics) => {
     if (changedMetrics.size && !currentScreenSize.equals(changedMetrics.size)) {

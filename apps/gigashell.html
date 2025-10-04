@@ -35,47 +35,34 @@
 
 <body>
     <div id="terminal"></div>
+    
     <script>
-        const { exec } = require('child_process');
-        const { Terminal } = window;
         const term = new Terminal();
         const fitAddon = new window.FitAddon.FitAddon();
         term.loadAddon(fitAddon);
-
         term.open(document.getElementById('terminal'));
         fitAddon.fit();
-        term.write('Kasius Next Terminal\r\n$ ');
-        let command = '';
+
+        term.onKey(e => {
+            ptyProcess.write(e.key);
+        });
 
         window.addEventListener('resize', () => {
             fitAddon.fit();
+            ptyProcess.resize(term.cols, term.rows)
         });
 
-        term.onKey(e => {
-            const ev = e.domEvent;
-            const printable = !ev.altKey && !ev.ctrlKey && !ev.metaKey;
+        const shell = require('os').platform() === 'win32' ? 'powershell.exe' : 'bash';
+        const ptyProcess = require("node-pty").spawn(shell, [], {
+            name: 'xterm-color',
+            cols: 80,
+            rows: 30,
+            cwd: process.env.HOME,
+            env: process.env
+        });
 
-            if (ev.keyCode === 13) {
-                term.write('\r\n');
-                if (command.trim().length > 0) {
-                    exec(command, (error, stdout, stderr) => {
-                        if (stdout) term.write(stdout.replace(/\n/g, '\r\n'));
-                        if (stderr) term.write(stderr.replace(/\n/g, '\r\n'));
-                        term.write('$ ');
-                    });
-                } else {
-                    term.write('$ ');
-                }
-                command = '';
-            } else if (ev.keyCode === 8) {
-                if (command.length > 0) {
-                    term.write('\b \b');
-                    command = command.slice(0, -1);
-                }
-            } else if (printable) {
-                term.write(e.key);
-                command += e.key;
-            }
+        ptyProcess.onData((data) => {
+            term.write(data);
         });
     </script>
 </body>

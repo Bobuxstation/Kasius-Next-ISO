@@ -2,7 +2,6 @@
 
 <head>
     <link href="../assets/inter.css" rel="stylesheet">
-    <script type="text/javascript" src="../scripts/time.js" defer></script>
     <style>
         * {
             margin: 0;
@@ -57,6 +56,19 @@
     }
 
     setInterval(wttr, 2500)
+
+    function time() {
+        var span = document.getElementById('span');
+        var d = new Date();
+        var s = d.getSeconds();
+        var m = d.getMinutes();
+        var h = d.getHours();
+        try {
+            span.innerText = (" ") + ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2);
+        } catch { }
+    };
+
+    setInterval(time)
 </script>
 
 </html>

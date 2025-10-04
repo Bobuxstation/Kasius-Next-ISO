@@ -41,6 +41,7 @@ document.addEventListener("keydown", (event) => {
     menu()
   }
 });
+
 function NotificationMenu() {
   var x = document.getElementById("notifications");
   if (x.style.display === "none") {
