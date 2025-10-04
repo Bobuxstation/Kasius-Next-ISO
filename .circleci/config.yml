@@ -4,19 +4,11 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: cimg/node:16.20.2
-    environment:
-      ELECTRON_MIRROR: "https://github.com/electron/electron/releases/download/"
     steps:
       - checkout
 
       - run:
-          name: Install nodeJS dependencies
-          command: |
-            npm config set electron_mirror https://github.com/electron/electron/releases/download/
-            npm i
-
-      - run:
-          name: Install other dependencies
+          name: Install system dependencies
           command: |
             sudo apt-get update -y
             sudo dpkg --add-architecture i386 && sudo apt-get update -y
@@ -24,11 +16,23 @@ jobs:
             sudo apt-get install -y squashfs-tools genisoimage python3 make g++ build-essential
 
       - run:
-          name: Build AppImage for ISO
+          name: Install nodeJS dependencies
+          command: npm ci
+
+      - run:
+          name: Force rebuild of native Electron modules using correct mirror
           command: |
             export ELECTRON_MIRROR="https://github.com/electron/electron/releases/download/"
-            npm rebuild node-pty --build-from-source || true
-            npm run dist && ls
+            export npm_config_disturl="https://github.com/electron/electron/releases/download/"
+            export npm_config_runtime="electron"
+            export npm_config_target="13.6.9"
+            npx node-gyp install --dist-url=https://github.com/electron/electron/releases/download/v13.6.9
+            npx electron-rebuild -f -w node-pty || npm rebuild node-pty --build-from-source --runtime=electron --target=13.6.9 --dist-url=https://github.com/electron/electron/releases/download/
+            ls node_modules/node-pty || echo "node-pty rebuilt successfully"
+
+      - run:
+          name: Build AppImage for ISO
+          command: npm run dist && ls
 
       - run:
           name: Get LinuxJS
@@ -47,7 +51,7 @@ jobs:
 
       - store_artifacts:
           path: ~/repo/filesystem/KasiusNextISO.iso
-  
+
   publish-github-release:
     working_directory: ~/repo
     docker:
