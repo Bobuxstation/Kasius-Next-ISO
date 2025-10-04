@@ -53,7 +53,8 @@
         });
 
         const shell = require('os').platform() === 'win32' ? 'powershell.exe' : 'bash';
-        const ptyProcess = require("node-pty").spawn(shell, [], {
+        const shellargs = require('os').platform() === 'win32' ? [] : ['--noprofile', '--norc'];
+        const ptyProcess = require("node-pty").spawn(shell, shellargs, {
             name: 'xterm-color',
             cols: 80,
             rows: 30,
