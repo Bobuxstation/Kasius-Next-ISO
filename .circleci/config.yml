@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: cimg/current-18.04
+      - image: cimg/base:current-18.04
     steps:
       - checkout
 
