@@ -18,6 +18,8 @@ jobs:
             sudo apt-get install squashfs-tools
             sudo apt-get install genisoimage
             sudo apt-get install -y make
+            sudo apt-get install -y python
+            sudo apt-get install -y build-essential
       - run:
           name: Build AppImage for ISO
           command: npm run dist && ls
