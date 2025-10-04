@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: cimg/node:16.20.2-browsers
+      - image: cimg/current-18.04
     steps:
       - checkout
 
@@ -14,6 +14,14 @@ jobs:
             sudo dpkg --add-architecture i386 && sudo apt-get update -y
             sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm
             sudo apt-get install -y squashfs-tools genisoimage python3 make g++ build-essential
+
+      - run:
+          name: Install Node.js 16.20.2
+          command: |
+            curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            node -v
+            npm -v
 
       - run:
           name: Install nodeJS dependencies
