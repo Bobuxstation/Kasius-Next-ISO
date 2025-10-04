@@ -17,18 +17,9 @@ jobs:
 
       - run:
           name: Install nodeJS dependencies
-          command: npm i
-
-      - run:
-          name: Force rebuild of native Electron modules using correct mirror
           command: |
-            export ELECTRON_MIRROR="https://github.com/electron/electron/releases/download/"
-            export npm_config_disturl="https://github.com/electron/electron/releases/download/"
-            export npm_config_runtime="electron"
-            export npm_config_target="13.6.9"
-            npx node-gyp install --dist-url=https://github.com/electron/electron/releases/download/v13.6.9
-            npx electron-rebuild -f -w node-pty || npm rebuild node-pty --build-from-source --runtime=electron --target=13.6.9 --dist-url=https://github.com/electron/electron/releases/download/
-            ls node_modules/node-pty || echo "node-pty rebuilt successfully"
+            npm i
+            npx electron-rebuild
 
       - run:
           name: Build AppImage for ISO
