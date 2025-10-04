@@ -4,31 +4,42 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: cimg/node:16.20.2
+    environment:
+      ELECTRON_MIRROR: "https://github.com/electron/electron/releases/download/"
     steps:
       - checkout
+
       - run:
           name: Install nodeJS dependencies
-          command: npm i
+          command: |
+            npm config set electron_mirror https://github.com/electron/electron/releases/download/
+            npm i
+
       - run:
           name: Install other dependencies
           command: |
             sudo apt-get update -y
             sudo dpkg --add-architecture i386 && sudo apt-get update -y
             sudo apt-get install -y dpkg fakeroot wine32 wine64 rpm
-            sudo apt-get install squashfs-tools
-            sudo apt-get install genisoimage
-            sudo apt-get install -y python3 make g++ build-essential
+            sudo apt-get install -y squashfs-tools genisoimage python3 make g++ build-essential
+
       - run:
           name: Build AppImage for ISO
-          command: npm run dist && ls
+          command: |
+            export ELECTRON_MIRROR="https://github.com/electron/electron/releases/download/"
+            npm rebuild node-pty --build-from-source || true
+            npm run dist && ls
+
       - run:
           name: Get LinuxJS
           path: ~/repo/
           command: npm i @mainsilent/linux.js --save-dev && sudo npx reqs && ls
+
       - run:
           name: Build ISO
           path: ~/repo/
           command: sudo npx linuxjs
+
       - persist_to_workspace:
           root: filesystem
           paths:
