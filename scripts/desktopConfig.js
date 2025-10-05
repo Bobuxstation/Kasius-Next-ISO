@@ -2,14 +2,28 @@ var shutdown = new Audio('assets/shutdown.mp3');
 var errorsound = new Audio("assets/error.mp3");
 var latestConfig
 
-//load all settings
-window.addEventListener('load', function () {
+function setSettings(desktopConfig) {
   document.getElementById("body").style.backgroundImage = `url(${desktopConfig.backgroundImage})`;
   document.getElementById("style").href = desktopConfig.theme;
-  document.getElementById("footer").style.textAlign = desktopConfig.iconStyle;
+  document.getElementById("footer1").style.textAlign = desktopConfig.iconStyle;
   document.getElementById("menutogglebuttonimg").src = desktopConfig.footerIcon;
   webFrame.setZoomLevel(desktopConfig.zoomVal);
   latestConfig = desktopConfig
+
+  if (desktopConfig.iconStyle == "left") {
+    document.getElementById("footer1").style.paddingLeft = "77px";
+  } else {
+    document.getElementById("footer1").style.paddingLeft = "0px";
+  }
+
+  if (typeof desktopConfig.autoHideNavbar !== "undefined") {
+    document.getElementById("footer").className = (desktopConfig.autoHideNavbar ? "autohide" : "")
+  }
+}
+
+//load all settings
+window.addEventListener('load', function () {
+  setSettings(desktopConfig);
 
   setTimeout(function () {
     document.getElementById('welcomescreen').style.display = "none";
@@ -22,15 +36,7 @@ window.addEventListener('load', function () {
     if (JSON.stringify(newDesktopConfig) == JSON.stringify(latestConfig)) return;
     latestConfig = newDesktopConfig
 
-    document.getElementById("body").style.backgroundImage = `url(${newDesktopConfig.backgroundImage})`;
-    document.getElementById("style").href = newDesktopConfig.theme;
-    document.getElementById("footer").style.textAlign = newDesktopConfig.iconStyle;
-    document.getElementById("menutogglebuttonimg").src = newDesktopConfig.footerIcon;
-    webFrame.setZoomLevel(newDesktopConfig.zoomVal);
-
-    if (typeof newDesktopConfig.autoHideNavbar !== "undefined") {
-      document.getElementById("footer").className = (newDesktopConfig.autoHideNavbar ? "autohide" : "")
-    }
+    setSettings(newDesktopConfig);
   }, 250);
 })
 
@@ -130,13 +136,14 @@ function refreshWifiPicker() {
 refreshWifiPicker()
 
 function time() {
-  var span = document.getElementById('span');
+  var footertime = document.getElementsByClassName('footertime')[0];
+
   var d = new Date();
   var s = d.getSeconds();
   var m = d.getMinutes();
   var h = d.getHours();
-  try {
-    span.innerText = (" ") + ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2);
-  } catch {}
+
+  footertime.innerText = (" ") + ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2);
+  footertime.title = (" ") + ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
 };
 setInterval(time)

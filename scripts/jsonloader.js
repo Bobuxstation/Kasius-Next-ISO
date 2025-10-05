@@ -5,9 +5,7 @@ const app = remote.app;
 const fs = require('fs');
 const configDir = app.getPath('userData');
 const ipcMain = remote.ipcMain
-
 window.$ = window.jQuery = require('jquery');
-console.log(configDir);
 
 if (fs.existsSync(configDir + '/kasiuspkg.json')) {
     console.log('Package List Found!')
@@ -82,6 +80,17 @@ if (fs.existsSync(configDir + '/kasiuspkg.json')) {
     fs.writeFileSync(configDir + '/kasiuspkg.json', data);
 }
 
+if (fs.existsSync(configDir + '/desktopIcons.json')) {
+    console.log('Shortcut List Found!')
+} else {
+    console.log('Shortcut List Is Not Found! Creating Package List...')
+    let jsontemplate = {
+        "icons": []
+    };
+    let data = JSON.stringify(jsontemplate, null, "\t");
+    fs.writeFileSync(configDir + '/desktopIcons.json', data);
+}
+
 if (fs.existsSync(configDir + '/desktopconfig.json')) {
     console.log('Package List Found!')
 } else {
@@ -104,8 +113,8 @@ let desktopConfig = require(configDir + '/desktopconfig.json');
 function add(name, URL, icon, height, width) {
     var obj = (jsonData);
     obj['packages'].push({ "name": name, "URL": URL, "icon": icon, "height": height, "width": width });
+
     jsonStr = JSON.stringify(obj, null, "\t");
-    console.log(jsonStr);
     fs.writeFile(configDir + '/kasiuspkg.json', jsonStr, (err) => {
         if (err) {
             console.log(err);

@@ -37,6 +37,13 @@
         </div>
     </div>
 
+    <div class="desktops" id="desktops" style="display: none;">
+        <button onclick="setDesktop(1)" class="menubutton2 desktopButton selectedDesktop">1</button>
+        <button onclick="setDesktop(2)" class="menubutton2 desktopButton">2</button>
+        <button onclick="setDesktop(3)" class="menubutton2 desktopButton">3</button>
+        <button onclick="setDesktop(4)" class="menubutton2 desktopButton">4</button>
+    </div>
+
     <div class="notifications" id="notifications" style="display: none;">
         <p style="text-align: center;" class="notification">Quick Actions</p>
         <div class="notification notificationMessage" id="batteryInfo"></div>
@@ -53,17 +60,26 @@
     <!--Footer-->
 
     <footer id="footer">
-        <button onclick="menu()" class="menubutton" style="width: 35px; padding-top: 0px;" id="menutogglebutton"><img
-                id="menutogglebuttonimg" src="assets/kasiuslogo.svg"
-                style="height: 24px; margin-top: 3px; width: 22.5px;"></img></button>
         <nav>
             <ul id="footer1">
 
             </ul>
         </nav>
+        <button onclick="menu()" class="menubutton" style="width: 35px; padding-top: 0px; margin: 3px;" id="menutogglebutton">
+            <img id="menutogglebuttonimg" src="assets/kasiuslogo.svg"
+                style="height: 24px; margin-top: 3px; width: 22.5px;"></img>
+        </button>
+        <button onclick="desktops()" class="menubutton" style="width: 35px; padding-top: 0px;" id="menutogglebutton">
+            <img id="menutogglebuttonimg" src="assets/bars.svg"
+                style="height: 24px; margin-top: 3px; width: 22.5px;"></img>
+        </button>
         <button style="float: right;" onclick="NotificationMenu(); refreshWifiPicker(); getBatteryInfo()"
-            class="menubutton" style="width: 50px; padding-top: 0px;" id="menutogglebutton"><i
-                style="height: 22.5px; width: 22.5px;" class="fa-solid fa-bars"></i></button>
+            id="menutogglebutton" class="menubutton">
+            <i style="height: 22.5px; width: 22.5px; font-size: 22px;" class="fa-solid fa-bars"></i>
+        </button>
+        <button style="float: right; width: fit-content !important; font-size: 16px;" id="menutogglebutton" class="menubutton footertime">
+            5:30
+        </button>
     </footer>
     <script>$(".window").draggable({ handle: ".header", containment: "#body", opacity: 0.75 });</script>
 </body>

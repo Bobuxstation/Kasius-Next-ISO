@@ -24,15 +24,36 @@ function toggleSearch() {
 
 function menu() {
   var x = document.getElementById("launcher");
+  var y = document.getElementById("desktops");
+
   if (x.style.display === "none") {
-    x.style.display = "block";
+    if (y.style.display == "block") {
+      y.style.animation = '0.25s ease 0s 1 normal none running slidedown'
+      setTimeout(() => { y.style.display = "none"; y.style.animation = ''; x.style.display = "block"; }, 250);
+    } else {
+      x.style.display = "block";
+    }
     loadApps('')
   } else {
     x.style.animation = '0.25s ease 0s 1 normal none running slidedown'
-    setTimeout(() => {
-      x.style.display = "none";
-      x.style.animation = ''
-    }, 250);
+    setTimeout(() => { x.style.display = "none"; x.style.animation = ''; }, 250);
+  }
+}
+
+function desktops() {
+  var x = document.getElementById("desktops");
+  var y = document.getElementById("launcher");
+
+  if (x.style.display === "none") {
+    if (y.style.display == "block") {
+      y.style.animation = '0.25s ease 0s 1 normal none running slidedown'
+      setTimeout(() => { y.style.display = "none"; y.style.animation = ''; x.style.display = "block"; }, 250);
+    } else {
+      x.style.display = "block";
+    }
+  } else {
+    x.style.animation = '0.25s ease 0s 1 normal none running slidedown'
+    setTimeout(() => { x.style.display = "none"; x.style.animation = '' }, 250);
   }
 }
 

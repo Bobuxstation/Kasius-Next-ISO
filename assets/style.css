@@ -13,7 +13,6 @@ footer {
     background-color: rgba(29, 29, 29, 0.867);
     padding: 2px;
     backdrop-filter: blur(10px);
-    text-align: center;
     z-index: 101;
     border: 1px solid rgba(157, 157, 157, 0.125);
     margin: 5px;
@@ -22,6 +21,11 @@ footer {
     overflow: auto;
     max-height: 44px;
     position: fixed !important;
+}
+
+#footer1 {
+    width: 100%;
+    display: inline-block;
 }
 
 .window {
@@ -99,9 +103,9 @@ footer {
 
 .shortcut img {
     backdrop-filter: blur(10px);
+    cursor: pointer;
     background-color: rgba(29, 29, 29, 0.867) !important;
     padding: 15px !important;
-    cursor: pointer;
 }
 
 .shortcut {
@@ -127,7 +131,7 @@ footer {
     background-image: url("");
     height: 32px;
     border-radius: 3px;
-    margin: 3px;
+    margin: 3px 3px 3px 0px;
     transition: all 0.25s ease 0s;
     width: 32px !important;
     padding: 4px !important;
@@ -143,10 +147,15 @@ li {
     padding: 0px;
     user-select: none;
     outline: none;
+    box-sizing: border-box;
 }
 
 nav {
     display: inline-block;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    pointer-events: none;
 }
 
 #span {
@@ -184,8 +193,8 @@ nav {
 }
 
 .launcher {
-    height: 520px;
-    width: 605px;
+    height: 500px;
+    width: 600px;
     z-index: 100;
     overflow: auto;
     background: none;
@@ -200,6 +209,37 @@ nav {
     position: fixed !important;
 }
 
+.desktops {
+    z-index: 100;
+    background: rgba(29, 29, 29, 0.867);
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    bottom: 0px;
+    margin-bottom: 54px;
+    animation: 0.25s ease 0s 1 normal none running slideup;
+    margin-left: 5px;
+    border: 1px solid rgba(157, 157, 157, 0.125);
+    display: none;
+    position: fixed !important;
+    padding: 2px;
+}
+
+.desktops button {
+    width: 32px;
+    padding: 8px;
+    margin: 3px 3px 3px 0px;
+    text-align: center;
+}
+
+.desktops button:first-child {
+    margin: 3px;
+}
+
+.selectedDesktop {
+    transition: all 0.25s ease 0s;
+    background-color: rgba(77, 77, 77, 0.25) !important;
+}
+
 .menubutton2 {
     background: none;
     border: 0px solid black;
@@ -207,7 +247,6 @@ nav {
     color: white;
     float: left;
     text-align: left;
-    font-size: 20px;
     margin-bottom: 5px;
     border-radius: 5px;
     padding: 5px;
@@ -236,8 +275,8 @@ button {
     overflow: auto;
     border: 1px solid rgba(157, 157, 157, 0.125);
     margin-right: 5px;
-    position: fixed !important;
     max-height: calc(100vh - 72px);
+    position: fixed !important;
 }
 
 #searchbox {
@@ -278,7 +317,6 @@ button {
 
 .menubuttonminimized {
     color: white;
-    float: left;
     font-size: 20px;
     height: 32px;
     width: 32px;
@@ -287,6 +325,7 @@ button {
     border-radius: 3px;
     background: none;
     border: 1px solid rgba(0, 0, 0, 0);
+    pointer-events: all;
     padding: 4px !important;
 }
 
@@ -332,7 +371,6 @@ fieldset {
 }
 
 #menutogglebutton {
-    font-size: 22px;
     color: white;
 }
 

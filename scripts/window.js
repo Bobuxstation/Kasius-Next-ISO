@@ -1,5 +1,6 @@
-var appDebugMode = false
-var shortcutAdded = false
+var appDebugMode = false;
+var shortcutAdded = false;
+var currDesktop = 1;
 
 function stringGen() {
     var text = "";
@@ -9,6 +10,39 @@ function stringGen() {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
+}
+
+function setDesktop(number) {
+    const windows = document.getElementsByClassName("window");
+    const taskbuttons = document.getElementsByClassName("menubuttonminimized");
+    const desktopButton = document.getElementsByClassName("desktopButton");
+
+    Object.values(windows).forEach((item) => {
+        if (item.getAttribute('desktop') == number) {
+            item.style.display = "block";
+        } else {
+            item.style.display = "none";
+        }
+    });
+
+
+    Object.values(taskbuttons).forEach((item) => {
+        if (item.getAttribute('desktop') == number) {
+            item.style.display = "inline-block";
+        } else {
+            item.style.display = "none";
+        }
+    });
+
+    Object.values(desktopButton).forEach((item) => {
+        if (item.innerHTML == number) {
+            item.classList.add("selectedDesktop");
+        } else {
+            item.classList.remove("selectedDesktop");
+        }
+    });
+
+    currDesktop = number;
 }
 
 function spawnwindow(name, URL, icon, height, width) {
@@ -31,6 +65,7 @@ function spawnwindow(name, URL, icon, height, width) {
 
     //create window
     windowelem.classList.add('window');
+    windowelem.setAttribute('desktop', currDesktop);
     windowelem.id = appID;
     windowelem.style.display = "block";
     windowelem.style.opacity = 1
@@ -111,7 +146,8 @@ function spawnwindow(name, URL, icon, height, width) {
         }
     });
 
-    //create minimized icon
+    //create minimized icon    
+    minimized.setAttribute('desktop', currDesktop);
     minimized.innerHTML = "<img style='height: 22.5px; width: 22.5px;' src='" + icon + "'></img>";
     minimized.className = "menubuttonminimized menubuttonminimizing"
     minimized.id = "ICON_" + appID;
@@ -162,19 +198,19 @@ function loadApps(searchQuery) {
         .then((res) => { return res.json(); })
         .then((data) => {
             applist.innerHTML = `
-        <p style="text-align: center;" class="notification">
-            <i class="fa-solid fa-right-from-bracket" style="float: right; margin: 2px;" onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);"></i>
-            <i class="fa-solid fa-search" style="float: left; margin: 2px;" onclick="toggleSearch()"></i>
-            <span id="span"></span>
-        </p>
-        <input class="notification" id="searchbox" style="display: none;" onchange="loadApps(this.value)" value="${searchQuery}" placeholder="Search Apps">
-        `
+                <p style="text-align: center;" class="notification">
+                    <i class="fa-solid fa-right-from-bracket" style="float: right; margin: 2px;" onclick="shutdown.play(); setTimeout(function () {window.location.replace('index.html')}, 1000);"></i>
+                    <i class="fa-solid fa-search" style="float: left; margin: 2px;" onclick="toggleSearch()"></i>
+                    <span id="span">${require("os").userInfo().username}</span>
+                </p>
+                <input class="notification" id="searchbox" style="display: none;" onchange="loadApps(this.value)" value="${searchQuery}" placeholder="Search Apps">
+            `
             data.packages.forEach(items => {
                 let applist = document.getElementById("applist");
 
                 let btn = document.createElement("btn");
                 btn.className = "menubutton2"
-                btn.innerHTML = "<img style='height: 20px; width: 20px;' src='" + items.icon + "'></img> <span>" + items.name + "</span>";
+                btn.innerHTML = "<img style='height: 27px; width: 27px;' src='" + items.icon + "'></img> <span>" + items.name + "</span>";
                 btn.onclick = function () {
                     spawnwindow(items.name, items.URL, items.icon, items.height, items.width)
                     menu()
